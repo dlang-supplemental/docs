@@ -11,7 +11,7 @@ content:
       start_path: docs
     - url: https://github.com/dlang-supplemental/densor.git
       branches: [master, main]
-      start_path: .
+      start_path: docs
     - url: https://github.com/dlang-supplemental/fluidsync-daemon.git
       branches: [master, main]
       start_path: .

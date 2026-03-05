@@ -10,7 +10,7 @@ content:
       worktrees: true
     - url: ../densor
       branches: HEAD
-      start_path: .
+      start_path: docs
       worktrees: true
     - url: ../fluidsync-daemon
       branches: HEAD
