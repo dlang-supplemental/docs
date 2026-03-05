@@ -1,0 +1,25 @@
+= D Lang Supplemental Docs
+
+Documentation hub for the dlang-supplemental organization, built with Antora and antora-dark-theme.
+
+== Build
+
+* Production (fetch from GitHub): `pnpm build`
+* Local (sibling repos): run `pnpm run build:local` (uses `local-antora-playbook.yml`)
+
+== Content sources
+
+Docs are pulled from:
+
+* asciidoctor-dlang
+* densor
+* fluidsync-daemon
+* vector-store-dlang
+* vibe-search-core
+* vibe-search-desktop
+
+This repo's own content is under `docs/` (portal and nav).
+
+== Create remote repository
+
+To push this repo to GitHub: `gh repo create dlang-supplemental/docs --private --source=. --remote=origin --push` (or create the repo in the GitHub UI and add the remote).

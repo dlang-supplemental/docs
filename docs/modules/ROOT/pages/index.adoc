@@ -1,0 +1,13 @@
+= D Lang Supplemental Documentation
+:navtitle: Portal
+
+This site aggregates documentation for projects in the dlang-supplemental organization.
+
+== Components
+
+* xref:asciidoctor-d:ROOT:index.adoc[Asciidoctor (D)] — Native D implementation of Asciidoctor
+* xref:densor:ROOT:index.adoc[Densor]
+* xref:fluidsync-daemon:ROOT:index.adoc[FluidSync GUI Daemon]
+* xref:d-vector-search:ROOT:index.adoc[D-Vector Search]
+* xref:vibe-search-core:ROOT:index.adoc[Vibe Search Core]
+* xref:vibe-search-desktop:ROOT:index.adoc[Vibe Search Desktop]

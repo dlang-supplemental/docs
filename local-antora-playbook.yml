@@ -1,0 +1,34 @@
+# Local development playbook (git-ignore this file)
+# Uses sibling repos instead of remote URLs
+
+extends: ./antora-playbook.yml
+content:
+  sources:
+    - url: ../asciidoctor-dlang
+      branches: HEAD
+      start_path: docs
+      worktrees: true
+    - url: ../densor
+      branches: HEAD
+      start_path: docs
+      worktrees: true
+    - url: ../fluidsync-daemon
+      branches: HEAD
+      start_path: docs
+      worktrees: true
+    - url: ../vector-store-dlang
+      branches: HEAD
+      start_path: docs
+      worktrees: true
+    - url: ../vibe-search-core
+      branches: HEAD
+      start_path: docs
+      worktrees: true
+    - url: ../vibe-search-desktop
+      branches: HEAD
+      start_path: docs
+      worktrees: true
+    - url: .
+      branches: HEAD
+      start_path: docs
+      worktrees: true
