@@ -14,19 +14,19 @@ content:
       worktrees: true
     - url: ../fluidsync-daemon
       branches: HEAD
-      start_path: .
+      start_path: docs
       worktrees: true
     - url: ../vector-store-dlang
       branches: HEAD
-      start_path: .
+      start_path: docs
       worktrees: true
     - url: ../vibe-search-core
       branches: HEAD
-      start_path: .
+      start_path: docs
       worktrees: true
     - url: ../vibe-search-desktop
       branches: HEAD
-      start_path: .
+      start_path: docs
       worktrees: true
     - url: .
       branches: HEAD

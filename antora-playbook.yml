@@ -14,16 +14,16 @@ content:
       start_path: docs
     - url: https://github.com/dlang-supplemental/fluidsync-daemon.git
       branches: [main]
-      start_path: .
+      start_path: docs
     - url: https://github.com/dlang-supplemental/vector-store-dlang.git
       branches: [main]
-      start_path: .
+      start_path: docs
     - url: https://github.com/dlang-supplemental/vibe-search-core.git
       branches: [main]
-      start_path: .
+      start_path: docs
     - url: https://github.com/dlang-supplemental/vibe-search-desktop.git
       branches: [main]
-      start_path: .
+      start_path: docs
     - url: .
       branches: HEAD
       start_path: docs
