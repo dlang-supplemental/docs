@@ -10,23 +10,23 @@ content:
       worktrees: true
     - url: ../densor
       branches: HEAD
-      start_path: docs
+      start_path: .
       worktrees: true
     - url: ../fluidsync-daemon
       branches: HEAD
-      start_path: docs
+      start_path: .
       worktrees: true
     - url: ../vector-store-dlang
       branches: HEAD
-      start_path: docs
+      start_path: .
       worktrees: true
     - url: ../vibe-search-core
       branches: HEAD
-      start_path: docs
+      start_path: .
       worktrees: true
     - url: ../vibe-search-desktop
       branches: HEAD
-      start_path: docs
+      start_path: .
       worktrees: true
     - url: .
       branches: HEAD

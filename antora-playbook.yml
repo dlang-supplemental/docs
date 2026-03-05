@@ -11,19 +11,19 @@ content:
       start_path: docs
     - url: https://github.com/dlang-supplemental/densor.git
       branches: [master, main]
-      start_path: docs
+      start_path: .
     - url: https://github.com/dlang-supplemental/fluidsync-daemon.git
       branches: [master, main]
-      start_path: docs
+      start_path: .
     - url: https://github.com/dlang-supplemental/vector-store-dlang.git
       branches: [master, main]
-      start_path: docs
+      start_path: .
     - url: https://github.com/dlang-supplemental/vibe-search-core.git
       branches: [master, main]
-      start_path: docs
+      start_path: .
     - url: https://github.com/dlang-supplemental/vibe-search-desktop.git
       branches: [master, main]
-      start_path: docs
+      start_path: .
     - url: .
       branches: HEAD
       start_path: docs
