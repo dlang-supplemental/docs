@@ -1,5 +1,5 @@
 # Local development playbook (git-ignore this file)
-# Uses sibling repos instead of remote URLs
+# Uses sibling repos instead of remote URLs; extends antora-playbook.yml
 
 extends: ./antora-playbook.yml
 content:

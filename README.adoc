@@ -4,8 +4,8 @@ Documentation hub for the dlang-supplemental organization, built with Antora and
 
 == Build
 
-* Production (fetch from GitHub): `pnpm build`
-* Local (sibling repos): run `pnpm run build:local` (uses `local-antora-playbook.yml`)
+* Production (fetch from GitHub): `pnpm build` (uses `antora-playbook.yml`)
+* Local (sibling repos): `pnpm run build:local` (uses `antora-playbook-local.yml`)
 
 == Content sources
 

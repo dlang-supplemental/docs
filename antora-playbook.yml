@@ -1,5 +1,5 @@
-# D Lang Supplemental documentation site
-# Aggregates all dlang-supplemental org repos with docs (Root Strategy)
+# D Lang Supplemental documentation site (online)
+# Fetches content from GitHub; use for CI and production build
 
 site:
   title: D Lang Supplemental
