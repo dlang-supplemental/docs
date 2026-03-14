@@ -1,0 +1,6 @@
+= 2026-03-05 – Portal Genesis and CI
+
+* Bootstrapped the D Lang Supplemental Antora hub repository integrating the `antora-dark-theme` UI bundle.
+* Integrated all the internal component repositories (`densor`, `fluidsync-daemon`, `vector-store-dlang`, `vibe-search-core`, `asciidoctor-dlang`) relying on appropriate module pathing.
+* Added GitHub Actions continuous deployment workflows.
+* Checked in lockfiles for caching performance.

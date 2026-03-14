@@ -6,3 +6,13 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 * Configured the new `graphrag-indexer` Antora source in the global playbooks and initialized the portal changelog.
 * See xref:changelog-details/2026-03-14 - added-graphrag-indexer.adoc[Detailed changelog].
+
+== 2026-03-07 – Split Local and Online Playbooks
+
+* Created a local-development specific playbook mapped to sibling repositories.
+* See xref:changelog-details/2026-03-07 - split-local-and-online-playbooks.adoc[Detailed changelog].
+
+== 2026-03-05 – Portal Genesis and CI
+
+* Bootstrapped D Lang Supplemental documentation portal with centralized CI/CD processing and GitHub Pages deployments.
+* See xref:changelog-details/2026-03-05 - portal-genesis-and-ci.adoc[Detailed changelog].

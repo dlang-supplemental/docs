@@ -1,0 +1,4 @@
+= 2026-03-07 – Split Local and Online Playbooks
+
+* Added `antora-playbook-local.yml` to support local development workflows utilizing sibling directory structures (`../`) for real-time live preview.
+* `antora-playbook.yml` was preserved exclusively for online production builds fetching from GitHub remote references.
