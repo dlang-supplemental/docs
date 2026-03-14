@@ -24,6 +24,9 @@ content:
     - url: https://github.com/dlang-supplemental/vibe-search-desktop.git
       branches: [main]
       start_path: docs
+    - url: https://github.com/dlang-supplemental/graphrag-indexer.git
+      branches: [main]
+      start_path: docs
     - url: .
       branches: HEAD
       start_path: docs

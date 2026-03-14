@@ -1,0 +1,8 @@
+= Changelog
+
+This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
+
+== 2026-03-14 – Added GraphRAG indexer to documentation playbooks
+
+* Configured the new `graphrag-indexer` Antora source in the global playbooks and initialized the portal changelog.
+* See xref:changelog-details/2026-03-14 - added-graphrag-indexer.adoc[Detailed changelog].
