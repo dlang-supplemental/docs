@@ -1,0 +1,263 @@
+= Flutter rendering: Skia and Impeller
+:description: Skia vs Impeller, transitional architecture, D language embedding notes, and layered decoupling for apps such as DevCentr.
+:navtitle: Skia & Impeller (Flutter)
+
+== Source
+
+This guide summarizes research originally collected in a https://gemini.google.com/app/5cee436ccf7f6982[Gemini] conversation (exported 2026-03-22).
+It is curated for the dlang-supplemental documentation and is not an official statement from Flutter or Google.
+Facts on the ground change quickly—verify against current https://docs.flutter.dev/[Flutter documentation] and engine release notes before making build or product decisions.
+
+== Introduction
+
+Flutter can draw pixels using two main rendering engines: *Skia*, the long-standing library also used by Chrome and others, and *Impeller*, a newer engine built to address specific performance limits of the older stack.
+This page explains how they differ, why people say “Skia + Impeller,” what to expect if you bind Impeller from D on desktop, and how to split your project into layers so engine churn does not rewrite your whole UI.
+
+== Skia (legacy in Flutter)
+
+Skia is a mature open-source 2D graphics library with broad platform support.
+
+* *Shader model:* Skia often relies on *Just-In-Time* (JIT) compilation for shaders.
+  When a new visual effect appears (blur, gradient, etc.), the required shader may be compiled on demand.
+* *Jank:* That JIT work can cause *shader compilation jank*: the first frames that need a shader may stall, dropping frames until compilation finishes.
+* *Mitigation:* Teams use *shader warmup*—recording animations and saving artifacts such as `sksl.json` so shaders compile during startup instead of during user-visible motion.
+
+== Impeller (modern default on many targets)
+
+Impeller was designed to reduce those issues.
+
+* *Shader model:* Shaders are compiled *Ahead-of-Time* (AOT) when the Flutter engine is built, not when the user first hits an effect.
+* *Predictable frames:* With no runtime shader compilation for those pipelines, frame times tend to be more consistent from first launch (subject to GPU and driver behavior).
+* *APIs:* Impeller targets modern APIs such as Metal (Apple) and Vulkan (Android and increasingly desktop), rather than leaning on OpenGL the way much Skia usage historically did.
+* *Drawing:* Complex paths are often tessellated into triangles in ways tuned for modern mobile GPUs.
+
+=== Skia vs Impeller (feature comparison)
+
+|===
+| Feature | Skia | Impeller
+
+| Shader compilation
+| JIT (typical shader path)
+| AOT (engine build time)
+
+| Runtime performance
+| Can show initial jank on new effects
+| Smoother, more predictable frame pacing (once the pipeline is stable on that platform)
+
+| Developer effort
+| Shader warmup often recommended
+| No shader warmup for Impeller’s AOT path
+
+| Primary APIs (typical)
+| OpenGL (much historical usage)
+| Metal, Vulkan
+
+| Maturity
+| Very mature
+| Newer; evolving especially on desktop
+
+| Platform status (high level; verify per release)
+| Legacy / fallback where Impeller is default
+| Default on iOS; Android and desktop stories evolve by release
+|===
+
+=== Direction of travel
+
+Flutter is moving toward Impeller as the primary path where it is ready.
+Skia-related work in Flutter has shifted toward maintenance; new performance work tends to land in Impeller.
+Exact defaults differ by platform and Flutter version—always check the release you ship.
+
+== Why people say “Skia + Impeller”
+
+The phrase does *not* mean both engines paint the same pixel at once.
+It describes Flutter’s *transitional* architecture: two backends can exist side by side while the engine migrates.
+
+=== Pluggable backends
+
+Flutter is layered.
+Replacing Skia required work in areas such as *Flow* and the *display list* pipeline.
+The engine supports pluggable backends so either Skia or Impeller can do the heavy GPU work, depending on platform, flags, and version.
+
+=== Shared display list (common front end)
+
+Much of the “front end” of rendering is shared: Flutter records drawing into a *DisplayList* (internal format of drawing commands).
+
+* A call like `Canvas.drawRect()` becomes a DisplayList command.
+* That command is dispatched to *either* Skia or Impeller.
+* Because the recording step is shared, the two engines are discussed as two implementations of the same recorded work.
+
+=== Platform defaults (illustrative)
+
+|===
+| Context | Skia’s role | Impeller’s role
+
+| Older apps
+| Primary renderer
+| Not present
+
+| Recent iOS
+| Legacy fallback (may be removed in some configurations)
+| Primary renderer
+
+| Typical Android (varies by release)
+| Stable default for many users
+| Available / opt-in / moving toward default (check release notes)
+
+| Desktop / web (typical)
+| Skia, CanvasKit, or Skwasm still common
+| Desktop Impeller under active development; prototypes exist
+|===
+
+A single app build can use Impeller on one class of devices and Skia on another, so profiling should cover both when both are in scope.
+
+=== Shared utilities
+
+Even with Impeller drawing, Flutter may still use Skia-related or shared components for tasks such as text layout (for example SkParagraph) and image decoding—those concerns are not identical to “which GPU renderer draws the frame.”
+
+== D language and a standalone Impeller wrapper
+
+Embedding Impeller from D in 2026 is *possible* but *not turnkey*, especially on desktop.
+
+=== Why it is feasible at all
+
+* Impeller exposes a *C API* intended for embedders, so D can use `extern(C)` bindings to `impeller.dll` / `libimpeller.so` without wrapping all of C++.
+* You still build or obtain the Impeller shared library from the Flutter engine build (GN/Ninja and friends)—expect toolchain work.
+
+=== Offline shaders (`impellerc`)
+
+Impeller’s model expects an *offline* shader compilation step:
+
+. Author shaders (commonly GLSL 4.60).
+. Run `impellerc` (from the engine toolchain) during your build.
+. Produce blobs (SPIR-V, MSL, etc.) or generated headers your app loads to build a shader library.
+
+Application code should refer to shaders by stable IDs; the build system maps IDs to blob data.
+
+=== Other dependencies
+
+Engine code often depends on *FML* (Flutter Management Library) and related foundations.
+A “minimal” embedder may still need to link supporting libraries beyond a single `.so`.
+
+=== Rust as a reference
+
+The `impellers` Rust crate is often cited as a non-Flutter consumer of the Impeller C API—useful when guessing how C headers map to a systems language.
+
+== Desktop stability expectations (Impeller + D)
+
+Mobile Impeller is relatively mature; *desktop* is where variance is highest.
+Treat the table below as *orientation*, not a guarantee.
+
+|===
+| Platform | Typical backend | Stability (rough) | Primary risks
+
+| macOS
+| Metal
+| Higher than other desktops
+| API/flag changes as features leave preview; follow Flutter releases
+
+| Windows
+| Vulkan / Direct3D (direction of travel)
+| Variable
+| Driver quirks, black screens, crashes on some GPUs; C API may still move
+
+| Linux
+| Vulkan (direction of travel)
+| Lower / experimental
+| X11 vs Wayland, compositor integration, sparse upstream docs—you may debug first-party issues
+|===
+
+== Windows and Linux: is standalone Impeller realistic?
+
+*Yes, but manual.* You are effectively building the *shell* that owns the native window, surface, and input, then feeding handles into Impeller’s Vulkan (or other) context.
+
+* *Windows:* Create a Vulkan instance and surface (for example via GLFW or SDL in D), then connect to Impeller’s Vulkan context.
+  Historically Flutter on Windows used ANGLE (OpenGL to D3D); Impeller tends to talk to the GPU more directly—know your backend.
+* *Linux:* Similar Vulkan-centered path, but you must handle X11 vs Wayland and how your toolkit (GTK, Qt, etc.) exposes a surface—sometimes via subsurfaces or equivalent so Impeller owns a rectangle inside a larger window.
+
+== Skia vs Impeller for a greenfield D app (e.g. DevCentr)
+
+Projects such as xref:graphrag-indexer:ROOT:index.adoc[GraphRAG Indexer] and future DevCentr-style tools care about smooth UI and long-term maintainability.
+Rough tradeoff:
+
+|===
+| | Skia (e.g. via existing D/Skia efforts) | Impeller (manual embedder)
+
+| Ease of setup
+| Higher—more prior art and bindings patterns
+| Very low—engine build and C API plumbing
+
+| Performance profile
+| Strong, but Skia’s JIT shader path can still jank on first use of effects
+| Very strong frame pacing *if* you complete the AOT pipeline and stable backend
+
+| Binary size
+| Skia is large
+| Often leaner at the renderer layer; total size still depends on what you link
+
+| Documentation
+| Broader community writeups
+| Thin; read engine and `impellerc` sources
+|===
+
+If you need to ship soon, Skia is usually the pragmatic choice.
+If you can invest in build automation and want Impeller’s AOT model, Impeller can be a long-term bet—plan for ongoing engine upgrades.
+
+== Decoupling layers (recommended architecture)
+
+Avoid one giant “Impeller wrapper” package.
+Split responsibilities so only the volatile layers churn when the engine changes.
+
+=== 1. DisplayList-style command buffer (stable contract)
+
+Mirror Flutter’s idea: record *what* to draw (rects, paths, clips) in your own D types, independent of Impeller.
+
+* UI code emits commands into this buffer.
+* A thin *dispatcher* translates the buffer to Impeller (or, later, Skia) each frame or when replaying.
+* When Impeller’s C API shifts, you rewrite the dispatcher—not every screen.
+
+=== 2. HAL (hardware abstraction / C interop)
+
+A small library that owns the ugly details:
+
+* Loading `impeller.dll` / `libimpeller.so`
+* Creating Vulkan/Metal/GLES contexts as appropriate
+* Feeding *offline shader blobs* into a shader library
+* Platform differences (Vulkan on Windows/Linux vs Metal on macOS)
+
+If you must fall back to Skia for one customer, swap the HAL implementation behind the same command contract.
+
+=== 3. Build pipeline (`impellerc` integration)
+
+Treat the build as its own layer:
+
+* Keep shaders in a dedicated directory.
+* Run `impellerc` from scripts (for example npm/`pnpm` tasks alongside `dub`) to generate blobs or generated D modules mapping string IDs to `ubyte[]` data.
+* Application code only sees IDs and loaded data—never hand-edits SPIR-V.
+
+|===
+| Layer | Responsibility | Expected stability
+
+| D UI (e.g. DevCentr)
+| Product logic, lists, git visualization
+| Yours to own
+
+| DisplayList (your command format)
+| Recording and replay contract
+| Very stable if you design it deliberately
+
+| Thin Impeller bindings
+| `extern(C)` mappings to the C API
+| Volatile with Flutter releases
+
+| HAL / context
+| Surfaces, devices, shader loading
+| Platform-specific and sensitive to drivers
+
+| impellerc / build scripts
+| Shader compilation and codegen
+| Changes when toolchain or GLSL conventions change
+|===
+
+== Further reading
+
+* https://www.youtube.com/watch?v=vd5NqS01rlA[Introducing Impeller – Flutter’s new rendering engine] (video overview of architecture)

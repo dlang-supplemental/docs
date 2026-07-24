@@ -3,11 +3,16 @@
 
 This site aggregates documentation for projects in the dlang-supplemental organization.
 
+== Guides
+
+* xref:flutter-skia-impeller-rendering.adoc[Flutter rendering: Skia and Impeller] — comparison, embedding Impeller from D, and layered architecture notes for desktop tooling (e.g. DevCentr-style apps).
+
 == Components
 
 * xref:asciidoctor-d:ROOT:index.adoc[Asciidoctor (D)] — Native D implementation of Asciidoctor
 * xref:densor:ROOT:index.adoc[Densor]
 * xref:fluidsync-daemon:ROOT:index.adoc[FluidSync GUI Daemon]
 * xref:d-vector-search:ROOT:index.adoc[D-Vector Search]
+* xref:opentui-d:ROOT:index.adoc[opentui-d] — D bindings for OpenTUI's native Zig terminal UI core
 * xref:vibe-search-core:ROOT:index.adoc[Vibe Search Core]
 * xref:vibe-search-desktop:ROOT:index.adoc[Vibe Search Desktop]

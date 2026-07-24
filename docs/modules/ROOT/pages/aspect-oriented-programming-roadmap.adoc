@@ -1,0 +1,26 @@
+= Aspect-Oriented Programming (AOP) Roadmap
+
+This is a roadmap item to implement Aspect-Oriented Programming (AOP) in D, either as an addon or as a dialect/modification of the language.
+
+== Overview
+
+AOP allows moving "chores" (cross-cutting concerns) out of the main algorithm and into separate "aspects". This is particularly useful in D where template metaprogramming can already achieve some level of decoration, but a first-class AOP system could provide much cleaner syntax and more powerful interception.
+
+== Implementation Strategy
+
+I expect this implementation to be disruptive, as it changes how code execution is modeled.
+
+Options under consideration:
+* **Dlang Addon**: A library leveraging CTFE, mixins, and UDAs to wrap functions automatically.
+* **Dlang Modification**: A custom compiler fork (LDC or GDC based) that introduces aspect syntax directly.
+* **Dlang Dialect**: A standalone modification of D that treats aspects as core language features.
+
+== Goals
+
+* **Cleaner Algorithms**: Keep business logic free from logging, authorization, and audit chores.
+* **Non-Invasive**: Apply aspects without modifying the caller or the original function body.
+* **Performance**: Ensure that aspect injection happens at compile-time to maintain D's high-performance characteristics.
+
+== Reference
+
+See also: link:https://simple.wikipedia.org/wiki/Aspect-oriented_programming[Aspect-Oriented Programming on Simple Wikipedia].

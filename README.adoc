@@ -17,6 +17,8 @@ Docs are pulled from:
 * vector-store-dlang
 * vibe-search-core
 * vibe-search-desktop
+* graphrag-indexer
+* opentui-d
 
 This repo's own content is under `docs/` (portal and nav).
 

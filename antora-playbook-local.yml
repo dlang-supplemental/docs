@@ -32,6 +32,10 @@ content:
       branches: HEAD
       start_path: docs
       worktrees: true
+    - url: ../opentui-d
+      branches: HEAD
+      start_path: docs
+      worktrees: true
     - url: .
       branches: HEAD
       start_path: docs

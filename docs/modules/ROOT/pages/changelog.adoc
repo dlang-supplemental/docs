@@ -1,6 +1,16 @@
 = Changelog
+:navtitle: Changelog
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
+
+== 2026-07-24
+
+* Registered xref:opentui-d:ROOT:index.adoc[opentui-d] in the Antora playbooks and portal component list.
+
+== 2026-03-22
+
+* Added xref:flutter-skia-impeller-rendering.adoc[Flutter rendering: Skia and Impeller], a guide covering Skia vs Impeller, transitional “Skia + Impeller” architecture, embedding Impeller from D, and layered decoupling for desktop tooling.
+* Linked the guide from the portal xref:index.adoc[page] and from the ROOT module navigation.
 
 == 2026-03-14 – Added GraphRAG indexer to documentation playbooks
 
