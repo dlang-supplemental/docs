@@ -1,6 +1,6 @@
 = D Lang Supplemental Docs
 
-Documentation hub for the dlang-supplemental organization, built with Antora and antora-dark-theme.
+Documentation hub for the dlang-supplemental organization, built with Antora and https://github.com/antora-supplemental/valentus-theme[valentus-theme].
 
 == Build
 

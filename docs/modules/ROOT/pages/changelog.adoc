@@ -5,6 +5,9 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-07-24
 
+* Switched the Antora UI bundle from the retired `antora-dark-theme` URL (now dark-mode-only Default UI) to link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] `v1` (`ui-bundle.zip`).
++
+See xref:changelog-details/2026-07-24 - switch-to-valentus-theme.adoc[Detailed changelog].
 * Registered xref:opentui-d:ROOT:index.adoc[opentui-d] in the Antora playbooks and portal component list.
 
 == 2026-03-22

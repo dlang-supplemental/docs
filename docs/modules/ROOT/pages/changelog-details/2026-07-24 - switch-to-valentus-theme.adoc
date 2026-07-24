@@ -1,0 +1,5 @@
+= 2026-07-24 – Switch to Valentus theme
+
+* Replaced `ui.bundle` in `antora-playbook.yml`: former `antora-dark-theme` release URL now points at `antora-dark-mode` (toggle/CSS only on Antora Default UI).
+* Pinned https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip[`valentus-theme` `v1` `ui-bundle.zip`] with `snapshot: true` so builds pick up rolling `v1` line updates.
+* Updated the hub README to name Valentus as the site chrome.
