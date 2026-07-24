@@ -4,6 +4,10 @@
 site:
   title: D Lang Supplemental
   start_page: asciidoctor-d:ROOT:index.adoc
+  keys:
+    header_logo: logo.svg
+    site_home_url: https://github.com/dlang-supplemental
+    site_home_label: dlang-supplemental on GitHub
 content:
   sources:
     - url: https://github.com/dlang-supplemental/asciidoctor-dlang.git
@@ -38,6 +42,7 @@ ui:
   bundle:
     url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
     snapshot: true
+  supplemental_files: ./supplemental-ui
 output:
   dir: ./build/site
 

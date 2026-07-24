@@ -2,6 +2,8 @@
 
 Documentation hub for the dlang-supplemental organization, built with Antora and https://github.com/antora-supplemental/valentus-theme[valentus-theme].
 
+The site header logo is the org **D+** mark in `supplemental-ui/img/logo.svg` (overrides the Valentus default via `ui.supplemental_files`).
+
 == Build
 
 * Production (fetch from GitHub): `pnpm build` (uses `antora-playbook.yml`)

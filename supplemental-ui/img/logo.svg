@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="dlang-supplemental">
+  <!-- Org mark: D+ on D-lang brand red (#B03931). Square for Antora header and GitHub avatar. -->
+  <rect width="64" height="64" rx="14" fill="#B03931"/>
+  <path fill="#FFFFFF" fill-rule="evenodd"
+    d="M8 12h13c9.4 0 17 8.1 17 20s-7.6 20-17 20H8V12zm7 7v26h6c5.5 0 10-5.4 10-13s-4.5-13-10-13h-6z"/>
+  <path fill="#FFFFFF"
+    d="M47 28h5v-5h5v5h5v5h-5v5h-5v-5h-5z"/>
+</svg>

@@ -5,6 +5,7 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-07-24
 
+* Added the org **D+** mark (`supplemental-ui/img/logo.svg`, D-lang red `#B03931`) and wired it into the Valentus header via `ui.supplemental_files` and `site.keys.header_logo`.
 * Switched the Antora UI bundle from the retired `antora-dark-theme` URL (now dark-mode-only Default UI) to link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] `v1` (`ui-bundle.zip`).
 +
 See xref:changelog-details/2026-07-24 - switch-to-valentus-theme.adoc[Detailed changelog].
