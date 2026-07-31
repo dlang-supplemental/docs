@@ -1,0 +1,187 @@
+= Publishing D packages from the CLI
+:description: Why DUB lacked a publish command, how dub-publish fills the gap, and the upstream dub publish proposal for code.dlang.org.
+:navtitle: CLI package publishing
+
+D’s package registry at https://code.dlang.org[code.dlang.org] has always been easy to *consume* from the command line and awkward to *publish* to.
+`dub fetch`, `dub add`, and `dub upgrade` talk to the registry every day.
+Until recently, *registering* a repository still meant opening a browser, logging in, and pasting a Git URL into *My packages*.
+
+That gap is closed in two layers:
+
+* A standalone tool, https://github.com/dlang-supplemental/dub-publish[`dub-publish`], you can use today.
+* An upstream proposal, https://github.com/dlang/dub/pull/3139[`dub publish` in dlang/dub#3139], so the same flow can become a built-in DUB command.
+
+This article explains the problem, what we built, how credentials and versions work, and how to try it.
+
+== The missing command
+
+Official DUB’s command set is strong for builds and dependency resolution.
+It is silent on registry *ownership* actions.
+
+Registration on code.dlang.org is not an upload of a tarball.
+You point the registry at a public Git host (GitHub, GitLab, Bitbucket, Codeberg/Gitea), and the registry watches tags.
+The website implements that as an authenticated form:
+
+* `POST /login` (userman session cookie)
+* `POST /register_package` with a repository `url` (and optional `ignore_fork`)
+
+Owner settings—logo, documentation URL, categories, webhook secrets, shared users, remove—are likewise browser-only endpoints under `/my_packages/...`.
+
+None of that was exposed as `dub publish`.
+READMEs across the ecosystem sometimes assumed the command existed anyway.
+It did not.
+
+== What we shipped: dub-publish
+
+https://github.com/dlang-supplemental/dub-publish[`dub-publish`] is a small BSL-licensed CLI that automates those website flows with Phobos `std.net.curl`.
+
+Install from source:
+
+[source,console]
+----
+git clone https://github.com/dlang-supplemental/dub-publish.git
+cd dub-publish
+dub build
+----
+
+Put the binary on your `PATH`, or run via `dub run` from a clone.
+
+=== Core actions
+
+|===
+| Action | Purpose
+
+| `register` / `publish`
+| Log in and submit the repository URL (default: `git remote origin`)
+
+| `status`
+| Check whether a package exists (including zero versions yet)
+
+| `update`
+| Queue a metadata refresh (login or webhook `--secret`)
+
+| `login` / `logout`
+| Verify credentials; persist or clear the local store
+|===
+
+=== Owner settings (0.2+)
+
+|===
+| Action | Purpose
+
+| `logo` / `logo-delete`
+| Upload or reset the package logo (png/jpeg/gif/bmp, max 1 MiB)
+
+| `docs-url`
+| Set the documentation URL
+
+| `categories`
+| Set up to four category ids
+
+| `hooks` / `hooks-disable`
+| Regenerate or revoke the webhook secret; print clean URLs
+
+| `repo`
+| Retarget repository kind/owner/project
+
+| `perms-add` / `leave`
+| Share ownership or leave a shared package
+
+| `remove`
+| Owner delete (`--yes` required)
+|===
+
+Registration is *idempotent*: if the repo is already registered, the tool treats that as success and refreshes metadata instead of failing.
+It also refuses a silent no-op when the response is still the “Add new package” form, and it polls `/api/packages/:name/info` so a brand-new package with no tags yet still counts as present.
+
+=== Credentials without pasting secrets into argv
+
+Passwords cannot be one-way hashed if the CLI must replay them to the registry later.
+Industry practice for that case is OS-backed *reversible* protection—not “hash and pray.”
+
+`dub-publish` stores `credentials.v1` under:
+
+* Windows: `%LOCALAPPDATA%\dlang-supplemental\dub-publish\`
+* macOS / Linux: `~/.dlang-supplemental/dub-publish/`
+
+On Windows the secret is DPAPI-bound to the current user.
+Elsewhere it is Base64-encoded under file mode `0600`.
+
+Agent- and script-friendly login prefers a one-shot drop file:
+
+[source,console]
+----
+# PowerShell
+$dir = Join-Path $env:LOCALAPPDATA "dlang-supplemental\dub-publish"
+New-Item -ItemType Directory -Force -Path $dir | Out-Null
+Set-Content -Path (Join-Path $dir "password.incoming") -Value "your-registry-password"
+dub-publish login --user yourname --save-credentials
+----
+
+[source,console]
+----
+# macOS / Linux
+mkdir -p ~/.dlang-supplemental/dub-publish
+printf '%s\n' 'your-registry-password' > ~/.dlang-supplemental/dub-publish/password.incoming
+chmod 600 ~/.dlang-supplemental/dub-publish/password.incoming
+dub-publish login --user yourname --save-credentials
+----
+
+Successful `--save-credentials` verifies login, writes the protected store, then *deletes* `password.incoming`.
+Alternatives: `--password-file`, `-p` / `DUB_REGISTRY_PASSWORD` (visible in process lists / shell history), or opt-in `--prompt-password`.
+
+CI should keep using GitHub Actions secrets (`DUB_REGISTRY_USER`, `DUB_REGISTRY_PASSWORD`) rather than the local store.
+A reusable workflow lives at `.github/workflows/register-package.yml` in the repo.
+
+=== Versions still come from Git tags
+
+`register` only links the repository.
+New versions appear when you push SemVer tags (`v1.2.3`).
+The registry polls about twice an hour; `update` (or a webhook) can queue an immediate refresh.
+
+`hooks` regenerates the package secret and prints *clean* generic / GitHub / GitLab URLs so you are not bitten by https://github.com/dlang/dub-registry/issues/614[dub-registry#614] malformed `?secret=` links.
+
+== Upstream: dub publish
+
+The same behavior is proposed for official DUB as https://github.com/dlang/dub/pull/3139[dlang/dub#3139].
+
+Differences from the standalone tool (by design):
+
+* Credentials and cookie jar live under DUB’s user settings (`~/.dub` / `%APPDATA%\dub`), not the supplemental config dir.
+* Dry-run uses DUB’s existing `--annotate`.
+* The User-Agent identifies as `dub/<version>`.
+* Curl support follows DUB’s `DubUseCurl` build flag.
+
+If the PR lands, `dub publish` becomes the everyday command; `dub-publish` remains useful as a focused registry management tool and as a proving ground for features before they move upstream.
+
+== Why this matters for dlang-supplemental
+
+This organization ships many packages that start life as path or git dependencies while APIs stabilize.
+Without a CLI publish path, “register on code.dlang.org” was a manual checklist item that CI could not own.
+With `dub-publish` (and, hopefully, `dub publish`), release automation can:
+
+. Ensure the repository is registered (idempotent).
+. Push a SemVer tag.
+. Trigger `update` or a webhook so the registry notices promptly.
+. Optionally set logo, docs URL, categories, and hooks in the same pipeline.
+
+That is the difference between “available to friends with a git URL” and “available to anyone who writes `"dependencies": { "mypkg": "~>1.0" }`.”
+
+== Try it
+
+[source,console]
+----
+dub-publish status -n vibe-d
+dub-publish register --dry-run
+# after credentials are saved:
+dub-publish register --ignore-fork
+----
+
+Feedback, bugs, and design notes are welcome on the https://github.com/dlang-supplemental/dub-publish/issues[`dub-publish` issue tracker] and on the upstream PR.
+
+== See also
+
+* https://dub.pm/publish[Official publishing docs] (website-oriented)
+* https://github.com/dlang-supplemental/dub-publish[`dub-publish` repository]
+* https://github.com/dlang/dub/pull/3139[Upstream PR: `dub publish`]
+* xref:dub-local-remote-paths.adoc[DUB local vs remote paths] — path overrides while packages are unpublished

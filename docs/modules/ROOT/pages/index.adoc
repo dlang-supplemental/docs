@@ -5,7 +5,9 @@ This site aggregates documentation for projects in the dlang-supplemental organi
 
 == Guides
 
+* xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI] — `dub-publish`, registry registration without the browser, and the upstream `dub publish` proposal.
 * xref:flutter-skia-impeller-rendering.adoc[Flutter rendering: Skia and Impeller] — comparison, embedding Impeller from D, and layered architecture notes for desktop tooling (e.g. DevCentr-style apps).
+* xref:dub-local-remote-paths.adoc[DUB local vs remote paths] — path overrides while packages are unpublished or under active fork work.
 
 == Components
 

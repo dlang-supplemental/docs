@@ -1,0 +1,9 @@
+= Publishing packages from the CLI (portal guide)
+:date: 2026-07-31
+
+Added xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI], covering:
+
+* Why official `dub` had no publish/submit command
+* Standalone https://github.com/dlang-supplemental/dub-publish[`dub-publish`] (register, owner settings, protected credentials)
+* Upstream https://github.com/dlang/dub/pull/3139[`dub publish` PR]
+* How SemVer tags and webhooks relate to registry versions

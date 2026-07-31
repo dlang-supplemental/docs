@@ -1,5 +1,6 @@
 * xref:index.adoc[Portal]
 * xref:aspect-oriented-programming-roadmap.adoc[AOP Roadmap]
 * xref:dub-local-remote-paths.adoc[DUB Local vs Remote Paths]
+* xref:publishing-packages-from-the-cli.adoc[CLI package publishing]
 * xref:flutter-skia-impeller-rendering.adoc[Flutter: Skia & Impeller]
 * xref:changelog.adoc[Changelog]

@@ -3,6 +3,12 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-07-31
+
+* Added xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI], a news-style guide on `dub-publish`, registry owner automation, and the upstream https://github.com/dlang/dub/pull/3139[`dub publish`] proposal.
++
+See xref:changelog-details/2026-07-31 - publishing-packages-from-the-cli.adoc[Detailed changelog].
+
 == 2026-07-24
 
 * Added the org **D+** mark (`supplemental-ui/img/logo.svg`, D-lang red `#B03931`) and wired it into the Valentus header via `ui.supplemental_files` and `site.keys.header_logo`.
