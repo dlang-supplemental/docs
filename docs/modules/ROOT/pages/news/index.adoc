@@ -1,0 +1,10 @@
+= News
+:description: Short announcements from the D Lang Supplemental organization.
+:navtitle: News
+
+Project announcements, upstream submissions, and other short notices.
+For long-form background, see the xref:blog/index.adoc[Blog].
+
+== Latest
+
+* xref:news/tgc-upstream-pr.adoc[Opt-in thread-local GC (`tgc`) proposed upstream] — PR to `dlang/dmd` plus design write-up.

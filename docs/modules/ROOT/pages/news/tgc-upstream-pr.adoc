@@ -1,0 +1,29 @@
+= Opt-in thread-local GC (`tgc`) proposed upstream
+:description: dlang-supplemental submitted an opt-in per-thread GC prototype to dlang/dmd and published a design article.
+:navtitle: tgc upstream PR
+:date: 2026-08-02
+
+We submitted an opt-in *thread-local garbage collector* for D—registered as **`tgc`**—to upstream DMD/druntime.
+
+*Upstream PR:* https://github.com/dlang/dmd/pull/23514[`dlang/dmd#23514`].
+
+*Design write-up:* xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D].
+
+== Why it matters
+
+D isolates thread-local data by default, but the standard GC still uses one process-wide heap and stop-the-world collection.
+That pauses `@nogc` realtime threads whenever any other thread collects.
+`tgc` gives each thread a private heap and collects without a global pause, selected only when you ask for it:
+
+[source,console]
+----
+./app --DRT-gcopt=gc:tgc
+----
+
+The default conservative GC is unchanged.
+Informally this is sometimes called a “realtime GC”; the runtime name is `tgc`.
+
+== What to read next
+
+* Full concepts, trade-offs, remote free lists, and Phase 2 shared regions: xref:blog/thread-local-gc-tgc.adoc[blog article].
+* Prototype branch: https://github.com/dlang-supplemental/dmd/tree/feature/tgc[`dlang-supplemental/dmd` `feature/tgc`].

@@ -1,0 +1,8 @@
+= Blog, News, and tgc articles
+:date: 2026-08-02
+
+Added portal sections and cross-linked articles for the opt-in thread-local GC work:
+
+* xref:blog/index.adoc[Blog] index and xref:blog/thread-local-gc-tgc.adoc[tgc design article]
+* xref:news/index.adoc[News] index and xref:news/tgc-upstream-pr.adoc[upstream PR announcement]
+* Navigation and portal home page links for Blog and News (kept distinct from the portal Changelog)
