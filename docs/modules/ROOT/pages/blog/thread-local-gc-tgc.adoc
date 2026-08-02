@@ -1,0 +1,222 @@
+= Thread-local garbage collection (`tgc`) for D
+:description: An opt-in per-thread GC for D that avoids global stop-the-world pauses, so @nogc realtime work can coexist with GC threads.
+:navtitle: Thread-local GC (tgc)
+:date: 2026-08-02
+
+D already isolates *data* by default: ordinary variables are thread-local, and `std.concurrency` pushes actor-style message passing with `spawn`, `send`, and `receive`.
+What the runtime still shares is the *heap*.
+Today’s default garbage collector is one process-wide mark-sweep engine.
+When any thread triggers a collection, the collector stop-the-world pauses *every* registered thread—including threads that never allocate and that you carefully marked `@nogc`.
+
+This article explains that gap, why per-thread heaps fix the latency story for realtime-minded apps, the trade-offs, and an opt-in collector named **`tgc`** (thread garbage collection) that we have prototyped and proposed upstream.
+Informally you may hear “realtime GC”; that is a side-name only—the registered runtime name is `tgc`.
+
+Related announcement: xref:news/tgc-upstream-pr.adoc[News: `tgc` submitted upstream].
+
+== The problem: TLS isolation, global heap
+
+D’s language model is closer to actors than shared-memory C threads:
+
+[source]
+----
+Thread A (TLS data)          Message queue           Thread B (TLS data)
++------------------+       +---------------+       +------------------+
+| x = 10;          | ----> | copy / immutable| --> | y = receive(); |
+| No shared mutation|      |   or move       |     |                  |
++------------------+       +---------------+       +------------------+
+----
+
+Unless you type something `shared` or `__gshared`, Thread B cannot see Thread A’s variables.
+`std.concurrency` deep-copies or requires `immutable` across `Tid` boundaries for good reason.
+
+The GC does not yet honor that isolation.
+Allocations from every thread land in one shared heap.
+A collection must freeze stacks and registers across the process so the tracer does not race with mutators.
+A pure `@nogc` audio callback thread, a game render loop, or a GUI shell that never calls `new` still stops when another thread’s GC runs.
+
+[source]
+----
+Thread A (GC worker)  ---[ alloc trigger ]---> STOPS WORLD ---> sweep ---> RESUME
+Thread B (@nogc)      ------------------------> PAUSED --------------------> RESUME
+----
+
+That is the core friction for “GC desktop app with a few realtime threads,” and for any design that wants GC workers beside deterministic `@nogc` workers in one process.
+
+== Mixing `@nogc` and GC today
+
+GC vs `@nogc` is *not* a per-module switch.
+It is enforced per function at compile time, and controlled at runtime with `core.memory.GC`.
+
+* A `@nogc` function may not allocate via the GC (`new`, `~=` on GC slices, throwing GC-backed exceptions, and so on).
+* You can mix `@nogc` and GC code in one program: put GC work in init, config, or background workers; keep the hot path `@nogc`.
+* You can suppress automatic collections with `GC.disable()` / `GC.enable()` and call `GC.collect()` in a safe window (for example a loading screen).
+
+Useful tools already exist:
+
+* `dmd -profile=gc` for allocation profiles.
+* `GC.profileStats()` for pause and collection counts.
+* `thread_detachThis()` to unregister a thread from GC scans entirely—after detach, that thread must never touch GC memory.
+
+Detaching is the only way today to guarantee a thread is never paused.
+It does not give you idiomatic D collections on that thread; it gives you a C-like island.
+
+Built-in slices, associative arrays, and many Phobos APIs allocate on the GC heap, so they are rejected inside `@nogc`.
+`-betterC` and the long Phobos evolution toward fewer hidden allocations help the pure-`@nogc` world.
+They do not remove stop-the-world pauses for the threads that still use the GC.
+
+== What other runtimes do
+
+Isolated heaps are a proven pattern:
+
+* *Erlang / BEAM:* each process has its own heap and GC; collecting one process does not pause others. Messages copy (or move large binaries).
+* *Pony:* capability types (`iso`, `val`, `ref`) plus a concurrent GC (ORCA) so actors communicate without a global STW.
+
+D already has the *language* half of the actor story (TLS + `std.concurrency`).
+The missing piece is a GC that collects *per thread* (or per region) instead of per process.
+
+Rust solves a different problem: no GC, affine ownership, and a standard library built without a collector.
+That is a valid design; it is not “automatic GC-to-`@nogc` synthesis.”
+Compilers can do escape analysis in limited cases (stack-allocate what never escapes), but Rice’s theorem blocks a general, correct, automatic rewrite of arbitrary GC programs into optimal allocation-free ones.
+Programmers still need structural constraints—ownership, message passing, or regions.
+
+== Enter `tgc`: opt-in thread garbage collection
+
+*`tgc`* is an opt-in GC backend for druntime, selected like other pluggable collectors:
+
+[source,console]
+----
+./app --DRT-gcopt=gc:tgc
+----
+
+It is *not* a replacement for the default conservative GC.
+It is for special cases: multi-threaded apps that care about p99/p999 latency, mixed GC and `@nogc` workers, and actor-style designs that already avoid sharing mutable GC pointers.
+
+=== Design goals (v1)
+
+. *Per-thread heap arenas.* Thread A allocates from Heap A; Thread B from Heap B.
+. *Local collection.* When Heap A collects, only Thread A’s stack, TLS, and blocks are scanned and swept. No `thread_suspendAll` for that cycle.
+. *Detach still wins.* `@nogc` threads that call `thread_detachThis()` are never registered for pauses.
+. *Cross-thread data.* Prefer copy or `immutable` messages. Ownership transfer of a block returns memory through a *remote free list* on the owning thread (see below). Unrestricted `shared` GC pointers across heaps are unsupported in v1.
+. *Phase 2 (planned):* partitioned shared regions—many-to-many heaps so only threads attached to a region pause when that region collects.
+
+=== How local collection avoids global pauses
+
+Because each mutator only mutates its own heap metadata during normal allocation, and because roots for a local collection are “this thread’s stack + TLS + known roots,” the collector does not need to freeze sibling threads.
+Sibling GC threads keep running.
+Detached `@nogc` threads keep running.
+That is the latency win.
+
+== Performance: why per-thread heaps are worth it
+
+Per-thread heaps are not free.
+
+*Memory footprint.*
+Arenas do not automatically donate free pages to siblings.
+Thread 1 may sit on a large free list while Thread 2 asks the OS for more.
+RSS and fragmentation can rise with thread count unless you add arena stealing later.
+
+*Cross-thread free.*
+If Thread 1 allocates a buffer, transfers the pointer to Thread 2 (zero-copy ownership move), and Thread 2 is done, Thread 2 must *not* put that address on Thread 2’s free list—that would corrupt Thread 1’s allocator metadata.
+Thread 2 pushes the pointer into Thread 1’s remote free queue; Thread 1 drains it at safe points (next alloc, collect, or mailbox loop).
+That reintroduces a small amount of synchronization, but only on the ownership-transfer path—not on every local `new`.
+
+*Message queues.*
+Copying or moving through queues costs cache traffic.
+For huge frames (for example raw 4K video), copying every time is often worse than an explicit shared region (Phase 2).
+
+What you gain:
+
+| Metric | Shared global heap | Per-thread (`tgc`) heap |
+|===
+| Allocation | Contends on global locks / atomics | Lock-free bump / local free lists on the hot path |
+| Cache locality | Threads interleave on shared pages; false sharing | Data stays on the core that uses it |
+| GC pause | Global STW | Micro-collections local to one thread; zero pause for others and for detached `@nogc` |
+|===
+
+*Choose the default GC* when RAM is tight or concurrency is low and global pauses are fine.
+*Choose `tgc`* when tail latency matters more than peak memory density.
+
+== Cross-thread deallocation, explained
+
+Suppose Thread 1 allocates at `0x7FFF0000` on Heap A and *moves* that pointer to Thread 2 (Thread 1 drops its reference).
+
+[source]
+----
+Thread 1 (Heap A)                    Thread 2
+Allocated 0x7FFF0000  --- move --->  Holding 0x7FFF0000
+                                     wants to free it
+              ^                            |
+              +---- remote free queue <----+
+                   "put this back on Heap A"
+----
+
+*Deep copy path:* Thread 2 allocates its own block; each thread frees its own. No remote free; more memcpy.
+*Move path:* Thread 2 queues `0x7FFF0000` for Thread 1. Thread 1 drains the queue cooperatively—it is not an OS interrupt per free.
+In an actor loop, free requests are just another mailbox message type.
+
+Why Thread 2 cannot free into Heap A directly: allocator metadata (free lists, bitmaps) would become shared memory, and every local alloc/free would need atomics—destroying the point of thread-local heaps.
+
+== Shared memory as an opt-in subset
+
+Classical shared-memory multithreading can sit *inside* an actor-first design as an escape hatch, not the default.
+
+Imagine a desktop media app:
+
+* *GUI / shell thread:* `@nogc` or isolated `tgc`, actor mailbox, locked frame rate. Must not hitch when workers collect.
+* *Decode / filter workers:* may share a ring of frame buffers (Phase 2 shared region, or today’s default GC confined to a worker pool process). GC pauses there must not cascade into the shell.
+
+[source]
+----
++---------------------------+     messages     +------------------------------+
+| GUI shell                 | <--------------> | Frame workers                |
+| isolated / @nogc          |                  | shared frame pool (opt-in)   |
+| predictable present loop  |                  | GC pauses stay in the pool   |
++---------------------------+                  +------------------------------+
+----
+
+A parser that occasionally pauses is fine if the shell never shares its heap with the parser.
+A 4K frame pipeline that copies 32 MB per frame between threads will melt the memory bus; those workers need a deliberate shared region.
+
+=== Many-to-many regions (Phase 2 sketch)
+
+Instead of one global shared heap, map workers to *regions*:
+
+* Worker 1: local heap + Region Alpha + Region Beta
+* Worker 2: local heap only
+* Worker 3: local heap + Region Alpha
+
+Collecting Region Beta pauses only threads that hold that region.
+Worker 2 never notices.
+
+*Transitive pause risk:* if Worker 1 shares Alpha with Worker 2, and Worker 2 shares Beta with Worker 3, a Beta collection that pauses Worker 2 can stall Worker 1 when Worker 1 needs Alpha.
+Preventing cascades needs a DAG of region ownership at the API or type level—future work, called out honestly in the upstream proposal.
+
+== How this relates to D’s ecosystem
+
+* *Default GC stays.* Existing programs and Phobos assumptions remain.
+* *Pluggable GC API.* druntime already supports `--DRT-gcopt=gc:…` and `registerGCFactory`. `tgc` is another factory name beside `conservative`, `precise`, and `manual`.
+* *Phobos / `@nogc`.* Separate track: less hidden allocation in the standard library helps `@nogc` code; it does not replace heap isolation for GC threads.
+* *Upstream discussion.* Historically, built-in thread-local heaps as the *default* were controversial (shared/`immutable` casting complexity). Framing `tgc` as *opt-in* matches that history and keeps the blast radius small.
+
+== Trying the prototype
+
+The implementation lives in the https://github.com/dlang-supplemental/dmd/tree/feature/tgc[`feature/tgc` branch] of the dlang-supplemental DMD fork (path `druntime/src/core/internal/gc/impl/tgc/`).
+
+. Build DMD and druntime from that branch.
+. Run with `--DRT-gcopt=gc:tgc`.
+. See `druntime/test/gc/tgc.d` for a multi-thread smoke test.
+
+v1 limits to keep in mind:
+
+* Do not share mutable GC pointers across threads without an ownership-transfer protocol.
+* Array append metadata helpers are minimal compared to the conservative GC.
+* Partitioned shared regions are not implemented yet.
+* Treat this as a prototype for design review and measurement, not a production realtime guarantee without your own benchmarks.
+
+== Summary
+
+D’s threads are already logically isolated; the GC heap is not.
+An opt-in thread-local collector—*`tgc`*—lets GC threads collect locally while `@nogc` and sibling threads keep running.
+That unlocks the hybrid architecture many desktop and media apps want: idiomatic GC where pauses are acceptable, deterministic threads where they are not, without forcing the whole program into `-betterC`.
+
+Read the relevant xref:news/tgc-upstream-pr.adoc[news announcement] for the upstream PR link and status.

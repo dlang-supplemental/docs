@@ -3,6 +3,16 @@
 
 This site aggregates documentation for projects in the dlang-supplemental organization.
 
+== Blog
+
+* xref:blog/index.adoc[Blog] — long-form articles.
+* Latest: xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D].
+
+== News
+
+* xref:news/index.adoc[News] — short announcements.
+* Latest: xref:news/tgc-upstream-pr.adoc[Opt-in thread-local GC (`tgc`) proposed upstream].
+
 == Guides
 
 * xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI] — `dub-publish`, registry registration without the browser, and the upstream `dub publish` proposal.

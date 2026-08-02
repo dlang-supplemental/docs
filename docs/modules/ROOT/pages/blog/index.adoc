@@ -1,0 +1,9 @@
+= Blog
+:description: Long-form articles from the D Lang Supplemental community.
+:navtitle: Blog
+
+Long-form writing about D language design, tooling, and runtime work from the https://github.com/dlang-supplemental[dlang-supplemental] organization.
+
+== Posts
+
+* xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D] — why stop-the-world hurts mixed GC/`@nogc` apps, and an opt-in per-thread collector proposal.

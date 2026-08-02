@@ -3,6 +3,13 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-08-02
+
+* Added dedicated xref:blog/index.adoc[Blog] and xref:news/index.adoc[News] sections (separate from this changelog).
+* Published xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D] and xref:news/tgc-upstream-pr.adoc[the upstream PR announcement].
++
+See xref:changelog-details/2026-08-02 - blog-news-tgc.adoc[Detailed changelog].
+
 == 2026-07-31
 
 * Added xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI], a news-style guide on `dub-publish`, registry owner automation, and the upstream https://github.com/dlang/dub/pull/3139[`dub publish`] proposal.
