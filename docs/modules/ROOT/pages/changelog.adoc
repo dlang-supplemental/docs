@@ -3,6 +3,12 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-08-03
+
+* Updated the `tgc` xref:blog/thread-local-gc-tgc.adoc[blog] and xref:news/tgc-upstream-pr.adoc[news] articles to acknowledge https://github.com/symmetryinvestments/symgc[SymGC] / DConf “We Need a New GC” work and how it relates to pause-isolation goals.
++
+See xref:changelog-details/2026-08-03 - tgc-symgc-related-work.adoc[Detailed changelog].
+
 == 2026-08-02
 
 * Added dedicated xref:blog/index.adoc[Blog] and xref:news/index.adoc[News] sections (separate from this changelog).

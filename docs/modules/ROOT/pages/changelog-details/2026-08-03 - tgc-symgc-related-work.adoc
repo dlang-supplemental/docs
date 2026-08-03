@@ -1,0 +1,5 @@
+= Acknowledge SymGC alongside tgc articles
+:date: 2026-08-03
+
+* Linked https://github.com/symmetryinvestments/symgc[SymGC], DConf ’24 “We Need a New GC” talks, and the forum thread from the xref:blog/thread-local-gc-tgc.adoc[tgc blog] and xref:news/tgc-upstream-pr.adoc[news] pages
+* Clarified complementary goals: SymGC allocation / lock contention vs `tgc` pause isolation, without dismissing either track
