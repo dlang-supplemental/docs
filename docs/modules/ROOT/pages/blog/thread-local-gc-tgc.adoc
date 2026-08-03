@@ -126,11 +126,20 @@ For huge frames (for example raw 4K video), copying every time is often worse th
 
 What you gain:
 
-| Metric | Shared global heap | Per-thread (`tgc`) heap |
 |===
-| Allocation | Contends on global locks / atomics | Lock-free bump / local free lists on the hot path |
-| Cache locality | Threads interleave on shared pages; false sharing | Data stays on the core that uses it |
-| GC pause | Global STW | Micro-collections local to one thread; zero pause for others and for detached `@nogc` |
+| Metric | Shared global heap | Per-thread (`tgc`) heap
+
+| Allocation
+| Contends on global locks / atomics
+| Lock-free bump / local free lists on the hot path
+
+| Cache locality
+| Threads interleave on shared pages; false sharing
+| Data stays on the core that uses it
+
+| GC pause
+| Global STW
+| Micro-collections local to one thread; zero pause for others and for detached `@nogc`
 |===
 
 *Choose the default GC* when RAM is tight or concurrency is low and global pauses are fine.
