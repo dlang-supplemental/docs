@@ -23,6 +23,15 @@ That pauses `@nogc` realtime threads whenever any other thread collects.
 The default conservative GC is unchanged.
 Informally this is sometimes called a “realtime GC”; the runtime name is `tgc`.
 
+== Related work worth knowing
+
+This is not the only active GC effort in the D community.
+https://github.com/symmetryinvestments/symgc[SymGC] (Steven Schveighoffer / Symmetry Investments; select with `--DRT-gcopt=gc:sdc`) focuses on removing the global allocation lock and other modern-GC improvements, with DConf ’24 talks such as https://www.youtube.com/watch?v=kwG95Ek23fk[We Need a New GC].
+It may become a future default; whether the classic shared heap remains selectable is still evolving.
+`tgc` is a narrower opt-in experiment aimed at *pause isolation* between threads (and `@nogc` workers), not a claim that SymGC is irrelevant—see the xref:blog/thread-local-gc-tgc.adoc#related-work-symgc[blog section] for the comparison.
+
+Forum discussion: https://forum.dlang.org/post/eyivmktfvmdlvhbyyphd@forum.dlang.org[].
+
 == What to read next
 
 * Full concepts, trade-offs, remote free lists, and Phase 2 shared regions: xref:blog/thread-local-gc-tgc.adoc[blog article].

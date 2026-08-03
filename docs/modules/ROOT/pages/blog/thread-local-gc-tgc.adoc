@@ -193,10 +193,37 @@ Preventing cascades needs a DAG of region ownership at the API or type level—f
 
 == How this relates to D’s ecosystem
 
-* *Default GC stays.* Existing programs and Phobos assumptions remain.
+* *Default GC stays (for `tgc`).* This proposal keeps the conservative collector as the default and adds an opt-in factory. Existing programs and Phobos assumptions remain unless you select `tgc`.
 * *Pluggable GC API.* druntime already supports `--DRT-gcopt=gc:…` and `registerGCFactory`. `tgc` is another factory name beside `conservative`, `precise`, and `manual`.
 * *Phobos / `@nogc`.* Separate track: less hidden allocation in the standard library helps `@nogc` code; it does not replace heap isolation for GC threads.
 * *Upstream discussion.* Historically, built-in thread-local heaps as the *default* were controversial (shared/`immutable` casting complexity). Framing `tgc` as *opt-in* matches that history and keeps the blast radius small.
+
+[#related-work-symgc]
+=== Related work: SymGC (and “we need a new GC”)
+
+This problem space is not empty.
+https://github.com/symmetryinvestments/symgc[SymGC] (also referred to as the SDC / `sdc` GC), maintained by Steven Schveighoffer and sponsored by Symmetry Investments, is a clean-slate collector that you can try today as a DUB dependency or via experimental builds.
+Enable it with `--DRT-gcopt=gc:sdc` (or `sdcq` to skip the startup banner) after importing `symgc.gcobj`.
+
+Public talks from DConf ’24 walk through the motivation and design:
+
+* https://www.youtube.com/watch?v=kwG95Ek23fk[We Need a New GC, Episode 1] (and the follow-up episode from the same conference track)
+* Forum / announce notes from the authors summarize goals such as removing the *global allocation lock*, more cache-friendly layout, returning memory to the OS more aggressively, and planned concurrent scanning
+
+Community discussion has suggested SymGC may eventually become the default runtime GC.
+That path is still evolving; whether the classic process-wide conservative collector remains available as a selectable backend is not settled in public materials we reviewed.
+
+How that relates to *`tgc`* (even if the projects disagree on the endgame):
+
+* SymGC’s headline wins are largely about *allocation throughput*, lock contention, and a modern heap layout while still aiming at a *shared* managed heap with better multi-threaded behavior.
+* `tgc`’s headline win is *pause isolation*: each thread’s collection should not stop sibling threads or detached `@nogc` workers, at the cost of higher baseline memory use and stricter rules for sharing GC pointers.
+
+Those are complementary axes.
+A future default GC can remove the global alloc lock *and* still leave room for an opt-in isolated-heap mode for realtime shells.
+Conversely, if SymGC (or a successor) already delivers “good enough” pause behavior for most apps, `tgc` remains a narrower experiment for actor-style isolation and hybrid GC/`@nogc` processes.
+Readers evaluating either should watch both tracks rather than treating this article as the only proposal in flight.
+
+Forum thread for this write-up: https://forum.dlang.org/post/eyivmktfvmdlvhbyyphd@forum.dlang.org[].
 
 == Trying the prototype
 
