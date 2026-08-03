@@ -110,6 +110,8 @@ That is the latency win.
 
 Per-thread heaps are not free.
 
+image::tgc-performance-compare.svg[Shared global heap with mutex and stop-the-world versus per-thread tgc heaps with local collection and a remote free queue,width=100%,alt="Diagram comparing a shared global GC heap that pauses all threads against per-thread tgc heaps that collect locally and use a remote free queue for ownership transfer"]
+
 *Memory footprint.*
 Arenas do not automatically donate free pages to siblings.
 Thread 1 may sit on a large free list while Thread 2 asks the OS for more.
@@ -189,6 +191,8 @@ A 4K frame pipeline that copies 32 MB per frame between threads will melt the me
 === Many-to-many regions (Phase 2 sketch)
 
 Instead of one global shared heap, map workers to *regions*:
+
+image::tgc-many-to-many-regions.svg[Many-to-many GC regions: Worker 1 and Worker 3 share Alpha and Beta while Worker 2 stays on a local heap only,width=100%,alt="Diagram of partitioned GC regions where Worker 1 and Worker 3 attach to Regions Alpha and Beta while Worker 2 uses only a local heap and is not paused by a Beta collection"]
 
 * Worker 1: local heap + Region Alpha + Region Beta
 * Worker 2: local heap only
