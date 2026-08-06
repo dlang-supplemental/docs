@@ -1,29 +1,44 @@
+ifndef::env-github[:icons: font]
+:toc: preamble
+:toclevels: 2
+:sectanchors:
+
+ifndef::env-github[]
+image:https://img.shields.io/github/contributors/dlang-supplemental/docs.svg?style=for-the-badge[Contributors,link=https://github.com/dlang-supplemental/docs/graphs/contributors]
+image:https://img.shields.io/github/forks/dlang-supplemental/docs.svg?style=for-the-badge[Forks,link=https://github.com/dlang-supplemental/docs/network/members]
+image:https://img.shields.io/github/stars/dlang-supplemental/docs.svg?style=for-the-badge[Stars,link=https://github.com/dlang-supplemental/docs/stargazers]
+image:https://img.shields.io/github/issues/dlang-supplemental/docs.svg?style=for-the-badge[Issues,link=https://github.com/dlang-supplemental/docs/issues]
+endif::[]
+
+ifdef::env-github[]
+image:https://img.shields.io/github/contributors/dlang-supplemental/docs.svg?style=for-the-badge[Contributors]
+image:https://img.shields.io/github/forks/dlang-supplemental/docs.svg?style=for-the-badge[Forks]
+image:https://img.shields.io/github/stars/dlang-supplemental/docs.svg?style=for-the-badge[Stars]
+image:https://img.shields.io/github/issues/dlang-supplemental/docs.svg?style=for-the-badge[Issues]
+endif::[]
+
 = D Lang Supplemental Docs
 
 Documentation hub for the dlang-supplemental organization, built with Antora and https://github.com/antora-supplemental/valentus-theme[valentus-theme].
 
+link:https://dlang-supplemental.github.io/docs/[Explore the docs] ·
+link:https://github.com/dlang-supplemental/docs/issues[Report Bug] ·
+link:https://github.com/dlang-supplemental/docs/issues[Request Feature]
+
+== About The Project
+
 The site header logo is the org **D+** mark in `supplemental-ui/img/logo.svg` (overrides the Valentus default via `ui.supplemental_files`).
 
-== Build
+Docs are pulled from component repositories (asciidoctor-dlang, densor, fluidsync-daemon, vector-store-dlang, vibe-search-core, vibe-search-desktop, graphrag-indexer, opentui-d, and others). This repo's own content is under `docs/` (portal and nav).
+
+== Getting Started
 
 * Production (fetch from GitHub): `pnpm build` (uses `antora-playbook.yml`)
 * Local (sibling repos): `pnpm run build:local` (uses `antora-playbook-local.yml`)
 
-== Content sources
+== Contact
 
-Docs are pulled from:
+DLang Supplemental — dlang@devcentr.org
 
-* asciidoctor-dlang
-* densor
-* fluidsync-daemon
-* vector-store-dlang
-* vibe-search-core
-* vibe-search-desktop
-* graphrag-indexer
-* opentui-d
-
-This repo's own content is under `docs/` (portal and nav).
-
-== Create remote repository
-
-To push this repo to GitHub: `gh repo create dlang-supplemental/docs --private --source=. --remote=origin --push` (or create the repo in the GitHub UI and add the remote).
+* Project: https://github.com/dlang-supplemental/docs
+* Site: https://dlang-supplemental.github.io
