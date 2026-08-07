@@ -3,19 +3,11 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
-ifndef::env-github[]
+[[readme-top]]
 image:https://img.shields.io/github/contributors/dlang-supplemental/docs.svg?style=for-the-badge[Contributors,link=https://github.com/dlang-supplemental/docs/graphs/contributors]
 image:https://img.shields.io/github/forks/dlang-supplemental/docs.svg?style=for-the-badge[Forks,link=https://github.com/dlang-supplemental/docs/network/members]
 image:https://img.shields.io/github/stars/dlang-supplemental/docs.svg?style=for-the-badge[Stars,link=https://github.com/dlang-supplemental/docs/stargazers]
 image:https://img.shields.io/github/issues/dlang-supplemental/docs.svg?style=for-the-badge[Issues,link=https://github.com/dlang-supplemental/docs/issues]
-endif::[]
-
-ifdef::env-github[]
-image:https://img.shields.io/github/contributors/dlang-supplemental/docs.svg?style=for-the-badge[Contributors]
-image:https://img.shields.io/github/forks/dlang-supplemental/docs.svg?style=for-the-badge[Forks]
-image:https://img.shields.io/github/stars/dlang-supplemental/docs.svg?style=for-the-badge[Stars]
-image:https://img.shields.io/github/issues/dlang-supplemental/docs.svg?style=for-the-badge[Issues]
-endif::[]
 
 = D Lang Supplemental Docs
 
@@ -31,10 +23,14 @@ The site header logo is the org **D+** mark in `supplemental-ui/img/logo.svg` (o
 
 Docs are pulled from component repositories (asciidoctor-dlang, densor, fluidsync-daemon, vector-store-dlang, vibe-search-core, vibe-search-desktop, graphrag-indexer, opentui-d, and others). This repo's own content is under `docs/` (portal and nav).
 
+link:#readme-top[back to top]
+
 == Getting Started
 
 * Production (fetch from GitHub): `pnpm build` (uses `antora-playbook.yml`)
 * Local (sibling repos): `pnpm run build:local` (uses `antora-playbook-local.yml`)
+
+link:#readme-top[back to top]
 
 == Contact
 
@@ -42,3 +38,5 @@ DLang Supplemental — dlang@devcentr.org
 
 * Project: https://github.com/dlang-supplemental/docs
 * Site: https://dlang-supplemental.github.io
+
+link:#readme-top[back to top]
