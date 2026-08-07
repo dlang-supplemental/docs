@@ -3,7 +3,27 @@ ifndef::env-github[:icons: font]
 :toclevels: 2
 :sectanchors:
 
-[[readme-top]]
+ifdef::env-github[]
+++++
+<a id="readme-top"></a>
+<div align="center">
+<a href="https://github.com/dlang-supplemental/docs/graphs/contributors"><img src="https://img.shields.io/github/contributors/dlang-supplemental/docs.svg?style=for-the-badge" alt="Contributors"></a>
+<a href="https://github.com/dlang-supplemental/docs/network/members"><img src="https://img.shields.io/github/forks/dlang-supplemental/docs.svg?style=for-the-badge" alt="Forks"></a>
+<a href="https://github.com/dlang-supplemental/docs/stargazers"><img src="https://img.shields.io/github/stars/dlang-supplemental/docs.svg?style=for-the-badge" alt="Stars"></a>
+<a href="https://github.com/dlang-supplemental/docs/issues"><img src="https://img.shields.io/github/issues/dlang-supplemental/docs.svg?style=for-the-badge" alt="Issues"></a>
+<br />
+<h3 align="center">D Lang Supplemental Docs</h3>
+<p align="center">
+Documentation hub for the dlang-supplemental organization, built with Antora and valentus-theme.<br />
+<a href="https://dlang-supplemental.github.io/docs/"><strong>Explore the docs</strong></a><br /><br /><a href="https://github.com/dlang-supplemental/docs/issues">Report Bug</a>
+&middot;
+<a href="https://github.com/dlang-supplemental/docs/issues">Request Feature</a>
+</p>
+</div>
+++++
+endif::[]
+
+ifndef::env-github[]
 image:https://img.shields.io/github/contributors/dlang-supplemental/docs.svg?style=for-the-badge[Contributors,link=https://github.com/dlang-supplemental/docs/graphs/contributors]
 image:https://img.shields.io/github/forks/dlang-supplemental/docs.svg?style=for-the-badge[Forks,link=https://github.com/dlang-supplemental/docs/network/members]
 image:https://img.shields.io/github/stars/dlang-supplemental/docs.svg?style=for-the-badge[Stars,link=https://github.com/dlang-supplemental/docs/stargazers]
@@ -16,6 +36,7 @@ Documentation hub for the dlang-supplemental organization, built with Antora and
 link:https://dlang-supplemental.github.io/docs/[Explore the docs] ·
 link:https://github.com/dlang-supplemental/docs/issues[Report Bug] ·
 link:https://github.com/dlang-supplemental/docs/issues[Request Feature]
+endif::[]
 
 == About The Project
 
@@ -23,14 +44,18 @@ The site header logo is the org **D+** mark in `supplemental-ui/img/logo.svg` (o
 
 Docs are pulled from component repositories (asciidoctor-dlang, densor, fluidsync-daemon, vector-store-dlang, vibe-search-core, vibe-search-desktop, graphrag-indexer, opentui-d, and others). This repo's own content is under `docs/` (portal and nav).
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 
 == Getting Started
 
 * Production (fetch from GitHub): `pnpm build` (uses `antora-playbook.yml`)
 * Local (sibling repos): `pnpm run build:local` (uses `antora-playbook-local.yml`)
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 
 == Contact
 
@@ -39,4 +64,6 @@ DLang Supplemental — dlang@devcentr.org
 * Project: https://github.com/dlang-supplemental/docs
 * Site: https://dlang-supplemental.github.io
 
-link:#readme-top[back to top]
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
