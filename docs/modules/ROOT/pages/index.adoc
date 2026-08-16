@@ -15,16 +15,8 @@ This site aggregates documentation for projects in the dlang-supplemental organi
 
 == Proposals
 
-Language and runtime design write-ups tagged `proposal`.
-
-++++
-<div class="proposals-embed" data-proposals data-tag="proposal">
-  <p data-proposals-status hidden></p>
-  <ul data-proposals-list>
-    <li><a href="blog/thread-local-gc-tgc.html">Thread-local garbage collection (<code>tgc</code>) for D</a> — an opt-in per-thread GC for D that avoids global stop-the-world pauses, so @nogc realtime work can coexist with GC threads.</li>
-  </ul>
-</div>
-++++
+* xref:proposals/index.adoc[Proposals] — language and runtime design write-ups tagged `proposal`.
+* Latest: xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D].
 
 == Guides
 

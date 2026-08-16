@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">TLS isolation versus a shared GC heap</title>
+  <desc id="desc">Thread A and Thread B each have private TLS data and talk through a copy/immutable mailbox, but both still allocate into one process-wide GC heap.</desc>
+  <defs>
+    <style>
+      .label { font-family: "Segoe UI", system-ui, sans-serif; font-size: 14px; fill: #1a1a1a; }
+      .title { font-family: "Segoe UI", system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #1a1a1a; }
+      .small { font-family: "Segoe UI", system-ui, sans-serif; font-size: 12px; fill: #444; }
+      .muted { fill: #5a5a5a; }
+      .box { fill: #ffffff; stroke: #2c2c2c; stroke-width: 1.5; }
+      .ok { fill: #f3faf4; stroke: #2f6b3a; stroke-width: 1.5; }
+      .warn { fill: #fff4f2; stroke: #B03931; stroke-width: 1.5; }
+      .mail { fill: #f7f7f7; stroke: #2c2c2c; stroke-width: 1.5; }
+    </style>
+    <marker id="arr-act" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c2c2c"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="28" class="title">Language model: actors. Runtime heap: still global.</text>
+
+  <rect x="30" y="52" width="250" height="130" rx="10" class="ok"/>
+  <text x="48" y="82" class="title">Thread A (TLS)</text>
+  <text x="48" y="108" class="small">x = 10</text>
+  <text x="48" y="128" class="small">No shared mutation</text>
+  <text x="48" y="154" class="small muted">B cannot see A's variables</text>
+
+  <rect x="335" y="72" width="250" height="90" rx="10" class="mail"/>
+  <text x="353" y="106" class="label">Mailbox</text>
+  <text x="353" y="128" class="small">copy / immutable / move</text>
+
+  <rect x="640" y="52" width="250" height="130" rx="10" class="ok"/>
+  <text x="658" y="82" class="title">Thread B (TLS)</text>
+  <text x="658" y="108" class="small">y = receive()</text>
+  <text x="658" y="128" class="small">Own data only</text>
+  <text x="658" y="154" class="small muted">unless shared / __gshared</text>
+
+  <line x1="280" y1="117" x2="335" y2="117" stroke="#2c2c2c" stroke-width="2" marker-end="url(#arr-act)"/>
+  <line x1="585" y1="117" x2="640" y2="117" stroke="#2c2c2c" stroke-width="2" marker-end="url(#arr-act)"/>
+
+  <rect x="30" y="220" width="860" height="110" rx="10" class="warn"/>
+  <text x="48" y="256" class="title">One process-wide GC heap</text>
+  <text x="48" y="280" class="small">new, ~=, AA inserts, and most Phobos collections land here from every thread</text>
+  <text x="48" y="302" class="small">A collect here still stop-the-world pauses A, B, and any registered @nogc worker</text>
+</svg>

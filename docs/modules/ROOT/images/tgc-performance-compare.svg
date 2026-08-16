@@ -27,10 +27,10 @@
   <text x="30" y="28" class="title">Classical shared heap</text>
   <rect x="30" y="48" width="400" height="150" rx="8" class="warn"/>
   <text x="48" y="78" class="title">Global heap pool</text>
-  <text x="48" y="100" class="small">Thread A alloc  ·  Thread B alloc</text>
+  <text x="48" y="100" class="small">Thread A alloc  --  Thread B alloc</text>
   <rect x="160" y="118" width="140" height="36" rx="6" class="box"/>
   <text x="178" y="141" class="label">MUTEX / ATOMIC</text>
-  <text x="48" y="178" class="small muted">High cache friction · slow under contention</text>
+  <text x="48" y="178" class="small muted">High cache friction -- slow under contention</text>
 
   <rect x="30" y="220" width="190" height="70" rx="8" class="box"/>
   <text x="48" y="248" class="label">Thread A</text>
@@ -40,7 +40,7 @@
   <text x="258" y="268" class="small muted">paused on collect</text>
 
   <rect x="30" y="310" width="400" height="72" rx="8" class="warn"/>
-  <text x="48" y="340" class="label">GC collect ’ stop-the-world</text>
+  <text x="48" y="340" class="label">GC collect -- stop-the-world</text>
   <text x="48" y="362" class="small">All registered threads freeze, even @nogc workers</text>
 
   <!-- Divider -->

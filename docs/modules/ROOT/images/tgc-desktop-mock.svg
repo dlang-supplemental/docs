@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+  <title id="title">Mock desktop studio: GUI thread isolated from a collecting worker</title>
+  <desc id="desc">A studio app window with a running 60 fps preview. The GUI thread and @nogc audio callback stay green while a decode worker is collecting on its own tgc heap.</desc>
+  <defs>
+    <style>
+      .chrome { fill: #e8e4e0; }
+      .chrome-rule { stroke: #cfc8c3; stroke-width: 1; }
+      .win { fill: #f7f5f3; stroke: #2c2c2c; stroke-width: 1.5; }
+      .title { font-family: "Segoe UI", system-ui, sans-serif; font-size: 14px; font-weight: 700; fill: #1a1a1a; }
+      .label { font-family: "Segoe UI", system-ui, sans-serif; font-size: 13px; fill: #1a1a1a; }
+      .small { font-family: "Segoe UI", system-ui, sans-serif; font-size: 12px; fill: #444; }
+      .muted { fill: #5a5a5a; }
+      .preview { fill: #1a1412; }
+      .panel { fill: #ffffff; stroke: #2c2c2c; stroke-width: 1.2; }
+      .ok { fill: #e7f4ea; stroke: #2f6b3a; stroke-width: 1.2; }
+      .busy { fill: #fff4f2; stroke: #B03931; stroke-width: 1.2; }
+      .dot { fill: #888; }
+    </style>
+  </defs>
+
+  <rect x="40" y="28" width="840" height="464" rx="12" class="win"/>
+  <path class="chrome" d="M 52 28 h 816 a 12 12 0 0 1 12 12 v 36 H 40 v -36 a 12 12 0 0 1 12 -12 z"/>
+  <line class="chrome-rule" x1="40" y1="76" x2="880" y2="76"/>
+  <circle cx="56" cy="52" r="5" fill="#B03931"/>
+  <circle cx="74" cy="52" r="5" fill="#c9a227"/>
+  <circle cx="92" cy="52" r="5" fill="#2f6b3a"/>
+  <text x="118" y="57" class="title">Studio -- preview</text>
+  <text x="760" y="57" class="small muted">tgc selected</text>
+
+  <rect x="56" y="96" width="520" height="280" rx="8" class="preview"/>
+  <text x="80" y="230" fill="#f3f1ef" class="title">Preview  60.0 fps</text>
+  <text x="80" y="254" fill="#cfc8c3" class="small">Present loop on GUI thread -- not hitching</text>
+  <rect x="80" y="280" width="360" height="10" rx="4" fill="#4a3f3b"/>
+  <rect x="80" y="280" width="250" height="10" rx="4" fill="#B03931"/>
+  <text x="80" y="312" fill="#cfc8c3" class="small">playhead  00:12:04.18</text>
+
+  <rect x="592" y="96" width="268" height="280" rx="8" class="panel"/>
+  <text x="610" y="124" class="title">Threads</text>
+
+  <rect x="610" y="142" width="232" height="64" rx="8" class="ok"/>
+  <text x="626" y="168" class="label">GUI shell</text>
+  <text x="626" y="188" class="small">running -- isolated heap</text>
+
+  <rect x="610" y="216" width="232" height="64" rx="8" class="ok"/>
+  <text x="626" y="242" class="label">Audio @nogc</text>
+  <text x="626" y="262" class="small">callback -- never registered</text>
+
+  <rect x="610" y="290" width="232" height="64" rx="8" class="busy"/>
+  <text x="626" y="316" class="label">Decode worker</text>
+  <text x="626" y="336" class="small">local collect on Heap D</text>
+
+  <rect x="56" y="392" width="804" height="80" rx="8" class="panel"/>
+  <text x="76" y="424" class="label">Why this window does not hitch</text>
+  <text x="76" y="448" class="small">Decode is collecting its own tgc arena. GUI and detached audio never enter thread_suspendAll.</text>
+</svg>

@@ -1,0 +1,20 @@
+= Proposals
+:description: Index of language and runtime design proposals tagged proposal on this docs hub.
+:navtitle: Proposals
+
+Technical write-ups tagged `proposal`.
+Set `:page-tags: proposal` on a page to appear here after the next site build.
+
+The current collection:
+
+++++
+<div class="proposals-embed" data-proposals data-tag="proposal">
+  <p data-proposals-status hidden></p>
+  <ul data-proposals-list>
+    <li><a href="../blog/thread-local-gc-tgc.html">Thread-local garbage collection (<code>tgc</code>) for D</a> — an opt-in per-thread GC for D that avoids global stop-the-world pauses, so @nogc realtime work can coexist with GC threads.</li>
+  </ul>
+</div>
+++++
+
+Public-facing essay: https://dlang-supplemental.github.io/blog/isolating-heaps.html[Isolating heaps as threads isolate data].
+Announcement: xref:news/tgc-upstream-pr.adoc[`tgc` proposed upstream].

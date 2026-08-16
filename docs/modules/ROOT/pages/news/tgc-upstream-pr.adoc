@@ -3,11 +3,12 @@
 :navtitle: tgc upstream PR
 :date: 2026-08-02
 
-We submitted an opt-in *thread-local garbage collector* for D—registered as **`tgc`**—to upstream DMD/druntime.
+We submitted an opt-in *thread-local garbage collector* for D—registered as **`tgc`**—to upstream DMD/druntime on *2 August 2026* (23:02 UTC).
 
-*Upstream PR:* https://github.com/dlang/dmd/pull/23514[`dlang/dmd#23514`].
+*Upstream PR:* https://github.com/dlang/dmd/pull/23514[`dlang/dmd#23514`] (opened https://github.com/dlang/dmd/pull/23514[2 August 2026]).
 
 *Design write-up:* xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D].
+*Org-site news:* https://dlang-supplemental.github.io/news/thread-local-gc-proposed-upstream.html[Thread-local GC proposed upstream].
 
 == Why it matters
 

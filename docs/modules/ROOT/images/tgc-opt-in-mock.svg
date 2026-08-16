@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="280" viewBox="0 0 920 280" role="img" aria-labelledby="title desc">
+  <title id="title">Mock console selecting the opt-in tgc collector</title>
+  <desc id="desc">A terminal window showing the runtime flag --DRT-gcopt=gc:tgc and a status line that the default conservative GC remains unchanged.</desc>
+  <defs>
+    <style>
+      .chrome { fill: #e8e4e0; }
+      .chrome-rule { stroke: #cfc8c3; stroke-width: 1; }
+      .win { fill: #1a1412; stroke: #2c2c2c; stroke-width: 1.5; }
+      .title { font-family: "Segoe UI", system-ui, sans-serif; font-size: 14px; font-weight: 700; fill: #1a1a1a; }
+      .mono { font-family: "Cascadia Code", "Consolas", monospace; font-size: 15px; fill: #f3f1ef; }
+      .dim { fill: #cfc8c3; }
+      .accent { fill: #f3d0cc; }
+    </style>
+  </defs>
+
+  <rect x="80" y="24" width="760" height="232" rx="12" class="win"/>
+  <path class="chrome" d="M 92 24 h 736 a 12 12 0 0 1 12 12 v 36 H 80 v -36 a 12 12 0 0 1 12 -12 z"/>
+  <line class="chrome-rule" x1="80" y1="72" x2="840" y2="72"/>
+  <circle cx="104" cy="48" r="5" fill="#B03931"/>
+  <circle cx="122" cy="48" r="5" fill="#c9a227"/>
+  <circle cx="140" cy="48" r="5" fill="#2f6b3a"/>
+  <text x="166" y="53" class="title">pwsh -- studio</text>
+
+  <text x="108" y="112" class="mono dim">PS Z:\studio&gt;</text>
+  <text x="248" y="112" class="mono accent">.\app --DRT-gcopt=gc:tgc</text>
+  <text x="108" y="148" class="mono">tgc: per-thread heaps enabled</text>
+  <text x="108" y="176" class="mono dim">conservative factory still registered (default)</text>
+  <text x="108" y="212" class="mono dim">GUI=running  audio=detached  decode=collecting local</text>
+</svg>

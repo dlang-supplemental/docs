@@ -3,6 +3,8 @@
 ** xref:blog/thread-local-gc-tgc.adoc[Thread-local GC (tgc)]
 * xref:news/index.adoc[News]
 ** xref:news/tgc-upstream-pr.adoc[tgc upstream PR]
+* xref:proposals/index.adoc[Proposals]
+** xref:blog/thread-local-gc-tgc.adoc[Thread-local GC (tgc)]
 * xref:aspect-oriented-programming-roadmap.adoc[AOP Roadmap]
 * xref:dub-local-remote-paths.adoc[DUB Local vs Remote Paths]
 * xref:publishing-packages-from-the-cli.adoc[CLI package publishing]

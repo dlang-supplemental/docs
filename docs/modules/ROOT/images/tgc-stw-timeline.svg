@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="340" viewBox="0 0 920 340" role="img" aria-labelledby="title desc">
+  <title id="title">Stop-the-world pause versus local tgc collection</title>
+  <desc id="desc">On the default GC, Thread A's collection freezes Thread B. With tgc, Thread A collects its own heap while Thread B keeps running.</desc>
+  <defs>
+    <style>
+      .label { font-family: "Segoe UI", system-ui, sans-serif; font-size: 14px; fill: #1a1a1a; }
+      .title { font-family: "Segoe UI", system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #1a1a1a; }
+      .small { font-family: "Segoe UI", system-ui, sans-serif; font-size: 12px; fill: #444; }
+      .muted { fill: #5a5a5a; }
+      .run { fill: #2f6b3a; }
+      .pause { fill: #B03931; }
+      .idle { fill: #d9d3cf; }
+    </style>
+  </defs>
+
+  <text x="30" y="28" class="title">Default GC: one collect pauses everyone</text>
+  <text x="30" y="56" class="small muted">Thread A alloc trigger</text>
+  <text x="30" y="84" class="label">A</text>
+  <rect x="70" y="68" width="160" height="22" class="run"/>
+  <rect x="230" y="68" width="280" height="22" class="pause"/>
+  <rect x="510" y="68" width="380" height="22" class="run"/>
+  <text x="250" y="84" class="small" fill="#fff">STOP THE WORLD</text>
+  <text x="30" y="124" class="label">B @nogc</text>
+  <rect x="70" y="108" width="160" height="22" class="run"/>
+  <rect x="230" y="108" width="280" height="22" class="pause"/>
+  <rect x="510" y="108" width="380" height="22" class="run"/>
+  <text x="300" y="124" class="small" fill="#fff">paused anyway</text>
+
+  <text x="30" y="178" class="title">tgc: A collects locally; B keeps going</text>
+  <text x="30" y="206" class="small muted">--DRT-gcopt=gc:tgc</text>
+  <text x="30" y="234" class="label">A</text>
+  <rect x="70" y="218" width="160" height="22" class="run"/>
+  <rect x="230" y="218" width="200" height="22" class="pause"/>
+  <rect x="430" y="218" width="460" height="22" class="run"/>
+  <text x="248" y="234" class="small" fill="#fff">local collect</text>
+  <text x="30" y="274" class="label">B @nogc</text>
+  <rect x="70" y="258" width="820" height="22" class="run"/>
+  <text x="380" y="274" class="small" fill="#fff">never paused</text>
+  <text x="30" y="316" class="small muted">Detached threads stay off the collector entirely. Sibling GC threads keep allocating.</text>
+</svg>

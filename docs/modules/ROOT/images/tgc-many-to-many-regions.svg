@@ -20,7 +20,7 @@
   </defs>
 
   <text x="30" y="30" class="title">Phase 2 sketch: many-to-many regions</text>
-  <text x="30" y="52" class="small muted">Not one global shared heap  attach workers only to the regions they need</text>
+  <text x="30" y="52" class="small muted">Not one global shared heap -- attach workers only to the regions they need</text>
 
   <!-- Region boxes (top) -->
   <rect x="60" y="80" width="200" height="78" rx="10" class="local"/>
@@ -66,5 +66,5 @@
   <text x="540" y="230" class="label">Collect Region Beta</text>
   <text x="540" y="252" class="small">Pauses only W1 and W3</text>
   <text x="540" y="274" class="small">Worker 2 is untouched</text>
-  <text x="540" y="296" class="small muted">Transitive Alpha”Beta coupling can still cascade</text>
+  <text x="540" y="296" class="small muted">Transitive Alpha-Beta coupling can still cascade</text>
 </svg>

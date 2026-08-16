@@ -5,6 +5,12 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-08-15
 
+* Added xref:proposals/index.adoc[Proposals] as a tagged index (the portal lists it; the page loads `:page-tags: proposal`).
+* Added diagrams and desktop/console mockups to xref:blog/thread-local-gc-tgc.adoc[the `tgc` design article], and dated the xref:news/tgc-upstream-pr.adoc[upstream news] to the GitHub opened time of https://github.com/dlang/dmd/pull/23514[`dlang/dmd#23514`] (2 August 2026, 23:02 UTC).
+* Cross-linked the org-site essay https://dlang-supplemental.github.io/blog/isolating-heaps.html[Isolating heaps as threads isolate data].
++
+See xref:changelog-details/2026-08-15 - docs-proposals-index.adoc[Detailed changelog].
+
 * Added a Proposals section on the portal home page that loads articles tagged `proposal` from `page-catalog.json`.
 * Tagged xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D] as a proposal.
 +

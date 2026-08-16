@@ -1,0 +1,7 @@
+= Docs proposals index and tgc figures
+:date: 2026-08-15
+
+* Added xref:proposals/index.adoc[Proposals] as an index of pages tagged `proposal`.
+* Wired it into portal nav and the portal home page.
+* Added SVG diagrams and window mockups (`tgc-actors`, `tgc-stw-timeline`, `tgc-desktop-mock`, `tgc-opt-in-mock`) to xref:blog/thread-local-gc-tgc.adoc[the `tgc` article].
+* Recorded the upstream opened time from https://github.com/dlang/dmd/pull/23514[`dlang/dmd#23514`] in xref:news/tgc-upstream-pr.adoc[news].

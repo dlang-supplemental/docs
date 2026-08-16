@@ -13,19 +13,13 @@ This article explains that gap, why per-thread heaps fix the latency story for r
 Informally you may hear “realtime GC”; that is a side-name only—the registered runtime name is `tgc`.
 
 Related announcement: xref:news/tgc-upstream-pr.adoc[News: `tgc` submitted upstream].
+Essay on the org site: https://dlang-supplemental.github.io/blog/isolating-heaps.html[Isolating heaps as threads isolate data].
 
 == The problem: TLS isolation, global heap
 
 D’s language model is closer to actors than shared-memory C threads:
 
-[source]
-----
-Thread A (TLS data)          Message queue           Thread B (TLS data)
-+------------------+       +---------------+       +------------------+
-| x = 10;          | ----> | copy / immutable| --> | y = receive(); |
-| No shared mutation|      |   or move       |     |                  |
-+------------------+       +---------------+       +------------------+
-----
+image::tgc-actors.svg[Thread A and Thread B isolate TLS data and talk through a mailbox, but both still allocate into one process-wide GC heap,width=100%,alt="Diagram: Thread A and Thread B have private TLS and a copy/immutable mailbox, over one shared GC heap that still pause-stops both"]
 
 Unless you type something `shared` or `__gshared`, Thread B cannot see Thread A’s variables.
 `std.concurrency` deep-copies or requires `immutable` across `Tid` boundaries for good reason.
@@ -35,13 +29,9 @@ Allocations from every thread land in one shared heap.
 A collection must freeze stacks and registers across the process so the tracer does not race with mutators.
 A pure `@nogc` audio callback thread, a game render loop, or a GUI shell that never calls `new` still stops when another thread’s GC runs.
 
-[source]
-----
-Thread A (GC worker)  ---[ alloc trigger ]---> STOPS WORLD ---> sweep ---> RESUME
-Thread B (@nogc)      ------------------------> PAUSED --------------------> RESUME
-----
+image::tgc-stw-timeline.svg[Default GC stop-the-world pauses Thread B during Thread A's collect; tgc collects Thread A locally while Thread B keeps running,width=100%,alt="Timeline: default GC pauses both threads; tgc pauses only the collecting thread"]
 
-That is the core friction for “GC desktop app with a few realtime threads,” and for any design that wants GC workers beside deterministic `@nogc` workers in one process.
+That is the core friction for a GC desktop app with a few realtime threads, and for any design that wants GC workers beside deterministic `@nogc` workers in one process.
 
 == Mixing `@nogc` and GC today
 
@@ -83,6 +73,8 @@ Programmers still need structural constraints—ownership, message passing, or r
 == Enter `tgc`: opt-in thread garbage collection
 
 *`tgc`* is an opt-in GC backend for druntime, selected like other pluggable collectors:
+
+image::tgc-opt-in-mock.svg[Mock terminal enabling tgc with --DRT-gcopt=gc:tgc while the conservative factory stays registered,width=100%,alt="Mock terminal: .\\app --DRT-gcopt=gc:tgc with status that the default conservative GC remains registered"]
 
 [source,console]
 ----
@@ -174,17 +166,10 @@ Classical shared-memory multithreading can sit *inside* an actor-first design as
 
 Imagine a desktop media app:
 
+image::tgc-desktop-mock.svg[Mock studio window: 60 fps preview stays live while a decode worker collects on its own tgc heap,width=100%,alt="Mock desktop studio window with a 60 fps preview, GUI and audio threads running, and a decode worker collecting locally"]
+
 * *GUI / shell thread:* `@nogc` or isolated `tgc`, actor mailbox, locked frame rate. Must not hitch when workers collect.
 * *Decode / filter workers:* may share a ring of frame buffers (Phase 2 shared region, or today’s default GC confined to a worker pool process). GC pauses there must not cascade into the shell.
-
-[source]
-----
-+---------------------------+     messages     +------------------------------+
-| GUI shell                 | <--------------> | Frame workers                |
-| isolated / @nogc          |                  | shared frame pool (opt-in)   |
-| predictable present loop  |                  | GC pauses stay in the pool   |
-+---------------------------+                  +------------------------------+
-----
 
 A parser that occasionally pauses is fine if the shell never shares its heap with the parser.
 A 4K frame pipeline that copies 32 MB per frame between threads will melt the memory bus; those workers need a deliberate shared region.

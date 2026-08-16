@@ -16,4 +16,4 @@ Short form:
 
 ## Tagged articles
 
-On news and blog pages, set `:page-tags:` (comma-separated). The portal home page and the org welcome site load the `proposal` tag from `page-catalog.json`, which the playbook extension writes at publish time.
+On news and blog pages, set `:page-tags:` (comma-separated). The portal home page, xref:proposals/index.adoc[proposals index], and org welcome site load the `proposal` tag from `page-catalog.json`, which the playbook extension writes at publish time.
