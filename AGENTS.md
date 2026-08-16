@@ -13,3 +13,7 @@ Short form:
 - Sentence case; accurate; not a whitepaper section label dressed as news.
 
 `MEMORIES.md` is for machine/environment facts — **not** editorial style policy.
+
+## Tagged articles
+
+On news and blog pages, set `:page-tags:` (comma-separated). The portal home page and the org welcome site load the `proposal` tag from `page-catalog.json`, which the playbook extension writes at publish time.

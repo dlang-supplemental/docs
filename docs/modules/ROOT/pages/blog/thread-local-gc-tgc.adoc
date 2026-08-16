@@ -2,6 +2,7 @@
 :description: An opt-in per-thread GC for D that avoids global stop-the-world pauses, so @nogc realtime work can coexist with GC threads.
 :navtitle: Thread-local GC (tgc)
 :date: 2026-08-02
+:page-tags: proposal
 
 D already isolates *data* by default: ordinary variables are thread-local, and `std.concurrency` pushes actor-style message passing with `spawn`, `send`, and `receive`.
 What the runtime still shares is the *heap*.

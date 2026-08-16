@@ -13,6 +13,19 @@ This site aggregates documentation for projects in the dlang-supplemental organi
 * xref:news/index.adoc[News] — short announcements.
 * Latest: xref:news/tgc-upstream-pr.adoc[Opt-in thread-local GC (`tgc`) proposed upstream].
 
+== Proposals
+
+Language and runtime design write-ups tagged `proposal`.
+
+++++
+<div class="proposals-embed" data-proposals data-tag="proposal">
+  <p data-proposals-status hidden></p>
+  <ul data-proposals-list>
+    <li><a href="blog/thread-local-gc-tgc.html">Thread-local garbage collection (<code>tgc</code>) for D</a> — an opt-in per-thread GC for D that avoids global stop-the-world pauses, so @nogc realtime work can coexist with GC threads.</li>
+  </ul>
+</div>
+++++
+
 == Guides
 
 * xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI] — `dub-publish`, registry registration without the browser, and the upstream `dub publish` proposal.
