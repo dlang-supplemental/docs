@@ -31,5 +31,6 @@ This site aggregates documentation for projects in the dlang-supplemental organi
 * xref:fluidsync-daemon:ROOT:index.adoc[FluidSync GUI Daemon]
 * xref:d-vector-search:ROOT:index.adoc[D-Vector Search]
 * xref:opentui-d:ROOT:index.adoc[opentui-d] — D bindings for OpenTUI's native Zig terminal UI core
+* xref:avalonia-d:ROOT:index.adoc[avalonia-d] — D bindings for Avalonia via a C ABI host, with ShadUI controls
 * xref:vibe-search-core:ROOT:index.adoc[Vibe Search Core]
 * xref:vibe-search-desktop:ROOT:index.adoc[Vibe Search Desktop]

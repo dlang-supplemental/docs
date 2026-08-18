@@ -42,7 +42,7 @@ endif::[]
 
 The site header logo is the org **D+** mark in `supplemental-ui/img/logo.svg` (overrides the Valentus default via `ui.supplemental_files`).
 
-Docs are pulled from component repositories (asciidoctor-dlang, densor, fluidsync-daemon, vector-store-dlang, vibe-search-core, vibe-search-desktop, graphrag-indexer, opentui-d, and others). This repo's own content is under `docs/` (portal and nav).
+Docs are pulled from component repositories (asciidoctor-dlang, densor, fluidsync-daemon, vector-store-dlang, vibe-search-core, vibe-search-desktop, graphrag-indexer, opentui-d, avalonia-d, and others). This repo's own content is under `docs/` (portal and nav).
 
 ++++
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -1,0 +1,12 @@
+= 2026-08-17 — avalonia-d component
+
+== Summary
+
+Registered https://github.com/dlang-supplemental/avalonia-d[avalonia-d] as an
+Antora source so the org docs hub can publish its in-repo `docs/` tree.
+
+== Changes
+
+* `antora-playbook.yml` — remote `https://github.com/dlang-supplemental/avalonia-d.git`
+* `antora-playbook-local.yml` — sibling `../avalonia-d`
+* Portal xref:index.adoc[index] component list

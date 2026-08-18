@@ -3,6 +3,12 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-08-17
+
+* Registered xref:avalonia-d:ROOT:index.adoc[avalonia-d] in the Antora playbooks and portal component list.
++
+See xref:changelog-details/2026-08-17 - avalonia-d-component.adoc[Detailed changelog].
+
 == 2026-08-15
 
 * Added xref:proposals/index.adoc[Proposals] as a tagged index (the portal lists it; the page loads `:page-tags: proposal`).

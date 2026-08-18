@@ -38,6 +38,9 @@ content:
     - url: https://github.com/dlang-supplemental/opentui-d.git
       branches: [main]
       start_path: docs
+    - url: https://github.com/dlang-supplemental/avalonia-d.git
+      branches: [main]
+      start_path: docs
     - url: .
       branches: HEAD
       start_path: docs

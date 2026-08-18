@@ -36,6 +36,10 @@ content:
       branches: HEAD
       start_path: docs
       worktrees: true
+    - url: ../avalonia-d
+      branches: HEAD
+      start_path: docs
+      worktrees: true
     - url: .
       branches: HEAD
       start_path: docs
