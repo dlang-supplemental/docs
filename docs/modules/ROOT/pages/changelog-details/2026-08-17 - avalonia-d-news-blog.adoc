@@ -1,0 +1,11 @@
+= 2026-08-17 — avalonia-d news and blog
+
+== Summary
+
+Herald the public `avalonia-d` repository with a news item on the docs hub
+and a craft essay on hosting Avalonia from D (ShadUI, not a shadcn clone).
+
+== Pages
+
+* xref:news/avalonia-bindings-published.adoc[Avalonia bindings published for D]
+* xref:blog/hosting-avalonia-from-d.adoc[Hosting Avalonia from D]

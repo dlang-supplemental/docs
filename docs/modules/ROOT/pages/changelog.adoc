@@ -8,6 +8,9 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 * Registered xref:avalonia-d:ROOT:index.adoc[avalonia-d] in the Antora playbooks and portal component list.
 +
 See xref:changelog-details/2026-08-17 - avalonia-d-component.adoc[Detailed changelog].
+* Published xref:news/avalonia-bindings-published.adoc[Avalonia bindings published for D] and xref:blog/hosting-avalonia-from-d.adoc[Hosting Avalonia from D].
++
+See xref:changelog-details/2026-08-17 - avalonia-d-news-blog.adoc[Detailed changelog].
 
 == 2026-08-15
 

@@ -1,0 +1,90 @@
+= Hosting Avalonia from D
+:description: Avalonia stays primitive; ShadUI already cloned shadcn. The D-shaped problem is hosting .NET, not restyling buttons.
+:navtitle: Hosting Avalonia from D
+:date: 2026-08-17
+
+Avalonia is not a widget catalog in the Qt or GTK sense.
+Open a fresh project and you get panels, a button that is still a button, a text box that is still a text box, and a styling system that feels like writing HTML and CSS with extra steps.
+That is a compliment to the engine and a warning to anyone who hoped to `import avalonia` and receive a dashboard.
+
+Related announcement: xref:news/avalonia-bindings-published.adoc[News: Avalonia bindings published for D].
+Org-site essay: https://dlang-supplemental.github.io/blog/hosting-avalonia-from-d.html[Hosting Avalonia from D].
+
+== The primitive layer
+
+If you have hand-hacked Avalonia, you already know the texture.
+A `StackPanel` is a `div` with a flex direction.
+`Classes.Add("Primary")` is how you ask the theme for a filled button.
+There is no blessed DataGrid-plus-CommandPalette-plus-Settings-shell waiting in the box.
+You compose, or you look elsewhere.
+
+That “elsewhere” already exists in C#.
+https://github.com/accntech/shad-ui[ShadUI] is a living MIT library inspired by https://ui.shadcn.com/[shadcn/ui] and Suki UI.
+It ships `ShadTheme`, a custom window, cards, toasts, dialogs, a sidebar—the kit people reach for when Avalonia’s primitives feel thin.
+https://github.com/russkyc/russkyc-ui-avalonia[Russkyc.UI.Avalonia] works the same design language through CSS-like class variants.
+
+Cloning shadcn again, inside Avalonia, from D, would be a second copy of a problem someone already solved on the C# side of the wall.
+
+== The wall
+
+D cannot see C# types.
+There is no `extern (C#)`.
+Avalonia has no C API.
+`Avalonia.Native` is a macOS windowing bridge, not a language-neutral widget ABI.
+
+So a “wrapper” that pretends GtkD happened—generate 4,000 classes from metadata, link, go—does not exist here.
+What exists is hosting: a D `main` that loads a native shim, the shim that boots CoreCLR, and a C# library that owns the `Application` and the handle table.
+
+https://github.com/dlang-supplemental/avalonia-d[`avalonia-d`] takes that shape on purpose.
+
+The C# host starts Avalonia with `AppBuilder` and `ClassicDesktopStyleApplicationLifetime`, no AXAML on the D side.
+It adds `ShadTheme`.
+It subclasses `ShadUI.Window` because the upstream constructor is protected.
+DNNE exports `avd_init`, `avd_window_new`, `avd_run`, and a handful of control factories as C functions.
+D dynamically loads `AvaloniaD.HostNE.dll` the same way `opentui-d` loads a Zig core and `vello-d` loads a Rust bridge.
+
+Handles are `ulong`.
+Callbacks are `extern (C)` function pointers.
+If you forget `extern (C)` on the D aliases, the fourth `double` in a margin call arrives as NaN and Avalonia throws.
+That is the kind of detail that belongs in xref:avalonia-d:ROOT:architecture.adoc[the architecture page], not in a press release.
+
+== What you write
+
+[source,d]
+----
+import avalonia;
+
+void main()
+{
+    init(ThemeMode.dark);
+
+    auto win = new Window("Hello", 480, 280);
+    auto col = new Stack();
+    col.margin(24, 24, 24, 24);
+
+    auto btn = new Button("Click me");
+    btn.onClick({ /* ... */ });
+    col.add(btn);
+
+    win.content = col;
+    win.run();
+}
+----
+
+That is the whole pitch: D owns the process, Avalonia owns the pixels, ShadUI owns the look.
+You do not get every Avalonia type.
+You get a growing C ABI and idiomatic wrappers for the controls that have been walked across the boundary.
+
+NativeAOT is deferred.
+ShadUI loads styles through `AvaloniaXamlLoader`, which is a poor trim fit.
+DNNE keeps the full CoreCLR so the NuGet package behaves like a normal Avalonia app.
+
+Fork ShadUI under this org when a C# control has to change.
+Until then, consume the NuGet and spend the D budget on the host and the handles.
+
+== Pull forward
+
+The interesting remaining work is not another theme.
+It is more of the ShadUI surface on the ABI—dialogs, toasts, sidebar—without pretending the C# object graph is now a D object graph.
+
+Start at xref:avalonia-d:ROOT:quick-start.adoc[quick start] or the xref:news/avalonia-bindings-published.adoc[news item].

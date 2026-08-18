@@ -7,4 +7,5 @@ For long-form background, see the xref:blog/index.adoc[Blog].
 
 == Latest
 
+* xref:news/avalonia-bindings-published.adoc[Avalonia bindings published for D] — D can host Avalonia windows; ShadUI supplies the shadcn-style kit.
 * xref:news/tgc-upstream-pr.adoc[Opt-in thread-local GC (`tgc`) proposed upstream] — PR to `dlang/dmd` plus design write-up.

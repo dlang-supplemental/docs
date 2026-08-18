@@ -6,12 +6,12 @@ This site aggregates documentation for projects in the dlang-supplemental organi
 == Blog
 
 * xref:blog/index.adoc[Blog] — long-form articles.
-* Latest: xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D].
+* Latest: xref:blog/hosting-avalonia-from-d.adoc[Hosting Avalonia from D].
 
 == News
 
 * xref:news/index.adoc[News] — short announcements.
-* Latest: xref:news/tgc-upstream-pr.adoc[Opt-in thread-local GC (`tgc`) proposed upstream].
+* Latest: xref:news/avalonia-bindings-published.adoc[Avalonia bindings published for D].
 
 == Proposals
 

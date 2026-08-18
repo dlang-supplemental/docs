@@ -1,0 +1,38 @@
+= Avalonia bindings published for D
+:description: A D process can host Avalonia windows through a C ABI, with ShadUI for shadcn-style controls.
+:navtitle: Avalonia bindings published
+:date: 2026-08-17
+
+A D program can now open an Avalonia desktop window without a C# `Main`.
+
+The package is https://github.com/dlang-supplemental/avalonia-d[`avalonia-d`].
+The repository went public on *17 August 2026*.
+
+*Essay:* xref:blog/hosting-avalonia-from-d.adoc[Hosting Avalonia from D].
+*Component docs:* xref:avalonia-d:ROOT:index.adoc[avalonia-d].
+*Org-site news:* https://dlang-supplemental.github.io/news/avalonia-bindings-published.html[Avalonia bindings published for D].
+
+== What shipped
+
+The hello example is a D `main`.
+It calls `init`, builds a stack, hangs a button on it, and blocks in `run()`.
+The window that appears is ShadUI chrome: themed title bar, dark `ShadTheme`, a Primary-class button—not a bare Avalonia rectangle with system decorations.
+
+Avalonia itself is a .NET UI toolkit.
+No D wrapper showed up on GitHub, awesome-d, or the DUB registry before this package.
+D cannot import a C# assembly, so `avalonia-d` does not project every Avalonia type.
+A small C# host exports a C ABI through DNNE; D loads the native shim and wraps opaque handles.
+
+The high-level look is not a from-scratch shadcn clone.
+https://github.com/accntech/shad-ui[ShadUI] already covers that kit for Avalonia (MIT, NuGet `ShadUI`, Avalonia 12.1 as of 0.2.4).
+The host consumes it.
+https://github.com/russkyc/russkyc-ui-avalonia[Russkyc.UI.Avalonia] is a second class-based theme in the same design language.
+
+v0 covers window, stack, scroll, card, button, text, text box, and checkbox.
+It is not a generated 1:1 mapping of the Avalonia catalog.
+
+== What to read next
+
+* Craft notes and why the host exists: xref:blog/hosting-avalonia-from-d.adoc[blog article].
+* Build the host and run the gallery: xref:avalonia-d:ROOT:quick-start.adoc[avalonia-d quick start].
+* Source: https://github.com/dlang-supplemental/avalonia-d[`dlang-supplemental/avalonia-d`].
