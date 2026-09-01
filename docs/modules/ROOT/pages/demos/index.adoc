@@ -1,0 +1,11 @@
+= Demos
+:description: Interactive explainers and runnable scenarios for dlang-supplemental prototypes.
+:navtitle: Demos
+
+Runnable scenarios and visual explainers for prototypes published on this site.
+
+++++
+<ul>
+  <li><a href="tgc/index.html">Thread-local GC (<code>tgc</code>)</a> — pause isolation, shared regions, benchmark harness.</li>
+</ul>
+++++

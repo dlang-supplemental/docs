@@ -1,0 +1,10 @@
+= Changelog detail: tgc 0.2.0 tests, benchmarks, demo
+:navtitle: tgc 0.2.0 harness
+:date: 2026-09-01
+
+Upstream `feature/tgc` targets **0.2.0** with region collect, tests, and benchmarks.
+
+* xref:demos/tgc/index.adoc[Demo page] — how to run tests and compare GC backends.
+* xref:proposals/tgc-design-0.1.0.adoc[Design notes] — version table updated (0.2.0 current).
+
+DMD fork (separate repo): `druntime/test/gc/tgc_regions.d`, `tgc_bench.d`, `tools/tgc-bench/run-benchmarks.ps1`, selective suspend API in druntime.

@@ -13,7 +13,7 @@ This article explains that gap, why per-thread heaps and **partitioned shared re
 Informally you may hear “realtime GC”; that is a side-name only—the registered runtime name is `tgc`.
 
 Canonical design + version status: xref:proposals/tgc-design-0.1.0.adoc[`tgc` design notes].
-**0.1.0** was private heaps only; **0.1.1** (current) adds region API scaffold only — not working shared regions yet.
+**0.2.0** adds working shared-region collect, tests, and benchmarks — see xref:demos/tgc/index.adoc[tgc demo].
 
 Related announcement: xref:news/tgc-upstream-pr.adoc[News: `tgc` submitted upstream].
 Essay on the org site: https://dlang-supplemental.github.io/blog/isolating-heaps.html[Isolating heaps as threads isolate data].

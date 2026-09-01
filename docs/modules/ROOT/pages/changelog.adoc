@@ -3,6 +3,12 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-09-01 (later)
+
+* Shipped xref:demos/tgc/index.adoc[tgc demo] with test/benchmark instructions; xref:proposals/tgc-design-0.1.0.adoc[design notes] updated for **0.2.0**.
++
+See xref:changelog-details/2026-09-01 - tgc-0.2.0-tests-bench-demo.adoc[Detailed changelog].
+
 == 2026-09-01
 
 * Reframed xref:blog/thread-local-gc-tgc.adoc[`tgc`] as a **0.1.x prototype**; added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] with SemVer plan (0.1.0 private heaps, 0.1.1 region scaffold, 0.2.0 working regions).

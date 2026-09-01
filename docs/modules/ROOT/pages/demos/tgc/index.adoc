@@ -1,0 +1,72 @@
+= Thread-local GC (`tgc`) demo
+:description: Visual explainer for tgc private heaps, partitioned shared regions, and how to run tests and benchmarks.
+:navtitle: tgc demo
+:page-tags: proposal, demo
+
+**Repository:** https://github.com/dlang-supplemental/dmd/tree/feature/tgc[`dlang-supplemental/dmd` `feature/tgc`]
+
+**Design:** xref:proposals/tgc-design-0.1.0.adoc[tgc design notes]
+
+This demo explains what xref:blog/thread-local-gc-tgc.adoc[`tgc`] does and how to validate it locally.
+
+== What you are looking at
+
+image::../../images/tgc-many-to-many-regions.svg[Partitioned shared regions: workers attach to region heaps; unrelated threads keep private heaps,width=100%,alt="Many-to-many GC regions diagram"]
+
+* **Private heap** — default for each thread. `GC.collect()` on that thread collects locally without global stop-the-world.
+* **Shared region** — opt-in heap shared by attached threads only. `_d_tgc_region_collect` pauses *those* threads, not the whole process.
+* **Unrelated threads** — never attached to a region are not paused when that region collects.
+
+image::../../images/tgc-stw-timeline.svg[Default GC pauses all threads vs tgc local collect,width=100%,alt="STW timeline comparison"]
+
+== Try it (0.2.0)
+
+Build DMD/druntime from `feature/tgc`, then:
+
+[source,shell]
+----
+# Smoke tests
+make -C druntime/test/gc OS=windows MODEL=64 tgc tgc_regions
+
+# Run with tgc enabled (tests pass --DRT-gcopt=gc:tgc via Makefile)
+./generated/.../tgc.exe --DRT-gcopt=gc:tgc
+./generated/.../tgc_regions.exe --DRT-gcopt=gc:tgc
+
+# Benchmark harness (compare backends)
+powershell -File tools/tgc-bench/run-benchmarks.ps1
+----
+
+=== API surface (C exports)
+
+[cols="2,4"]
+|===
+| `_d_tgc_version()` | `"0.2.0"` prototype semver
+| `_d_tgc_region_create()` | Create shared region; returns id
+| `_d_tgc_region_attach(id)` | Attach calling thread
+| `_d_tgc_region_malloc(id, size, bits)` | Allocate in region heap
+| `_d_tgc_region_collect(id)` | Region-scoped collect (attached threads only)
+|===
+
+Optional gcopt: `tgcShared:symgc` selects SymGC-backed shared regions (**0.3.0 stub** — native backend is default).
+
+== Test matrix
+
+[cols="2,3"]
+|===
+| `druntime/test/gc/tgc.d` | Private heaps, local collect, version check
+| `druntime/test/gc/tgc_regions.d` | Cross-thread shared region survival after region collect
+| `druntime/test/gc/tgc_bench.d` | Throughput + pause timing (manual compare across gcopt)
+|===
+
+== Benchmark scenarios
+
+Run the same binary with different `--DRT-gcopt` flags:
+
+. **Default conservative** — baseline shared heap + global STW
+. **`gc:tgc`** — private heaps + optional shared regions
+. **`gc:sdc`** — SymGC (separate build with symgc linked; not combined with tgc in one process today)
+
+Environment variables for `tgc_bench`:
+
+* `TGC_BENCH_ITERS` — single-thread alloc count (default 50000)
+* `TGC_BENCH_THREADS` — worker thread count (default 4)
