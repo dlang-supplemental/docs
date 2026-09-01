@@ -1,23 +1,45 @@
-= `tgc` design notes (0.1.0 prototype)
-:description: Canonical design for thread-local GC with partitioned shared regions; 0.1.0 is an incomplete smoke prototype.
-:navtitle: tgc design (0.1.0)
+= `tgc` design notes
+:description: Canonical design for thread-local GC with partitioned shared regions; SemVer pre-1.0 versioning.
+:navtitle: tgc design notes
 :date: 2026-09-01
 :page-tags: proposal
 
 This page is the **canonical design reference** for xref:blog/thread-local-gc-tgc.adoc[`tgc`].
-The upstream smoke prototype is **0.1.0** — not a finalized “v1” product.
-Earlier blog drafts used “v1 / Phase 2” wording; that split is retired here.
+Earlier blog drafts used “v1 / Phase 2” wording; that split is retired.
 
-== Versioning
+**Current code:** `0.1.1` (see `_d_tgc_version()`).
 
-[cols="1,3"]
+== Versioning (SemVer pre-1.0)
+
+While `tgc` remains `0.y.z`, treat **`y` as the breaking/feature boundary** and **`z` as patch** (bugfix, docs, additive scaffold that does not change existing behavior).
+
+[cols="1,1,3"]
 |===
-| 0.1.0 (current code)
-| Per-thread private heaps, local collect without global `thread_suspendAll`, remote-free stub.
-  **No working partitioned shared regions yet.**
-| Target (post-0.1.0)
-| Many-to-many **partitioned shared regions**, region-scoped STW, selective thread suspend.
+| Version | Kind | Scope
+
+| **0.1.0**
+| First prototype
+| Per-thread private heaps, local collect without global `thread_suspendAll`, remote-free stub on private heaps. **No region API.**
+
+| **0.1.1** (current)
+| Patch / additive scaffold
+| C exports for shared regions (`_d_tgc_region_create`, attach, region malloc). **No region collect, no selective suspend.** Does not change 0.1.0 private-heap behavior.
+
+| **0.2.0** (planned)
+| **Breaking / feature**
+| **Working partitioned shared regions:** region-scoped STW, selective thread suspend, real cross-thread shared pipelines. New memory contract; apps must opt into regions explicitly but semantics of cross-thread GC memory change materially from 0.1.x.
+
+| **0.3.0** (planned, tentative)
+| **Breaking or opt-in feature**
+| **SymGC-backed shared regions** inside a single `gc:tgc` composite (hybrid mode). Breaking if it changes default region allocator or collect behavior; **non-breaking** if gated behind an explicit gcopt sub-flag (e.g. `shared:symgc`) and 0.2.0 default region path unchanged.
 |===
+
+=== Bump rules (short)
+
+* **Pure bugfix** (wrong collect, race, crash) → `0.1.z` patch.
+* **Non-breaking improvement** (perf, better `findBlock`, docs, additive API with no behavior change) → `0.1.z` patch.
+* **Breaking change** (cross-thread contract, default alloc routing, removing remote-free, region collect that changes pause guarantees) → `0.y.0` minor bump.
+* **SymGC + tgc hybrid:** not breaking if it is a **new opt-in gcopt flag** and default `gc:tgc` matches prior minor; **breaking** if existing region or private-heap behavior changes without opt-in → bump with the feature that changes defaults.
 
 == Problem statement
 
@@ -46,62 +68,35 @@ The intended model is **partitioned shared regions**:
 * Collecting region *Alpha* pauses **only threads attached to Alpha**, not the whole process.
 * A thread with only a private heap and no shared regions is never paused by another region’s collection.
 
-Example:
+=== SymGC hybrid (future, inside `gc:tgc`)
 
-* Worker 1: private heap + Region Alpha + Region Beta
-* Worker 2: private heap only (never paused by Beta)
-* Worker 3: private heap + Region Alpha
+One registered factory (`gc:tgc`), not two GCs in one process.
+Private heaps stay `tgc`-local; **shared regions** may use a SymGC-derived allocator/collector backend for the shared slice only.
+Requires extracting or cooperating with SymGC — not linking `gc:sdc` and `gc:tgc` as separate active collectors.
 
-A 4K frame ring between decode workers lives in a **deliberate shared region**, not in one thread’s private heap with copies or remote frees.
+== What ships today
 
-[NOTE]
-====
-**Partitioned shared region** here means: threads that depend on the same data share one STW event for *that region*, not that the whole process shares one heap.
-====
-
-=== `@nogc` / detach
-
-Threads that call `thread_detachThis()` remain outside all GC pauses.
-They must never touch GC memory.
-
-== What 0.1.0 actually ships
-
-The upstream PR branch implements only the **private per-thread heap** slice:
+=== 0.1.0
 
 * `--DRT-gcopt=gc:tgc`
-* Local collect on the calling thread
-* Remote free list (ownership return to allocating thread’s private heap) — **interim**, not the target cross-thread story
-* Shared-region API scaffold (`create` / `attach` / `allocInRegion`) — **structures only**; region collect and selective suspend are not done
+* Local collect on private per-thread heap
+* Remote free list on private heaps (interim)
 
-Do not treat 0.1.0 as feature-complete or as endorsing copy-first messaging.
+=== 0.1.1 adds
+
+* Region API scaffold only (create / attach / region malloc)
+* Region collect and selective suspend: **not implemented**
 
 == Pluggable GC and SymGC
 
 druntime selects **one** GC implementation at process startup (`--DRT-gcopt=gc:…`).
-`createGCInstance` installs a single factory; there is no supported API today to call SymGC (`gc:sdc`) on one branch and `tgc` on another inside the same process.
-
-SymGC and `tgc` are **complementary at the ecosystem level**:
-
-* SymGC: modern **shared** heap, less global lock contention.
-* `tgc`: **pause isolation** via private heaps and region-scoped STW.
-
-Future work could add a composite GC or explicit region handles; that is not in 0.1.0.
-
-Practical split today: different processes, or default/SymGC for most of the app plus `@nogc`/manual islands — not mixed pluggable backends per branch.
-
-== Transitive pause risk (honest limit)
-
-If Worker 1 shares Alpha with Worker 3, and Worker 3 shares Beta with Worker 2, a Beta collection that pauses Worker 3 can stall Worker 1 when Worker 1 needs Alpha.
-Preventing cascades needs a DAG of region membership at the API or type level — future work.
+Per-branch mixing of `gc:sdc` and `gc:tgc` is not supported without a composite `gc:tgc` implementation.
 
 == Source material on disk
 
-* xref:blog/thread-local-gc-tgc.adoc[Blog article] (public narrative)
-* This page (canonical design + version truth)
-* Agent plan snapshot: `tgc_opt-in_upstream_bfb2d23a.plan.md` under Cursor plans (machine-local)
+* xref:blog/thread-local-gc-tgc.adoc[Blog article]
 * Forum draft: `AMDphreak/.issues/forum-tgc-thread-local-gc.md`
-
-Original Gemini conversation notes were not archived in git; this page and the blog supersede them.
+* Agent plan: `tgc_opt-in_upstream_bfb2d23a.plan.md` (machine-local Cursor plans)
 
 == Upstream
 

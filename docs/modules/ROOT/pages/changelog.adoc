@@ -5,7 +5,7 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-09-01
 
-* Reframed xref:blog/thread-local-gc-tgc.adoc[`tgc`] as a **0.1.0 prototype** (not finalized v1); added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] with partitioned shared regions as the target cross-thread model.
+* Reframed xref:blog/thread-local-gc-tgc.adoc[`tgc`] as a **0.1.x prototype**; added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] with SemVer plan (0.1.0 private heaps, 0.1.1 region scaffold, 0.2.0 working regions).
 +
 See xref:changelog-details/2026-09-01 - tgc-0.1.0-design-reframe.adoc[Detailed changelog].
 

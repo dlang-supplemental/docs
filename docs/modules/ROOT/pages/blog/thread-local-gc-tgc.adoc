@@ -12,8 +12,8 @@ When any thread triggers a collection, the collector stop-the-world pauses *ever
 This article explains that gap, why per-thread heaps and **partitioned shared regions** fix the latency story for realtime-minded apps, the trade-offs, and an opt-in collector named **`tgc`** (thread garbage collection) that we have prototyped and proposed upstream.
 Informally you may hear “realtime GC”; that is a side-name only—the registered runtime name is `tgc`.
 
-Canonical design + version status: xref:proposals/tgc-design-0.1.0.adoc[`tgc` design notes (0.1.0 prototype)].
-The code today is **0.1.0** — a smoke prototype, not a finalized “v1.”
+Canonical design + version status: xref:proposals/tgc-design-0.1.0.adoc[`tgc` design notes].
+**0.1.0** was private heaps only; **0.1.1** (current) adds region API scaffold only — not working shared regions yet.
 
 Related announcement: xref:news/tgc-upstream-pr.adoc[News: `tgc` submitted upstream].
 Essay on the org site: https://dlang-supplemental.github.io/blog/isolating-heaps.html[Isolating heaps as threads isolate data].
@@ -97,12 +97,14 @@ It is for special cases: multi-threaded apps that care about p99/p999 latency, m
 
 Copying or remote-free on a *private* heap is an **interim / escape hatch** in 0.1.0 code, not the intended long-term model for shared pipelines (for example frame rings between decode workers).
 
-=== What 0.1.0 implements today
+=== What ships today (0.1.x)
 
-. Per-thread private heaps and local collect (smoke-tested).
-. Remote free list on private heaps (stub — not the target cross-thread design).
-. Shared-region API scaffold only; region collect and selective suspend are **not** implemented yet.
-. No production claim; benchmarks vs default GC and SymGC are still outstanding.
+**0.1.0:** per-thread private heaps and local collect (smoke-tested); remote free on private heaps (interim).
+
+**0.1.1:** adds shared-region API scaffold (`create` / attach / region malloc); region collect and selective suspend **not** implemented.
+
+No production claim; benchmarks vs default GC and SymGC are still outstanding.
+**0.2.0** (planned, breaking): working shared regions.
 
 === How local collection avoids global pauses
 
@@ -256,12 +258,12 @@ The implementation lives in the https://github.com/dlang-supplemental/dmd/tree/f
 . Run with `--DRT-gcopt=gc:tgc`.
 . See `druntime/test/gc/tgc.d` for a multi-thread smoke test.
 
-0.1.0 limits to keep in mind:
+0.1.x limits to keep in mind:
 
-* Shared-region collect and selective thread suspend are **not implemented** yet (API scaffold only).
+* Shared-region collect and selective thread suspend are **not implemented** yet (0.1.1 scaffold only).
 * Remote free on private heaps is interim, not the target cross-thread model.
 * Array append metadata helpers are minimal compared to the conservative GC.
-* Treat this as a **0.1.0 prototype** for design review and measurement, not a production realtime guarantee without your own benchmarks.
+* Treat this as a **0.1.x prototype** for design review and measurement, not a production realtime guarantee without your own benchmarks.
 
 == Summary
 
