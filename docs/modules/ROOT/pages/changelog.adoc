@@ -3,6 +3,12 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-09-01
+
+* Reframed xref:blog/thread-local-gc-tgc.adoc[`tgc`] as a **0.1.0 prototype** (not finalized v1); added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] with partitioned shared regions as the target cross-thread model.
++
+See xref:changelog-details/2026-09-01 - tgc-0.1.0-design-reframe.adoc[Detailed changelog].
+
 == 2026-08-17
 
 * Registered xref:avalonia-d:ROOT:index.adoc[avalonia-d] in the Antora playbooks and portal component list.

@@ -4,6 +4,7 @@
 :date: 2026-08-02
 
 We submitted an opt-in *thread-local garbage collector* for D—registered as **`tgc`**—to upstream DMD/druntime on *2 August 2026* (23:02 UTC).
+The implementation is a **0.1.0 smoke prototype**, not a finalized v1.
 
 *Upstream PR:* https://github.com/dlang/dmd/pull/23514[`dlang/dmd#23514`] (opened https://github.com/dlang/dmd/pull/23514[2 August 2026]).
 
@@ -35,5 +36,6 @@ Forum discussion: https://forum.dlang.org/post/eyivmktfvmdlvhbyyphd@forum.dlang.
 
 == What to read next
 
-* Full concepts, trade-offs, remote free lists, and Phase 2 shared regions: xref:blog/thread-local-gc-tgc.adoc[blog article].
+* Full concepts, trade-offs, and partitioned shared regions (target design): xref:blog/thread-local-gc-tgc.adoc[blog article].
+* Canonical design + 0.1.0 scope: xref:proposals/tgc-design-0.1.0.adoc[design notes].
 * Prototype branch: https://github.com/dlang-supplemental/dmd/tree/feature/tgc[`dlang-supplemental/dmd` `feature/tgc`].

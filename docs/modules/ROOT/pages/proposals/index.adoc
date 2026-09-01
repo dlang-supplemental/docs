@@ -12,6 +12,7 @@ The current collection:
   <p data-proposals-status hidden></p>
   <ul data-proposals-list>
     <li><a href="../blog/thread-local-gc-tgc.html">Thread-local garbage collection (<code>tgc</code>) for D</a> — an opt-in per-thread GC for D that avoids global stop-the-world pauses, so @nogc realtime work can coexist with GC threads.</li>
+    <li><a href="../proposals/tgc-design-0.1.0.html"><code>tgc</code> design notes (0.1.0 prototype)</a> — canonical design: private heaps, partitioned shared regions, version scope.</li>
   </ul>
 </div>
 ++++

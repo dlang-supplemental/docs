@@ -1,0 +1,9 @@
+= Changelog detail: Reframe `tgc` as 0.1.0 prototype
+:navtitle: tgc 0.1.0 design reframe
+:date: 2026-09-01
+
+Retired “v1 / Phase 2” wording for xref:blog/thread-local-gc-tgc.adoc[`tgc`].
+
+* Added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] — partitioned shared regions as the target cross-thread model; 0.1.0 as incomplete smoke prototype.
+* Blog and news updated: copy/remote-free demoted to interim; regions promoted.
+* Documented druntime limitation: one pluggable GC per process (SymGC and `tgc` not mixable per branch today).
