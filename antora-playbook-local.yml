@@ -4,7 +4,7 @@
 extends: ./antora-playbook.yml
 content:
   sources:
-    - url: ../asciidoctor-dlang
+    - url: ../asciidoctor-d
       branches: HEAD
       start_path: docs
       worktrees: true
