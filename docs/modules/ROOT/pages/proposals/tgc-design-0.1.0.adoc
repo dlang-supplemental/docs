@@ -7,7 +7,7 @@
 This page is the **canonical design reference** for xref:blog/thread-local-gc-tgc.adoc[`tgc`].
 Earlier blog drafts used “v1 / Phase 2” wording; that split is retired.
 
-**Current code:** `0.2.0` (see `_d_tgc_version()`).
+**Current code:** `0.2.1` (see `_d_tgc_version()`).
 
 == Versioning (SemVer pre-1.0)
 
@@ -23,9 +23,13 @@ Earlier blog drafts used “v1 / Phase 2” wording; that split is retired.
 | Patch
 | Region API scaffold only (no region collect).
 
-| **0.2.0** (current)
+| **0.2.0**
 | Feature / breaking milestone
 | Region collect with selective suspend, heap list locks, array append metadata, tests + benchmark harness.
+
+| **0.2.1** (current)
+| Patch
+| Sorted-address `findBlock` O(log n), 32-byte block header (dropped list links), bounded fixpoint mark (skip sweep if no converge).
 
 | **0.3.0** (planned)
 | Opt-in feature

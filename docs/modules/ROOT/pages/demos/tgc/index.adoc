@@ -40,7 +40,7 @@ powershell -File tools/tgc-bench/run-benchmarks.ps1
 
 [cols="2,4"]
 |===
-| `_d_tgc_version()` | `"0.2.0"` prototype semver
+| `_d_tgc_version()` | `"0.2.1"` prototype semver
 | `_d_tgc_region_create()` | Create shared region; returns id
 | `_d_tgc_region_attach(id)` | Attach calling thread
 | `_d_tgc_region_malloc(id, size, bits)` | Allocate in region heap
