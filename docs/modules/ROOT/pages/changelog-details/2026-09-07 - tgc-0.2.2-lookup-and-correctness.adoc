@@ -1,0 +1,8 @@
+= Changelog detail: `tgc` 0.2.2 lookup and correctness
+
+* Added layered block lookup: constant-time address-range rejection, linear search for tiny heaps, and binary predecessor search for larger heaps.
+* Replaced per-entry index shifts with `memmove`.
+* Changed fixpoint marking to scan each newly reached block once and restored full stack/TLS range scanning.
+* Corrected appendable-array metadata so capacity checks never move storage without returning a new pointer.
+* Added interior-pointer, pointer-chain, in-place append, and cross-thread remote-free tests.
+* Added an interior-pointer benchmark phase; the Windows release run completed 200,000 lookups across 4,096 blocks in about 13 ms.

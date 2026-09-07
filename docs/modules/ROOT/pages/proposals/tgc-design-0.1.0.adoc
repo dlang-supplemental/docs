@@ -7,7 +7,7 @@
 This page is the **canonical design reference** for xref:blog/thread-local-gc-tgc.adoc[`tgc`].
 Earlier blog drafts used “v1 / Phase 2” wording; that split is retired.
 
-**Current code:** `0.2.1` (see `_d_tgc_version()`).
+**Current code:** `0.2.2` (see `_d_tgc_version()`).
 
 == Versioning (SemVer pre-1.0)
 
@@ -27,9 +27,13 @@ Earlier blog drafts used “v1 / Phase 2” wording; that split is retired.
 | Feature / breaking milestone
 | Region collect with selective suspend, heap list locks, array append metadata, tests + benchmark harness.
 
-| **0.2.1** (current)
+| **0.2.1**
 | Patch
 | Sorted-address `findBlock` O(log n), 32-byte block header (dropped list links), bounded fixpoint mark (skip sweep if no converge).
+
+| **0.2.2** (current)
+| Patch
+| Layered pointer lookup (range reject, linear for tiny heaps, binary otherwise), bulk index shifts, tri-state fixpoint marking, full stack/TLS scanning, corrected append metadata, and an explicit remote-free test.
 
 | **0.3.0** (planned)
 | Opt-in feature
@@ -82,7 +86,7 @@ Requires extracting or cooperating with SymGC — not linking `gc:sdc` and `gc:t
 
 * `--DRT-gcopt=gc:tgc`
 * Local collect on private per-thread heap
-* Remote free list on private heaps (interim)
+* Remote-free queue on private heaps (implemented, but interim to the region model)
 
 === 0.2.0 adds
 

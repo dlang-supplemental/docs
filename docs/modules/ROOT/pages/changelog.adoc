@@ -5,6 +5,10 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-09-07
 
+* Updated the xref:proposals/tgc-design-0.1.0.adoc[`tgc` design] for **0.2.2** with layered block lookup, safer fixpoint marking, corrected append metadata, and remote-free coverage.
++
+See xref:changelog-details/2026-09-07 - tgc-0.2.2-lookup-and-correctness.adoc[Detailed changelog].
+
 * Remade the stop-the-world timeline in the xref:blog/thread-local-gc-tgc.adoc[`tgc` article] with separated thread labels and light/dark theme-aware SVG colors.
 +
 See xref:changelog-details/2026-09-07 - tgc-timeline-theming.adoc[Detailed changelog].
