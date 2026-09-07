@@ -3,6 +3,12 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-09-07
+
+* Remade the stop-the-world timeline in the xref:blog/thread-local-gc-tgc.adoc[`tgc` article] with separated thread labels and light/dark theme-aware SVG colors.
++
+See xref:changelog-details/2026-09-07 - tgc-timeline-theming.adoc[Detailed changelog].
+
 == 2026-09-01 (later)
 
 * Shipped xref:demos/tgc/index.adoc[tgc demo] with test/benchmark instructions; xref:proposals/tgc-design-0.1.0.adoc[design notes] updated for **0.2.0**.

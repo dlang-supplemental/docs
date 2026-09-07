@@ -1,0 +1,7 @@
+= Changelog detail: tgc timeline theming
+:navtitle: tgc timeline theming
+:date: 2026-09-07
+
+Remade the stop-the-world timeline in the xref:blog/thread-local-gc-tgc.adoc[`tgc` article] so its thread labels no longer collide with the activity bars.
+
+The standalone SVG now uses semantic CSS custom properties and built-in light and dark color-scheme fallbacks. It remains readable when embedded as an image while allowing host theme overrides when used inline.
