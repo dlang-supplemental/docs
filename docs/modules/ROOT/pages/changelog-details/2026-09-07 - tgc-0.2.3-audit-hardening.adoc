@@ -1,0 +1,9 @@
+= Changelog detail: `tgc` 0.2.3 audit hardening
+
+* Made `free`, `realloc`, `sizeOf`, and block-attribute operations reject interior pointers as required by the GC interface.
+* Detached remote-free buffers before draining, coalesced duplicate requests, and kept heap registry ownership stable while queueing.
+* Added allocation-size overflow checks and corrected accounting after in-place shrink.
+* Removed the fixpoint depth limit now that tri-state marking scans each reached block at most once.
+* Serialized region collections and established root, region, and private-index lock barriers before suspending member threads.
+* Scanned attached members' private heaps for references into the collected shared region.
+* Added regressions for interior-pointer contracts, duplicate remote frees, 300-object reachability chains, oversized allocation rejection, and private-to-region references.

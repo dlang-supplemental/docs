@@ -7,7 +7,7 @@
 This page is the **canonical design reference** for xref:blog/thread-local-gc-tgc.adoc[`tgc`].
 Earlier blog drafts used “v1 / Phase 2” wording; that split is retired.
 
-**Current code:** `0.2.2` (see `_d_tgc_version()`).
+**Current code:** `0.2.3` (see `_d_tgc_version()`).
 
 == Versioning (SemVer pre-1.0)
 
@@ -31,9 +31,13 @@ Earlier blog drafts used “v1 / Phase 2” wording; that split is retired.
 | Patch
 | Sorted-address `findBlock` O(log n), 32-byte block header (dropped list links), bounded fixpoint mark (skip sweep if no converge).
 
-| **0.2.2** (current)
+| **0.2.2**
 | Patch
 | Layered pointer lookup (range reject, linear for tiny heaps, binary otherwise), bulk index shifts, tri-state fixpoint marking, full stack/TLS scanning, corrected append metadata, and an explicit remote-free test.
+
+| **0.2.3** (current)
+| Patch
+| Exact-base API conformance, race-safe duplicate-coalescing remote frees, overflow checks, terminating worklist-style marking, serialized region collection, suspension lock barriers, and private-heap-to-region reachability.
 
 | **0.3.0** (planned)
 | Opt-in feature
