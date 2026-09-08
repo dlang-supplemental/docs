@@ -15,7 +15,9 @@ const check = process.argv.includes("--check")
 
 const diagrams = {
   "tgc-actors": ["TLS isolation and a shared heap", "Threads keep private TLS data and communicate through a mailbox while allocations still enter one process-wide heap."],
+  "tgc-desktop-mock": ["Responsive desktop workload with tgc", "The GUI and detached audio threads continue running while only the decode worker collects its local heap."],
   "tgc-many-to-many-regions": ["Many-to-many partitioned GC regions", "Workers attach only to local and shared regions they need; collecting Region Beta leaves Worker 2 running."],
+  "tgc-opt-in-mock": ["Opting in to tgc", "A command selects the tgc runtime collector while the conservative collector remains the default."],
   "tgc-performance-compare": ["Shared heap versus per-thread heaps", "A shared heap requires synchronization and stop-the-world collection while tgc heaps collect locally and exchange remote frees."],
   "tgc-stw-timeline": ["Stop-the-world versus local collection", "The default collector pauses both threads; tgc pauses only the collecting thread while its sibling continues."]
 }

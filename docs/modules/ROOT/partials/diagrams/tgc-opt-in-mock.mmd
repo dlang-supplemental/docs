@@ -1,0 +1,13 @@
+%% Console-oriented explanation of the opt-in runtime switch.
+flowchart TB
+  CMD["PS Z:\studio&gt; .\app --DRT-gcopt=gc:tgc"]
+  ON["tgc selected\nper-thread heaps enabled"]
+  DEFAULT["Conservative collector\nremains the default"]
+  STATUS["GUI: running\naudio: detached\ndecode: collecting locally"]
+  CMD --> ON --> DEFAULT --> STATUS
+  classDef terminal fill:#171717,stroke:#555555,color:#f3f1ef,font-family:monospace;
+  classDef enabled fill:#eaf7ee,stroke:#1e6a34,color:#17351f;
+  classDef info fill:#f7f7f7,stroke:#777777,color:#1a1a1a;
+  class CMD terminal;
+  class ON enabled;
+  class DEFAULT,STATUS info;

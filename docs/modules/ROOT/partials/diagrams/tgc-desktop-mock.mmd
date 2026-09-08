@@ -1,0 +1,21 @@
+%% Desktop workload showing that unrelated threads remain responsive.
+flowchart LR
+  PREVIEW["Studio preview\n60.0 fps\npresent loop stays responsive"]
+  GUI["GUI shell\nrunning on isolated heap"]
+  AUDIO["Audio @nogc\ndetached callback"]
+  DECODE["Decode worker\ncollecting on Heap D"]
+  WHY["Only the decode worker enters collection\nGUI and detached audio continue running"]
+  PREVIEW --> GUI
+  PREVIEW --> AUDIO
+  PREVIEW --> DECODE
+  GUI --> WHY
+  AUDIO --> WHY
+  DECODE --> WHY
+  classDef preview fill:#263746,stroke:#56758f,color:#f3f1ef;
+  classDef running fill:#eaf7ee,stroke:#1e6a34,color:#17351f;
+  classDef collecting fill:#fff0ee,stroke:#a12f2a,color:#5c1815;
+  classDef explanation fill:#f7f7f7,stroke:#777777,color:#1a1a1a;
+  class PREVIEW preview;
+  class GUI,AUDIO running;
+  class DECODE collecting;
+  class WHY explanation;
