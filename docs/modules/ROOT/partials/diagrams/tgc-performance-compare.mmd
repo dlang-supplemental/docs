@@ -1,0 +1,27 @@
+%% Contrast one contended global heap with independently collected tgc heaps.
+flowchart LR
+  subgraph classic["Classical shared heap"]
+    direction TB
+    GH["Global heap pool\nThread A alloc · Thread B alloc"]
+    MX["MUTEX / ATOMIC\ncache friction under contention"]
+    STW["GC collect\nstop-the-world"]
+    TA["Thread A\npaused"]
+    TB["Thread B\npaused"]
+    GH --> MX --> STW
+    STW --> TA
+    STW --> TB
+  end
+  subgraph tgc["Per-thread heaps (tgc)"]
+    direction TB
+    HA["Heap A\nThread A only\nlocal collect"]
+    HB["Heap B\nThread B only\nlocal collect"]
+    QA["Remote free queue\nownership returns to the owning heap"]
+    HA <--> QA
+    HB <--> QA
+  end
+  classDef warning fill:#fff4f2,stroke:#b03931,color:#461613;
+  classDef healthy fill:#f3faf4,stroke:#2f6b3a,color:#17351f;
+  classDef neutral fill:#ffffff,stroke:#2c2c2c,color:#1a1a1a;
+  class GH,MX,STW warning;
+  class HA,HB healthy;
+  class TA,TB,QA neutral;

@@ -1,0 +1,19 @@
+%% TLS isolation still converges on one process-wide collector.
+flowchart TB
+  title["Language model: actors. Runtime heap: still global."]
+  A["Thread A (TLS)\nx = 10\nNo shared mutation"]
+  M["Mailbox\ncopy / immutable / move"]
+  B["Thread B (TLS)\ny = receive()\nOwn data only"]
+  G["One process-wide GC heap\nnew, ~=, AA inserts, and Phobos collections\nA collection pauses every registered thread"]
+  title ~~~ A
+  A --> M --> B
+  A --> G
+  B --> G
+  classDef heading fill:#ffffff,stroke:#ffffff,color:#1a1a1a,font-weight:bold;
+  classDef thread fill:#f3faf4,stroke:#2f6b3a,color:#1a1a1a;
+  classDef mailbox fill:#f7f7f7,stroke:#2c2c2c,color:#1a1a1a;
+  classDef warning fill:#fff4f2,stroke:#b03931,color:#1a1a1a;
+  class title heading;
+  class A,B thread;
+  class M mailbox;
+  class G warning;

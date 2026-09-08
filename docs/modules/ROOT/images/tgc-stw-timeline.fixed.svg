@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xml:lang="en"
+  width="920"
+  height="340"
+  viewBox="0 0 920 340"
+  preserveAspectRatio="xMidYMid meet"
+  role="img"
+  aria-labelledby="tgc-stw-title tgc-stw-desc"
+  class="tgc-stw-timeline">
+  <title id="tgc-stw-title">Stop-the-world pause versus local tgc collection</title>
+  <desc id="tgc-stw-desc">On the default GC, Thread A's collection freezes Thread B. With tgc, Thread A collects its own heap while Thread B keeps running.</desc>
+  <defs>
+    <style type="text/css">
+<![CDATA[
+      .tgc-stw-timeline {
+        display: block;
+        max-width: 100%;
+        color-scheme: light dark;
+        --_page-bg: var(--tgc-page-bg, #efe8e1);
+        --_panel-bg: var(--tgc-panel-bg, #f8f4ef);
+        --_text: var(--tgc-text, #1c1917);
+        --_text-muted: var(--tgc-text-muted, #5e574f);
+        --_run: var(--tgc-run, #1e6a34);
+        --_pause: var(--tgc-pause, #a12f2a);
+        --_border: var(--tgc-border, #d2c8be);
+        --_grid: var(--tgc-grid, #e0d7cd);
+        --_text-on-fill: var(--tgc-text-on-fill, #fffaf6);
+      }
+      @media (prefers-color-scheme: dark) {
+        .tgc-stw-timeline {
+          --_page-bg: var(--tgc-page-bg, #161412);
+          --_panel-bg: var(--tgc-panel-bg, #221f1c);
+          --_text: var(--tgc-text, #f3eee8);
+          --_text-muted: var(--tgc-text-muted, #b8afa5);
+          --_run: var(--tgc-run, #1f7540);
+          --_pause: var(--tgc-pause, #b03a34);
+          --_border: var(--tgc-border, #3d3833);
+          --_grid: var(--tgc-grid, #35302c);
+          --_text-on-fill: var(--tgc-text-on-fill, #fffaf6);
+        }
+      }
+      .page { fill: var(--_page-bg); }
+      .panel {
+        fill: var(--_panel-bg);
+        stroke: var(--_border);
+        stroke-width: 1;
+      }
+      .title {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        fill: var(--_text);
+      }
+      .label {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        fill: var(--_text);
+      }
+      .small {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 12px;
+        fill: var(--_text-muted);
+      }
+      .on-fill {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        fill: var(--_text-on-fill);
+      }
+      .run { fill: var(--_run); }
+      .pause { fill: var(--_pause); }
+      .grid {
+        stroke: var(--_grid);
+        stroke-width: 1;
+        fill: none;
+      }
+      .swatch { stroke: var(--_border); stroke-width: 0.75; }
+]]>
+    </style>
+  </defs>
+
+  <rect class="page" x="0" y="0" width="920" height="340"/>
+
+  <rect class="panel" x="16" y="10" width="888" height="142" rx="10" ry="10"/>
+  <text class="title" x="36" y="36">Default GC: one collect pauses everyone</text>
+  <text class="small" x="36" y="56">Thread A alloc trigger</text>
+  <rect class="run swatch" x="628" y="24" width="12" height="12" rx="2"/>
+  <text class="small" x="646" y="35">Running</text>
+  <rect class="pause swatch" x="716" y="24" width="12" height="12" rx="2"/>
+  <text class="small" x="734" y="35">Paused / collecting</text>
+  <text class="small" x="868" y="56" text-anchor="end">time →</text>
+  <line class="grid" x1="196" y1="64" x2="196" y2="140"/>
+  <text class="label" x="184" y="86" text-anchor="end">Thread A</text>
+  <rect class="run" x="208" y="70" width="132" height="24" rx="5"/>
+  <rect class="pause" x="344" y="70" width="232" height="24" rx="5"/>
+  <rect class="run" x="580" y="70" width="300" height="24" rx="5"/>
+  <text class="on-fill" x="460" y="86" text-anchor="middle">STOP THE WORLD</text>
+  <text class="label" x="184" y="126" text-anchor="end">Thread B (@nogc)</text>
+  <rect class="run" x="208" y="110" width="132" height="24" rx="5"/>
+  <rect class="pause" x="344" y="110" width="232" height="24" rx="5"/>
+  <rect class="run" x="580" y="110" width="300" height="24" rx="5"/>
+  <text class="on-fill" x="460" y="126" text-anchor="middle">paused anyway</text>
+
+  <rect class="panel" x="16" y="162" width="888" height="142" rx="10" ry="10"/>
+  <text class="title" x="36" y="188">tgc: A collects locally; B keeps going</text>
+  <text class="small" x="36" y="208">--DRT-gcopt=gc:tgc</text>
+  <text class="small" x="868" y="208" text-anchor="end">time →</text>
+  <line class="grid" x1="196" y1="216" x2="196" y2="292"/>
+  <text class="label" x="184" y="238" text-anchor="end">Thread A</text>
+  <rect class="run" x="208" y="222" width="132" height="24" rx="5"/>
+  <rect class="pause" x="344" y="222" width="164" height="24" rx="5"/>
+  <rect class="run" x="512" y="222" width="368" height="24" rx="5"/>
+  <text class="on-fill" x="426" y="238" text-anchor="middle">local collect</text>
+  <text class="label" x="184" y="278" text-anchor="end">Thread B (@nogc)</text>
+  <rect class="run" x="208" y="262" width="672" height="24" rx="5"/>
+  <text class="on-fill" x="544" y="278" text-anchor="middle">never paused</text>
+
+  <text class="small" x="36" y="326">Detached threads stay off the collector entirely. Sibling GC threads keep allocating.</text>
+</svg>

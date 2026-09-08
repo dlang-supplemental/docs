@@ -1,0 +1,46 @@
+:root {
+  --themed-svg-dlang-tgc-diagram-color-surface-primary: #f3faf4;
+  --themed-svg-dlang-tgc-diagram-color-surface-secondary: #f7f7f7;
+  --themed-svg-dlang-tgc-diagram-color-text-primary: #1a1a1a;
+  --themed-svg-dlang-tgc-diagram-color-text-muted: #444444;
+  --themed-svg-dlang-tgc-diagram-color-border-primary: #2f6b3a;
+  --themed-svg-dlang-tgc-diagram-color-edge: #2c2c2c;
+  --themed-svg-dlang-tgc-diagram-color-edge-label: #1a1a1a;
+  --themed-svg-dlang-tgc-diagram-color-canvas: #ffffff;
+  --themed-svg-dlang-tgc-diagram-color-accent-primary: #263746;
+  --themed-svg-dlang-tgc-diagram-color-accent-on-primary: #f3f1ef;
+  --themed-svg-dlang-tgc-diagram-color-status-success: #eaf7ee;
+  --themed-svg-dlang-tgc-diagram-color-status-warning: #fff0ee;
+  --themed-svg-dlang-tgc-diagram-color-status-danger: #b03931;
+  --themed-svg-dlang-tgc-diagram-color-region-local: #eef6ff;
+  --themed-svg-dlang-tgc-diagram-color-region-alpha: #fff4f2;
+  --themed-svg-dlang-tgc-diagram-color-region-beta: #f4f0fb;
+  --themed-svg-dlang-tgc-diagram-color-terminal: #171717;
+}
+
+:root.dark-theme {
+  --themed-svg-dlang-tgc-diagram-color-surface-primary: #203f2a;
+  --themed-svg-dlang-tgc-diagram-color-surface-secondary: #282c31;
+  --themed-svg-dlang-tgc-diagram-color-text-primary: #f3eee8;
+  --themed-svg-dlang-tgc-diagram-color-text-muted: #c8c2bc;
+  --themed-svg-dlang-tgc-diagram-color-border-primary: #8ac49a;
+  --themed-svg-dlang-tgc-diagram-color-edge: #d8cec7;
+  --themed-svg-dlang-tgc-diagram-color-edge-label: #f3eee8;
+  --themed-svg-dlang-tgc-diagram-color-canvas: #17191c;
+  --themed-svg-dlang-tgc-diagram-color-accent-primary: #38566f;
+  --themed-svg-dlang-tgc-diagram-color-accent-on-primary: #ffffff;
+  --themed-svg-dlang-tgc-diagram-color-status-success: #193d27;
+  --themed-svg-dlang-tgc-diagram-color-status-warning: #4b2522;
+  --themed-svg-dlang-tgc-diagram-color-status-danger: #e47a70;
+  --themed-svg-dlang-tgc-diagram-color-region-local: #1f3a52;
+  --themed-svg-dlang-tgc-diagram-color-region-alpha: #482824;
+  --themed-svg-dlang-tgc-diagram-color-region-beta: #352b4d;
+  --themed-svg-dlang-tgc-diagram-color-terminal: #101214;
+}
+
+.imageblock.themed-svg themed-svg,
+.imageblock.themed-svg img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

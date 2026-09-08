@@ -3,11 +3,22 @@
   "private": true,
   "scripts": {
     "build": "antora antora-playbook.yml",
-    "build:local": "antora antora-playbook-local.yml"
+    "build:local": "antora antora-playbook-local.yml",
+    "diagrams": "node scripts/build-diagrams.mjs",
+    "diagrams:check": "node scripts/build-diagrams.mjs --check"
   },
   "packageManager": "pnpm@10.28.1",
   "devDependencies": {
     "@antora-supplemental/build-stack": "github:antora-supplemental/build-stack#main",
+    "@dev-centr/mermaid-svg-css-vars": "0.1.2",
+    "@dev-centr/themed-svg": "0.1.1",
+    "@mermaid-js/mermaid-cli": "11.9.0",
+    "@xmldom/xmldom": "0.9.12",
     "antora": "^3.1.14"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "puppeteer"
+    ]
   }
 }

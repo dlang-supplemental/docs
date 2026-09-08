@@ -1,0 +1,30 @@
+{
+  "theme": "base",
+  "htmlLabels": false,
+  "deterministicIds": true,
+  "deterministicIDSeed": "dlang-supplemental-tgc-themed-svg-v1",
+  "themeVariables": {
+    "primaryColor": "#f3faf4",
+    "primaryTextColor": "#1a1a1a",
+    "primaryBorderColor": "#2f6b3a",
+    "secondaryColor": "#fff4f2",
+    "secondaryTextColor": "#1a1a1a",
+    "secondaryBorderColor": "#b03931",
+    "tertiaryColor": "#f7f7f7",
+    "tertiaryTextColor": "#444444",
+    "tertiaryBorderColor": "#2c2c2c",
+    "lineColor": "#2c2c2c",
+    "textColor": "#1a1a1a",
+    "mainBkg": "#f3faf4",
+    "nodeBorder": "#2f6b3a",
+    "clusterBkg": "#fff4f2",
+    "clusterBorder": "#b03931",
+    "titleColor": "#1a1a1a",
+    "edgeLabelBackground": "#f3f1ef",
+    "fontFamily": "Segoe UI, system-ui, sans-serif"
+  },
+  "flowchart": {
+    "curve": "basis",
+    "useMaxWidth": true
+  }
+}

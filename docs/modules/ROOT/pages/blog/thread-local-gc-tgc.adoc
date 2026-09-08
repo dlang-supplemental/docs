@@ -22,6 +22,7 @@ Essay on the org site: https://dlang-supplemental.github.io/blog/isolating-heaps
 
 D’s language model is closer to actors than shared-memory C threads:
 
+[.themed-svg]
 image::tgc-actors.svg[Thread A and Thread B isolate TLS data and talk through a mailbox, but both still allocate into one process-wide GC heap,width=100%,alt="Diagram: Thread A and Thread B have private TLS and a copy/immutable mailbox, over one shared GC heap that still pause-stops both"]
 
 Unless you type something `shared` or `__gshared`, Thread B cannot see Thread A’s variables.
@@ -32,6 +33,7 @@ Allocations from every thread land in one shared heap.
 A collection must freeze stacks and registers across the process so the tracer does not race with mutators.
 A pure `@nogc` audio callback thread, a game render loop, or a GUI shell that never calls `new` still stops when another thread’s GC runs.
 
+[.themed-svg]
 image::tgc-stw-timeline.svg[Default GC stop-the-world pauses Thread B during Thread A's collect; tgc collects Thread A locally while Thread B keeps running,width=100%,alt="Timeline: default GC pauses both threads; tgc pauses only the collecting thread"]
 
 That is the core friction for a GC desktop app with a few realtime threads, and for any design that wants GC workers beside deterministic `@nogc` workers in one process.
@@ -77,6 +79,7 @@ Programmers still need structural constraints—ownership, message passing, or r
 
 *`tgc`* is an opt-in GC backend for druntime, selected like other pluggable collectors:
 
+[.themed-svg]
 image::tgc-opt-in-mock.svg[Mock terminal enabling tgc with --DRT-gcopt=gc:tgc while the conservative factory stays registered,width=100%,alt="Mock terminal: .\\app --DRT-gcopt=gc:tgc with status that the default conservative GC remains registered"]
 
 [source,console]
@@ -117,6 +120,7 @@ That is the latency win.
 
 Per-thread heaps are not free.
 
+[.themed-svg]
 image::tgc-performance-compare.svg[Shared global heap with mutex and stop-the-world versus per-thread tgc heaps with local collection and a remote free queue,width=100%,alt="Diagram comparing a shared global GC heap that pauses all threads against per-thread tgc heaps that collect locally and use a remote free queue for ownership transfer"]
 
 *Memory footprint.*
@@ -190,6 +194,7 @@ Classical shared-memory multithreading can sit *inside* an actor-first design as
 
 Imagine a desktop media app:
 
+[.themed-svg]
 image::tgc-desktop-mock.svg[Mock studio window: 60 fps preview stays live while a decode worker collects on its own tgc heap,width=100%,alt="Mock desktop studio window with a 60 fps preview, GUI and audio threads running, and a decode worker collecting locally"]
 
 * *GUI / shell thread:* `@nogc` or isolated `tgc`, actor mailbox, locked frame rate. Must not hitch when workers collect.
@@ -202,6 +207,7 @@ A 4K frame pipeline that copies 32 MB per frame between threads will melt the me
 
 Instead of one global shared heap, map workers to *regions*:
 
+[.themed-svg]
 image::tgc-many-to-many-regions.svg[Many-to-many GC regions: Worker 1 and Worker 3 share Alpha and Beta while Worker 2 stays on a local heap only,width=100%,alt="Diagram of partitioned GC regions where Worker 1 and Worker 3 attach to Regions Alpha and Beta while Worker 2 uses only a local heap and is not paused by a Beta collection"]
 
 * Worker 1: local heap + Region Alpha + Region Beta

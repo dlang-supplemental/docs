@@ -11,13 +11,15 @@ This demo explains what xref:blog/thread-local-gc-tgc.adoc[`tgc`] does and how t
 
 == What you are looking at
 
-image::../../images/tgc-many-to-many-regions.svg[Partitioned shared regions: workers attach to region heaps; unrelated threads keep private heaps,width=100%,alt="Many-to-many GC regions diagram"]
+[.themed-svg]
+image::tgc-many-to-many-regions.svg[Partitioned shared regions: workers attach to region heaps; unrelated threads keep private heaps,width=100%,alt="Many-to-many GC regions diagram"]
 
 * **Private heap** — default for each thread. `GC.collect()` on that thread collects locally without global stop-the-world.
 * **Shared region** — opt-in heap shared by attached threads only. `_d_tgc_region_collect` pauses *those* threads, not the whole process.
 * **Unrelated threads** — never attached to a region are not paused when that region collects.
 
-image::../../images/tgc-stw-timeline.svg[Default GC pauses all threads vs tgc local collect,width=100%,alt="STW timeline comparison"]
+[.themed-svg]
+image::tgc-stw-timeline.svg[Default GC pauses all threads vs tgc local collect,width=100%,alt="STW timeline comparison"]
 
 == Try it (0.2.0)
 

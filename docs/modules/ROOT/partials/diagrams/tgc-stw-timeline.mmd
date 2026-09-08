@@ -1,0 +1,16 @@
+%% Compare global stop-the-world collection with a thread-local collection.
+flowchart TB
+  subgraph global["Default GC: one collect pauses everyone"]
+    direction LR
+    GA["Thread A\nrunning"] --> GP["STOP THE WORLD\ncollecting"] --> GAR["Thread A\nrunning"]
+    GB["Thread B (@nogc)\nrunning"] --> GBP["Thread B\npaused anyway"] --> GBR["Thread B\nrunning"]
+  end
+  subgraph local["tgc: A collects locally; B keeps going"]
+    direction LR
+    LA["Thread A\nrunning"] --> LP["Thread A\nlocal collect"] --> LAR["Thread A\nrunning"]
+    LB["Thread B (@nogc)\nrunning"] --> LBR["Thread B\nnever paused"]
+  end
+  classDef running fill:#eaf7ee,stroke:#1e6a34,color:#17351f;
+  classDef paused fill:#fff0ee,stroke:#a12f2a,color:#5c1815;
+  class GA,GAR,GB,GBR,LA,LAR,LB,LBR running;
+  class GP,GBP,LP paused;

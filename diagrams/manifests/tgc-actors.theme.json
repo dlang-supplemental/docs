@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "namespace": "dlang-tgc-diagram",
+  "source": {
+    "kind": "mermaid",
+    "uri": "docs/modules/ROOT/partials/diagrams/tgc-actors.mmd",
+    "generator": "@mermaid-js/mermaid-cli 11.9.0 + @dev-centr/mermaid-svg-css-vars 0.1.2"
+  },
+  "tokens": [
+    {
+      "id": "color.canvas"
+    },
+    {
+      "id": "color.surface.primary"
+    },
+    {
+      "id": "color.surface.secondary"
+    },
+    {
+      "id": "color.text.primary"
+    },
+    {
+      "id": "color.text.muted"
+    },
+    {
+      "id": "color.border.primary"
+    },
+    {
+      "id": "color.edge"
+    },
+    {
+      "id": "color.edge.label"
+    },
+    {
+      "id": "color.accent.primary"
+    },
+    {
+      "id": "color.accent.on-primary"
+    },
+    {
+      "id": "color.status.success"
+    },
+    {
+      "id": "color.status.warning"
+    },
+    {
+      "id": "color.status.danger"
+    },
+    {
+      "id": "color.region.local"
+    },
+    {
+      "id": "color.region.alpha"
+    },
+    {
+      "id": "color.region.beta"
+    },
+    {
+      "id": "color.terminal"
+    }
+  ],
+  "defaultPreset": "light",
+  "presets": {
+    "light": {
+      "color.canvas": "#ffffff",
+      "color.surface.primary": "#f3faf4",
+      "color.surface.secondary": "#f7f7f7",
+      "color.text.primary": "#1a1a1a",
+      "color.text.muted": "#444444",
+      "color.border.primary": "#2f6b3a",
+      "color.edge": "#2c2c2c",
+      "color.edge.label": "#1a1a1a",
+      "color.accent.primary": "#263746",
+      "color.accent.on-primary": "#f3f1ef",
+      "color.status.success": "#eaf7ee",
+      "color.status.warning": "#fff0ee",
+      "color.status.danger": "#b03931",
+      "color.region.local": "#eef6ff",
+      "color.region.alpha": "#fff4f2",
+      "color.region.beta": "#f4f0fb",
+      "color.terminal": "#171717"
+    },
+    "dark": {
+      "color.canvas": "#17191c",
+      "color.surface.primary": "#203f2a",
+      "color.surface.secondary": "#282c31",
+      "color.text.primary": "#f3eee8",
+      "color.text.muted": "#c8c2bc",
+      "color.border.primary": "#8ac49a",
+      "color.edge": "#d8cec7",
+      "color.edge.label": "#f3eee8",
+      "color.accent.primary": "#38566f",
+      "color.accent.on-primary": "#ffffff",
+      "color.status.success": "#193d27",
+      "color.status.warning": "#4b2522",
+      "color.status.danger": "#e47a70",
+      "color.region.local": "#1f3a52",
+      "color.region.alpha": "#482824",
+      "color.region.beta": "#352b4d",
+      "color.terminal": "#101214"
+    }
+  },
+  "bindings": [
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .label text",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .node rect",
+      "property": "fill",
+      "token": "color.surface.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .node rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster rect",
+      "property": "fill",
+      "token": "color.surface.secondary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .cluster rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .marker",
+      "property": "fill",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .marker",
+      "property": "stroke",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .edgePaths .path",
+      "property": "stroke",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .flowchart-link",
+      "property": "stroke",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .heading rect",
+      "property": "fill",
+      "token": "color.canvas"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .heading rect",
+      "property": "stroke",
+      "token": "color.canvas"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .heading tspan",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .thread rect",
+      "property": "fill",
+      "token": "color.status.success"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .thread rect",
+      "property": "stroke",
+      "token": "color.border.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .thread tspan",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .mailbox rect",
+      "property": "fill",
+      "token": "color.surface.secondary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .mailbox rect",
+      "property": "stroke",
+      "token": "color.edge"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .mailbox tspan",
+      "property": "fill",
+      "token": "color.text.primary"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .warning rect",
+      "property": "fill",
+      "token": "color.status.warning"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .warning rect",
+      "property": "stroke",
+      "token": "color.status.danger"
+    },
+    {
+      "kind": "stylesheet",
+      "selector": "#my-svg .warning tspan",
+      "property": "fill",
+      "token": "color.text.primary"
+    }
+  ],
+  "fallback": {
+    "missingTarget": "warn",
+    "unresolvedToken": "error"
+  }
+}

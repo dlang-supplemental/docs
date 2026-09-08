@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Shared global heap versus per-thread tgc heaps</title>
+  <desc id="desc">Left: one shared heap with a mutex and a stop-the-world pause across Thread A and Thread B. Right: separate Thread A and Thread B heaps with local collection and a remote free queue for ownership transfer.</desc>
+  <!-- transparent background intentionally omitted -->
+  <defs>
+    <style>
+      .label { font-family: "Segoe UI", system-ui, sans-serif; font-size: 14px; fill: #1a1a1a; }
+      .title { font-family: "Segoe UI", system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #1a1a1a; }
+      .small { font-family: "Segoe UI", system-ui, sans-serif; font-size: 12px; fill: #444; }
+      .muted { fill: #5a5a5a; }
+      .box { fill: #ffffff; stroke: #2c2c2c; stroke-width: 1.5; }
+      .accent { fill: #B03931; }
+      .accent-stroke { stroke: #B03931; fill: none; stroke-width: 2; }
+      .warn { fill: #fff4f2; stroke: #B03931; stroke-width: 1.5; }
+      .ok { fill: #f3faf4; stroke: #2f6b3a; stroke-width: 1.5; }
+      .dash { stroke-dasharray: 4 3; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c2c2c"/>
+    </marker>
+    <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B03931"/>
+    </marker>
+  </defs>
+
+  <!-- Left column: shared -->
+  <text x="30" y="28" class="title">Classical shared heap</text>
+  <rect x="30" y="48" width="400" height="150" rx="8" class="warn"/>
+  <text x="48" y="78" class="title">Global heap pool</text>
+  <text x="48" y="100" class="small">Thread A alloc  --  Thread B alloc</text>
+  <rect x="160" y="118" width="140" height="36" rx="6" class="box"/>
+  <text x="178" y="141" class="label">MUTEX / ATOMIC</text>
+  <text x="48" y="178" class="small muted">High cache friction -- slow under contention</text>
+
+  <rect x="30" y="220" width="190" height="70" rx="8" class="box"/>
+  <text x="48" y="248" class="label">Thread A</text>
+  <text x="48" y="268" class="small muted">paused on collect</text>
+  <rect x="240" y="220" width="190" height="70" rx="8" class="box"/>
+  <text x="258" y="248" class="label">Thread B</text>
+  <text x="258" y="268" class="small muted">paused on collect</text>
+
+  <rect x="30" y="310" width="400" height="72" rx="8" class="warn"/>
+  <text x="48" y="340" class="label">GC collect -- stop-the-world</text>
+  <text x="48" y="362" class="small">All registered threads freeze, even @nogc workers</text>
+
+  <!-- Divider -->
+  <line x1="460" y1="40" x2="460" y2="390" stroke="#cccccc" stroke-width="1"/>
+
+  <!-- Right column: tgc -->
+  <text x="490" y="28" class="title">Per-thread heaps (tgc)</text>
+
+  <rect x="490" y="48" width="190" height="150" rx="8" class="ok"/>
+  <text x="508" y="78" class="title">Heap A</text>
+  <text x="508" y="100" class="small">Thread A only</text>
+  <text x="508" y="130" class="small">No lock on hot path</text>
+  <text x="508" y="152" class="small">Local collect</text>
+  <text x="508" y="174" class="small muted">B keeps running</text>
+
+  <rect x="700" y="48" width="190" height="150" rx="8" class="ok"/>
+  <text x="718" y="78" class="title">Heap B</text>
+  <text x="718" y="100" class="small">Thread B only</text>
+  <text x="718" y="130" class="small">No lock on hot path</text>
+  <text x="718" y="152" class="small">Local collect</text>
+  <text x="718" y="174" class="small muted">A keeps running</text>
+
+  <rect x="490" y="220" width="190" height="70" rx="8" class="box"/>
+  <text x="508" y="248" class="label">Thread A</text>
+  <text x="508" y="268" class="small muted">owns Heap A</text>
+  <rect x="700" y="220" width="190" height="70" rx="8" class="box"/>
+  <text x="718" y="248" class="label">Thread B</text>
+  <text x="718" y="268" class="small muted">owns Heap B</text>
+
+  <!-- Remote free queue -->
+  <path d="M 680 255 C 700 255, 700 330, 680 330" class="accent-stroke" marker-end="url(#arrow-accent)"/>
+  <path d="M 700 330 C 680 330, 680 255, 700 255" class="accent-stroke dash" opacity="0.35"/>
+  <rect x="560" y="310" width="260" height="72" rx="8" class="box"/>
+  <text x="578" y="340" class="label">Remote free queue (move path)</text>
+  <text x="578" y="362" class="small">B returns ownership; A recycles later</text>
+</svg>

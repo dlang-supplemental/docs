@@ -3,6 +3,10 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-09-08
+
+* Migrated the four canonical `tgc` diagrams to Mermaid sources with explicit Themed SVG manifests, adaptive image artifacts, host artifacts, and sanitized progressive delivery. The prior fixed drawings remain available for comparison.
+
 == 2026-09-07
 
 * Hardened the xref:proposals/tgc-design-0.1.0.adoc[`tgc` prototype] as **0.2.3** after concurrency and API-contract audits.

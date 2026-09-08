@@ -1,0 +1,27 @@
+%% Workers attach only to the shared regions they need.
+flowchart TB
+  W1["Worker 1"]
+  W3["Worker 3"]
+  W2["Worker 2"]
+  L1["Worker 1 local heap\nisolated"]
+  A["Region Alpha (GC)\nshared by W1 and W3"]
+  B["Region Beta (GC)\nshared by W1 and W3"]
+  L2["Worker 2 local heap\nisolated"]
+  N["Collect Region Beta\npauses W1 and W3 only\nWorker 2 is untouched"]
+  W1 --> L1
+  W1 --> A
+  W1 --> B
+  W3 --> A
+  W3 --> B
+  W2 --> L2
+  B -.-> N
+  classDef worker fill:#f7f7f7,stroke:#2c2c2c,color:#1a1a1a;
+  classDef local fill:#eef6ff,stroke:#3a6ea5,color:#17324d;
+  classDef alpha fill:#fff4f2,stroke:#b03931,color:#461613;
+  classDef beta fill:#f4f0fb,stroke:#6b4ea2,color:#302047;
+  classDef note fill:#fafafa,stroke:#777777,color:#1a1a1a;
+  class W1,W2,W3 worker;
+  class L1,L2 local;
+  class A alpha;
+  class B beta;
+  class N note;
