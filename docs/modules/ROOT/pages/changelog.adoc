@@ -5,7 +5,7 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-09-08
 
-* Migrated the four canonical `tgc` diagrams to Mermaid sources with explicit Themed SVG manifests, adaptive image artifacts, host artifacts, and sanitized progressive delivery. The prior fixed drawings remain available for comparison.
+* Migrated the four canonical `tgc` diagrams to Mermaid sources with explicit Themed SVG manifests, adaptive image artifacts, host artifacts, sanitized progressive delivery, and warning-free cross-platform Mermaid CLI invocation. The prior fixed drawings remain available for comparison.
 
 == 2026-09-07
 
