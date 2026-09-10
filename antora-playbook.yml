@@ -4,6 +4,10 @@
 site:
   title: D Lang Supplemental
   url: https://dlang-supplemental.github.io/docs
+  robots: |
+    User-agent: *
+    Allow: /
+    Sitemap: https://dlang-supplemental.github.io/docs/sitemap.xml
   start_page: asciidoctor-d:ROOT:index.adoc
   keys:
     header_logo: logo.svg

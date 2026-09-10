@@ -1,6 +1,10 @@
 = Changelog
 :navtitle: Changelog
 
+== 2026-09-10 -- Publish robots.txt with sitemap
+
+* Antora `site.robots` now emits `/robots.txt` with an absolute `Sitemap:` line for the production host.
+
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
 == 2026-09-08
