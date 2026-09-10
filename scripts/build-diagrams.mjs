@@ -70,6 +70,7 @@ for (const [name, [title, description]] of Object.entries(diagrams)) {
   const sourcePath = path.join(sourceDir, `${name}.mmd`)
   const rawPath = path.join(cacheDir, `${name}.raw.svg`)
   const manifest = JSON.parse(readFileSync(path.join(manifestDir, `${name}.theme.json`), "utf8"))
+  mkdirSync(cacheDir, { recursive: true })
   execFileSync(process.execPath, [mermaidCli, "-i", sourcePath, "-o", rawPath, "-c", config, "-b", "transparent", "-q"], {
     cwd: root,
     stdio: "inherit",

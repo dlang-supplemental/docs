@@ -1,0 +1,8 @@
+= Changelog detail: themed SVG dark-mode box fills
+:navtitle: themed SVG dark-mode box fills
+:date: 2026-09-10
+
+Mermaid 11 paints node colors as inline `fill:… !important` / `stroke:… !important`.
+Older `@dev-centr/themed-svg` releases rewrote stylesheet rules to CSS variables but left those inline paints on light-palette hex, so dark-mode label text (`var(--…-text-primary)`) sat on light boxes.
+
+Bump the diagram toolchain and CDN progressive loader to `@dev-centr/themed-svg` 0.2.3 (and `@dev-centr/mermaid-svg-css-vars` 0.1.3), then regenerate adaptive and host artifacts for all six `tgc` diagrams. Inline node paints now use the same `--themed-svg-dlang-tgc-diagram-…` variables as the stylesheet bindings.
