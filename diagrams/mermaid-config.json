@@ -1,4 +1,6 @@
 {
+  "layout": "dagre",
+  "look": "classic",
   "theme": "base",
   "htmlLabels": false,
   "deterministicIds": true,
@@ -25,6 +27,7 @@
   },
   "flowchart": {
     "curve": "basis",
-    "useMaxWidth": true
+    "useMaxWidth": true,
+    "wrappingWidth": 200
   }
 }

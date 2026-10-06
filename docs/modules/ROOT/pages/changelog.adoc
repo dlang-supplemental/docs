@@ -3,7 +3,7 @@
 
 == 2026-10-06 -- Diagrams rebuilt with Mermaid CLI 12
 
-* Regenerated all six `tgc` Mermaid diagrams with `@mermaid-js/mermaid-cli` **12.0.0** (Mermaid 12, Puppeteer 25). Labels wrap to narrower boxes and edges route orthogonally; the middle dot in the shared-heap comparison now renders correctly.
+* Regenerated all six `tgc` Mermaid diagrams with `@mermaid-js/mermaid-cli` **12.0.0** (Mermaid 12, Puppeteer 25). The diagram config pins Mermaid 12 to the previous dagre layout, classic look, and 200px label wrapping, so the diagrams keep their existing appearance; the middle dot in the shared-heap comparison now renders correctly.
 * The site build and diagram toolchain now run on Node.js 24 (Mermaid CLI 12 requires Node.js 22.13 or later).
 
 == 2026-09-10 -- Dark-mode diagram box fills
