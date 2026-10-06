@@ -4,7 +4,7 @@
   "source": {
     "kind": "mermaid",
     "uri": "docs/modules/ROOT/partials/diagrams/tgc-many-to-many-regions.mmd",
-    "generator": "@mermaid-js/mermaid-cli 11.9.0 + @dev-centr/mermaid-svg-css-vars 0.1.2"
+    "generator": "@mermaid-js/mermaid-cli 12.0.0 + @dev-centr/mermaid-svg-css-vars 0.1.3"
   },
   "tokens": [
     {
