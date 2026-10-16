@@ -31,7 +31,7 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 === SoftNav TOC and in-page hash jumps
 
-* Fixed [`soft-nav.js`](supplemental-ui/js/soft-nav.js) treating sidebar TOC hash links as cross-page soft loads when folder URLs used a trailing slash (`/changelog/#section` vs `/changelog/`). Same-page `#` clicks now scroll the article; soft fetch applies `#` after swaps when needed.
+* Fixed hub `soft-nav.js` treating sidebar TOC hash links as cross-page soft loads when folder URLs used a trailing slash (`/changelog/#section` vs `/changelog/`). Same-page `#` clicks now scroll the article; soft fetch applies `#` after swaps when needed.
 
 == 2026-10-06 — Diagrams rebuilt with Mermaid CLI 12
 
