@@ -1,4 +1,4 @@
-= Tagged proposal catalog
+= 2026-08-15 — Tagged proposal catalog
 :date: 2026-08-15
 
 * Tagged xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D] as a `proposal`.

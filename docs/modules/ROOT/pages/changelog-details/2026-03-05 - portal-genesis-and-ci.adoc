@@ -1,4 +1,4 @@
-= 2026-03-05 – Portal Genesis and CI
+= 2026-03-05 — Portal genesis and CI
 
 * Bootstrapped the D Lang Supplemental Antora hub repository integrating the `antora-dark-theme` UI bundle.
 * Resolved configuration bugs across internal component repositories (`densor`, `fluidsync-daemon`, `vector-store-dlang`, `vibe-search-core`, `asciidoctor-dlang`) by explicitly enforcing the `start_path` routing to `/docs` instead of repo roots.

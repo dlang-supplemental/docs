@@ -1,4 +1,4 @@
-= Blog, News, and tgc articles
+= 2026-08-02 — Blog, news, and tgc launch articles
 :date: 2026-08-02
 
 Added portal sections and cross-linked articles for the opt-in thread-local GC work:

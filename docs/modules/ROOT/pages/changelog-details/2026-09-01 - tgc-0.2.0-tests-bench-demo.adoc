@@ -1,4 +1,4 @@
-= Changelog detail: tgc 0.2.0 tests, benchmarks, demo
+= 2026-09-01 (later) — tgc demo and 0.2.0 design notes
 :navtitle: tgc 0.2.0 harness
 :date: 2026-09-01
 

@@ -1,4 +1,4 @@
-= 2026-10-16 – Facto stack, Lunr, and search omnibox
+= 2026-10-16 — Facto stack and site search
 
 * Wired the hub playbook to the https://github.com/antora-supplemental/facto-stack[facto-stack] extension set: Lunr site search, Kroki diagrams, page-context metadata, nav typology, link validation, and related maint extensions.
 * Registered `@antora-supplemental/antora-search-chat` after Lunr for the Valentus Search/Ask omnibox (Ask remains unconfigured until a backend is added).

@@ -1,48 +1,54 @@
 = Changelog
 :navtitle: Changelog
 
-== 2026-10-16 -- Linkinator hover bar and chrome exclusions
+== 2026-10-16 — Changelog em-dash timeline headings
+
+* Standardized index and detail headings to `YYYY-MM-DD — description` (Unicode em dash); conformed all prior portal changelog dates.
++
+See xref:changelog-details/2026-10-16 - changelog-em-dash-headings.adoc[Detailed changelog].
+
+== 2026-10-16 — Linkinator hover bar and chrome exclusions
 
 * `@antora-supplemental/linkinator` **v0.1.2+** shows Wayback controls in a hover bar on article links only (not header, footer, or page-context metadata).
 * Extension display name is **Linkinator** (`v0.1.3` registry metadata; npm package id unchanged).
 +
 See xref:changelog-details/2026-10-16 - linkinator-hover-chrome.adoc[Detailed changelog].
 
-== 2026-10-16 -- Learning about D media page
+== 2026-10-16 — Learning about D media page
 
 * Curated xref:learning-about-d.adoc[Learning about D] hub page (maintainer list via PR/issue); includes Wookash Podcast interview with Lewis Nicolle on why D.
 +
 See xref:changelog-details/2026-10-16 - learning-about-d-media.adoc[Detailed changelog].
 
-== 2026-10-16 -- Facto stack and site search
+== 2026-10-16 — Facto stack and site search
 
 * Playbook now uses the facto-stack extension bundle: Lunr keyword search, `@antora-supplemental/antora-search-chat` omnibox, Kroki, page-context, nav typology, and link/orphan tooling; Valentus UI bundle moves to `v2`.
 +
 See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed changelog].
 
-== 2026-10-06 -- Diagrams rebuilt with Mermaid CLI 12
+== 2026-10-06 — Diagrams rebuilt with Mermaid CLI 12
 
 * Regenerated all six `tgc` Mermaid diagrams with `@mermaid-js/mermaid-cli` **12.0.0** (Mermaid 12, Puppeteer 25). The diagram config pins Mermaid 12 to the previous dagre layout, classic look, and 200px label wrapping, so the diagrams keep their existing appearance; the middle dot in the shared-heap comparison now renders correctly.
 * The site build and diagram toolchain now run on Node.js 24 (Mermaid CLI 12 requires Node.js 22.13 or later).
 
-== 2026-09-10 -- Dark-mode diagram box fills
+== 2026-09-10 — Dark-mode diagram box fills
 
 * Regenerated all six `tgc` Mermaid diagrams with `@dev-centr/themed-svg` **0.2.3** so node `fill`/`stroke` inline `!important` values become theme CSS variables (fixes light boxes with dark-mode text).
 * Progressive delivery CDN and package pins move from 0.1.1 to 0.2.3 (`@dev-centr/mermaid-svg-css-vars` 0.1.3).
 +
 See xref:changelog-details/2026-09-10 - themed-svg-dark-mode-box-fills.adoc[Detailed changelog].
 
-== 2026-09-10 -- Publish robots.txt with sitemap
+== 2026-09-10 — Publish robots.txt with sitemap
 
 * Antora `site.robots` now emits `/robots.txt` with an absolute `Sitemap:` line for the production host.
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
-== 2026-09-08 -- Mermaid sources and Themed SVG for tgc diagrams
+== 2026-09-08 — Mermaid sources and Themed SVG for tgc diagrams
 
 * Migrated all six canonical `tgc` diagrams to Mermaid sources with explicit Themed SVG manifests, adaptive image artifacts, host artifacts, sanitized progressive delivery, and warning-free cross-platform Mermaid CLI invocation. The prior fixed drawings remain available for comparison.
 
-== 2026-09-07 -- tgc 0.2.2–0.2.3 hardening and timeline theming
+== 2026-09-07 — tgc 0.2.2–0.2.3 hardening and timeline theming
 
 * Hardened the xref:proposals/tgc-design-0.1.0.adoc[`tgc` prototype] as **0.2.3** after concurrency and API-contract audits.
 +
@@ -56,19 +62,19 @@ See xref:changelog-details/2026-09-07 - tgc-0.2.2-lookup-and-correctness.adoc[De
 +
 See xref:changelog-details/2026-09-07 - tgc-timeline-theming.adoc[Detailed changelog].
 
-== 2026-09-01 (later) -- tgc demo and 0.2.0 design notes
+== 2026-09-01 (later) — tgc demo and 0.2.0 design notes
 
 * Shipped xref:demos/tgc/index.adoc[tgc demo] with test/benchmark instructions; xref:proposals/tgc-design-0.1.0.adoc[design notes] updated for **0.2.0**.
 +
 See xref:changelog-details/2026-09-01 - tgc-0.2.0-tests-bench-demo.adoc[Detailed changelog].
 
-== 2026-09-01 -- tgc 0.1.x prototype and canonical design
+== 2026-09-01 — tgc 0.1.x prototype and canonical design
 
 * Reframed xref:blog/thread-local-gc-tgc.adoc[`tgc`] as a **0.1.x prototype**; added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] with SemVer plan (0.1.0 private heaps, 0.1.1 region scaffold, 0.2.0 working regions).
 +
 See xref:changelog-details/2026-09-01 - tgc-0.1.0-design-reframe.adoc[Detailed changelog].
 
-== 2026-08-17 -- avalonia-d in the hub and launch posts
+== 2026-08-17 — avalonia-d in the hub and launch posts
 
 * Registered xref:avalonia-d:ROOT:index.adoc[avalonia-d] in the Antora playbooks and portal component list.
 +
@@ -77,7 +83,7 @@ See xref:changelog-details/2026-08-17 - avalonia-d-component.adoc[Detailed chang
 +
 See xref:changelog-details/2026-08-17 - avalonia-d-news-blog.adoc[Detailed changelog].
 
-== 2026-08-15 -- Proposals hub, tgc visuals, and tagged catalog
+== 2026-08-15 — Proposals hub, tgc visuals, and tagged catalog
 
 * Added xref:proposals/index.adoc[Proposals] as a tagged index (the portal lists it; the page loads `:page-tags: proposal`).
 * Added diagrams and desktop/console mockups to xref:blog/thread-local-gc-tgc.adoc[the `tgc` design article], and dated the xref:news/tgc-upstream-pr.adoc[upstream news] to the GitHub opened time of https://github.com/dlang/dmd/pull/23514[`dlang/dmd#23514`] (2 August 2026, 23:02 UTC).
@@ -90,26 +96,26 @@ See xref:changelog-details/2026-08-15 - docs-proposals-index.adoc[Detailed chang
 +
 See xref:changelog-details/2026-08-15 - proposals-catalog.adoc[Detailed changelog].
 
-== 2026-08-03 -- tgc articles and SymGC context
+== 2026-08-03 — tgc articles and SymGC context
 
 * Updated the `tgc` xref:blog/thread-local-gc-tgc.adoc[blog] and xref:news/tgc-upstream-pr.adoc[news] articles to acknowledge https://github.com/symmetryinvestments/symgc[SymGC] / DConf “We Need a New GC” work and how it relates to pause-isolation goals.
 +
 See xref:changelog-details/2026-08-03 - tgc-symgc-related-work.adoc[Detailed changelog].
 
-== 2026-08-02 -- Blog, news, and tgc launch articles
+== 2026-08-02 — Blog, news, and tgc launch articles
 
 * Added dedicated xref:blog/index.adoc[Blog] and xref:news/index.adoc[News] sections (separate from this changelog).
 * Published xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D] and xref:news/tgc-upstream-pr.adoc[the upstream PR announcement].
 +
 See xref:changelog-details/2026-08-02 - blog-news-tgc.adoc[Detailed changelog].
 
-== 2026-07-31 -- Publishing D packages from the CLI
+== 2026-07-31 — Publishing D packages from the CLI
 
 * Added xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI], a news-style guide on `dub-publish`, registry owner automation, and the upstream https://github.com/dlang/dub/pull/3139[`dub publish`] proposal.
 +
 See xref:changelog-details/2026-07-31 - publishing-packages-from-the-cli.adoc[Detailed changelog].
 
-== 2026-07-24 -- Org logo, Valentus theme, and opentui-d
+== 2026-07-24 — Org logo, Valentus theme, and opentui-d
 
 * Added the org **D+** mark (`supplemental-ui/img/logo.svg`, D-lang red `#B03931`) and wired it into the Valentus header via `ui.supplemental_files` and `site.keys.header_logo`.
 * Switched the Antora UI bundle from the retired `antora-dark-theme` URL (now dark-mode-only Default UI) to link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] `v1` (`ui-bundle.zip`).
@@ -117,22 +123,22 @@ See xref:changelog-details/2026-07-31 - publishing-packages-from-the-cli.adoc[De
 See xref:changelog-details/2026-07-24 - switch-to-valentus-theme.adoc[Detailed changelog].
 * Registered xref:opentui-d:ROOT:index.adoc[opentui-d] in the Antora playbooks and portal component list.
 
-== 2026-03-22 -- Flutter Skia and Impeller guide
+== 2026-03-22 — Flutter Skia and Impeller guide
 
 * Added xref:flutter-skia-impeller-rendering.adoc[Flutter rendering: Skia and Impeller], a guide covering Skia vs Impeller, transitional “Skia + Impeller” architecture, embedding Impeller from D, and layered decoupling for desktop tooling.
 * Linked the guide from the portal xref:index.adoc[page] and from the ROOT module navigation.
 
-== 2026-03-14 -- GraphRAG indexer in documentation playbooks
+== 2026-03-14 — GraphRAG indexer in documentation playbooks
 
 * Configured the new `graphrag-indexer` Antora source in the global playbooks and initialized the portal changelog.
 * See xref:changelog-details/2026-03-14 - added-graphrag-indexer.adoc[Detailed changelog].
 
-== 2026-03-07 -- Split local and online playbooks
+== 2026-03-07 — Split local and online playbooks
 
 * Created a local-development specific playbook mapped to sibling repositories.
 * See xref:changelog-details/2026-03-07 - split-local-and-online-playbooks.adoc[Detailed changelog].
 
-== 2026-03-05 -- Portal genesis and CI
+== 2026-03-05 — Portal genesis and CI
 
 * Bootstrapped D Lang Supplemental documentation portal with centralized CI/CD processing and GitHub Pages deployments.
 * See xref:changelog-details/2026-03-05 - portal-genesis-and-ci.adoc[Detailed changelog].

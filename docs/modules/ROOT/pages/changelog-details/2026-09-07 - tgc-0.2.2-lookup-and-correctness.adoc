@@ -1,4 +1,4 @@
-= Changelog detail: `tgc` 0.2.2 lookup and correctness
+= 2026-09-07 — tgc 0.2.2 lookup and correctness
 
 * Added layered block lookup: constant-time address-range rejection, linear search for tiny heaps, and binary predecessor search for larger heaps.
 * Replaced per-entry index shifts with `memmove`.

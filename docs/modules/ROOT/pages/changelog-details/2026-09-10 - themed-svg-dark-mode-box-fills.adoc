@@ -1,4 +1,4 @@
-= Changelog detail: themed SVG dark-mode box fills
+= 2026-09-10 — Dark-mode diagram box fills
 :navtitle: themed SVG dark-mode box fills
 :date: 2026-09-10
 

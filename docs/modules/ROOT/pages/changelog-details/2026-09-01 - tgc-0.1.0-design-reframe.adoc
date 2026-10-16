@@ -1,4 +1,4 @@
-= Changelog detail: Reframe `tgc` as 0.1.0 prototype
+= 2026-09-01 — tgc 0.1.x prototype and canonical design
 :navtitle: tgc 0.1.0 design reframe
 :date: 2026-09-01
 
