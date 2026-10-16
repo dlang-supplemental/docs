@@ -2,4 +2,4 @@
 
 * Portal xref:changelog.adoc[changelog] index: every `==` line is `YYYY-MM-DD — mini description` (Unicode em dash, U+2014).
 * All xref:changelog.adoc#_changelog_details[changelog-details] level-1 titles updated to the same pattern; filenames stay `YYYY-MM-DD - slug.adoc`.
-* House skill `owned-changelog` documents the format and requires conforming older entries whenever a changelog is edited.
+* House skill `owned-changelog` documents the format, **one index section per calendar day** (merge duplicate dates; no `(later)` headings), and requires conforming older entries whenever a changelog is edited.

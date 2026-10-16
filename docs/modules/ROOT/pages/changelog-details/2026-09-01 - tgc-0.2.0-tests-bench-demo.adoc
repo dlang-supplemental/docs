@@ -1,4 +1,4 @@
-= 2026-09-01 (later) — tgc demo and 0.2.0 design notes
+= 2026-09-01 — tgc 0.2.0 demo and design notes
 :navtitle: tgc 0.2.0 harness
 :date: 2026-09-01
 
