@@ -42,6 +42,10 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 * `@antora-supplemental/facto-stack` **v0.2.3** registers `@antora-supplemental/soft-nav-page-toc` so the right-rail page TOC rebuilds when SoftNav swaps to xref:changelog-details/[changelog-details] and other in-component pages. Upstream proposal: link:https://docs.antora-supplemental.org/docs/ROOT/proposals/soft-nav-page-toc.html[SoftNav page TOC and nav-hidden pages^].
 
+=== SoftNav scroll, TOC, and nav-hidden children
+
+* Hub `soft-nav.js` keeps the left nav tree stable on soft loads (`swapNav` off), scrolls to top on cross-page navigation, rebuilds the right-rail TOC, soft-navigates same-component nav links, and injects `:page-nav-hidden:` pages under their parent (for example Changelog → detail) on hard and soft loads.
+
 == 2026-10-06
 
 === Diagrams rebuilt with Mermaid CLI 12
