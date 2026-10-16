@@ -37,6 +37,10 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 * Fixed hub `soft-nav.js` treating sidebar TOC hash links as cross-page soft loads when folder URLs used a trailing slash (`/changelog/#section` vs `/changelog/`). Same-page `#` clicks now scroll the article; soft fetch applies `#` after swaps when needed.
 
+=== SoftNav page TOC after detail links
+
+* `@antora-supplemental/facto-stack` **v0.2.3** registers `@antora-supplemental/soft-nav-page-toc` so the right-rail page TOC rebuilds when SoftNav swaps to xref:changelog-details/[changelog-details] and other in-component pages. Upstream proposal: link:https://docs.antora-supplemental.org/docs/ROOT/proposals/soft-nav-page-toc.html[SoftNav page TOC and nav-hidden pages^].
+
 == 2026-10-06
 
 === Diagrams rebuilt with Mermaid CLI 12
