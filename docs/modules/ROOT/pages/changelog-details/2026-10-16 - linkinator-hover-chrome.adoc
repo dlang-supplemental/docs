@@ -1,4 +1,5 @@
-:page-nav-hidden:
+:hide-from-navtree:
+:navtree-parent: changelog.adoc
 = 2026-10-16
 
 == Linkinator hover bar and chrome exclusions

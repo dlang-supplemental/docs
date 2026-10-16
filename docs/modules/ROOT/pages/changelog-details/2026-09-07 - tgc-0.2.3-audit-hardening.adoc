@@ -1,4 +1,5 @@
-:page-nav-hidden:
+:hide-from-navtree:
+:navtree-parent: changelog.adoc
 = 2026-09-07
 
 == tgc 0.2.3 audit hardening

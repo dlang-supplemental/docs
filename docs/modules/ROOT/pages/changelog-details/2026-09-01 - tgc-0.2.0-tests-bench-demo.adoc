@@ -1,4 +1,5 @@
-:page-nav-hidden:
+:hide-from-navtree:
+:navtree-parent: changelog.adoc
 = 2026-09-01
 
 == tgc demo and 0.2.0 design notes

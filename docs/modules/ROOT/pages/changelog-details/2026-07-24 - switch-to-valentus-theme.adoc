@@ -1,4 +1,5 @@
-:page-nav-hidden:
+:hide-from-navtree:
+:navtree-parent: changelog.adoc
 = 2026-07-24
 
 == Org logo, Valentus theme, and opentui-d
