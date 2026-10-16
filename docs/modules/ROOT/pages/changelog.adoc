@@ -1,6 +1,18 @@
 = Changelog
 :navtitle: Changelog
 
+== 2026-10-16 -- Learning about D media page
+
+* Curated xref:learning-about-d.adoc[Learning about D] hub page (maintainer list via PR/issue); includes Wookash Podcast interview with Lewis Nicolle on why D.
++
+See xref:changelog-details/2026-10-16 - learning-about-d-media.adoc[Detailed changelog].
+
+== 2026-10-16 -- Facto stack and site search
+
+* Playbook now uses the facto-stack extension bundle: Lunr keyword search, `@antora-supplemental/antora-search-chat` omnibox, Kroki, page-context, nav typology, and link/orphan tooling; Valentus UI bundle moves to `v2`.
++
+See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed changelog].
+
 == 2026-10-06 -- Diagrams rebuilt with Mermaid CLI 12
 
 * Regenerated all six `tgc` Mermaid diagrams with `@mermaid-js/mermaid-cli` **12.0.0** (Mermaid 12, Puppeteer 25). The diagram config pins Mermaid 12 to the previous dagre layout, classic look, and 200px label wrapping, so the diagrams keep their existing appearance; the middle dot in the shared-heap comparison now renders correctly.

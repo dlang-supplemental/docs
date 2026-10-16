@@ -13,10 +13,10 @@ site:
     header_logo: logo.svg
     site_home_url: https://github.com/dlang-supplemental
     site_home_label: dlang-supplemental on GitHub
-antora:
-  extensions:
-    - require: ./lib/page-catalog-extension.js
-    - '@antora-supplemental/build-stack'
+
+urls:
+  html_extension_style: indexify
+
 content:
   sources:
     - url: https://github.com/dlang-supplemental/asciidoctor-d.git
@@ -50,16 +50,57 @@ content:
       branches: HEAD
       start_path: docs
       worktrees: true
+
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
     snapshot: true
   supplemental_files: ./supplemental-ui
+
 output:
   dir: ./build/site
+
+antora:
+  extensions:
+    # Lunr before wrappers (Facto + search-chat omnibox).
+    - require: "@antora/lunr-extension"
+      index_latest_only: true
+      index_by_heading: true
+      snippet_length: 200
+    - require: "@antora-supplemental/antora-search-chat"
+    - require: ./lib/page-catalog-extension.js
+    - require: "@antora-supplemental/unversioned-component-urls"
+      mode: selector
+    - require: "@antora-supplemental/nav-typology"
+    - require: "@antora-supplemental/nav-typology-diataxis"
+    - "@antora-supplemental/build-stack"
+    - "@antora-supplemental/page-edit"
+    - require: "@antora-supplemental/link-validator"
+      reportEmail: dlang@devcentr.org
+      softFail403: true
+      failLevel: none
+    - require: "@antora-supplemental/linkinator"
+      statusDefault: unchecked
+    - require: "@antora-supplemental/extension-lister"
+      layouts: [footer]
+    - require: "@antora-supplemental/orphan-finder/extension"
+      reportEmail: dlang@devcentr.org
+      failOnUnresolved: false
+    - require: "@antora-supplemental/page-context/antora"
+      component: docs
+      path: keywords
 
 asciidoc:
   attributes:
     stem: latexmath
+    kroki-server-url: https://kroki.io
+    kroki-fetch-diagram: true
+    page-context-active: ""
+    page-context-keyword-base: "/docs/keywords"
     source-highlighter: highlight.js
     icons: font
+  extensions:
+    - "@antora-supplemental/asciidoctor-emoji-literals"
+    - asciidoctor-emoji
+    - asciidoctor-kroki
+    - "@antora-supplemental/page-context"
