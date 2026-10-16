@@ -25,7 +25,7 @@ See xref:changelog-details/2026-10-16 - learning-about-d-media.adoc[Detailed cha
 
 === Facto stack and site search
 
-* Playbook requires `@antora-supplemental/facto-stack` once (compose Antora extension); Lunr, page-context, nav typology, link tooling, and related members register from the pack so the footer lists depth-1 imports. `@antora-supplemental/antora-search-chat` remains a separate hub require after the pack.
+* Playbook requires `@antora-supplemental/facto-stack` once (compose Antora extension); Lunr, `@antora-supplemental/antora-search-chat`, page-context, nav typology, link tooling, and related members register from the pack so the footer lists depth-1 imports.
 +
 See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed changelog].
 

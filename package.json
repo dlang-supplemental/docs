@@ -9,8 +9,7 @@
   },
   "packageManager": "pnpm@10.28.1",
   "devDependencies": {
-    "@antora-supplemental/antora-search-chat": "git+https://github.com/antora-supplemental/antora-search-chat.git#v0.1.4",
-    "@antora-supplemental/facto-stack": "github:antora-supplemental/facto-stack#v0.2.1",
+    "@antora-supplemental/facto-stack": "git+https://github.com/antora-supplemental/facto-stack.git#v0.2.2",
     "@dev-centr/mermaid-svg-css-vars": "0.1.3",
     "@dev-centr/themed-svg": "0.2.3",
     "@mermaid-js/mermaid-cli": "12.0.0",

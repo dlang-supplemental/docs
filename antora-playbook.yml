@@ -79,7 +79,6 @@ antora:
         page-context-keyword-base: "/docs/keywords"
         source-highlighter: highlight.js
         icons: font
-    - require: "@antora-supplemental/antora-search-chat"
     - require: ./lib/page-catalog-extension.js
 
 asciidoc:
