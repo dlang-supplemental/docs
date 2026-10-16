@@ -65,17 +65,19 @@ See xref:changelog-details/2026-09-07 - tgc-0.2.2-lookup-and-correctness.adoc[De
 +
 See xref:changelog-details/2026-09-07 - tgc-timeline-theming.adoc[Detailed changelog].
 
-== 2026-09-01 — tgc demo and 0.2.0 design notes
+== 2026-09-01 — tgc 0.1.x design through 0.2.0 demo
 
-* Shipped xref:demos/tgc/index.adoc[tgc demo] with test/benchmark instructions; xref:proposals/tgc-design-0.1.0.adoc[design notes] updated for **0.2.0**.
-+
-See xref:changelog-details/2026-09-01 - tgc-0.2.0-tests-bench-demo.adoc[Detailed changelog].
-
-== 2026-09-01 — tgc 0.1.x prototype and canonical design
+=== tgc 0.1.x prototype and canonical design
 
 * Reframed xref:blog/thread-local-gc-tgc.adoc[`tgc`] as a **0.1.x prototype**; added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] with SemVer plan (0.1.0 private heaps, 0.1.1 region scaffold, 0.2.0 working regions).
 +
 See xref:changelog-details/2026-09-01 - tgc-0.1.0-design-reframe.adoc[Detailed changelog].
+
+=== tgc demo and 0.2.0 design notes
+
+* Shipped xref:demos/tgc/index.adoc[tgc demo] with test/benchmark instructions; xref:proposals/tgc-design-0.1.0.adoc[design notes] updated for **0.2.0** (same day, after the reframe).
++
+See xref:changelog-details/2026-09-01 - tgc-0.2.0-tests-bench-demo.adoc[Detailed changelog].
 
 == 2026-08-17 — avalonia-d in the hub and launch posts
 
