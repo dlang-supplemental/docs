@@ -1,4 +1,6 @@
-= 2026-08-15 — Proposals index and tgc figures
+= 2026-08-15
+
+== Proposals index and tgc figures
 :date: 2026-08-15
 
 * Added xref:proposals/index.adoc[Proposals] as an index of pages tagged `proposal`.

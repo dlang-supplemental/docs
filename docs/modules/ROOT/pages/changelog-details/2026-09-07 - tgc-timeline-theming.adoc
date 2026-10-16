@@ -1,4 +1,6 @@
-= 2026-09-07 — tgc timeline theming
+= 2026-09-07
+
+== tgc timeline theming
 :navtitle: tgc timeline theming
 :date: 2026-09-07
 

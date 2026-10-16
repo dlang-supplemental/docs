@@ -1,4 +1,6 @@
-= 2026-08-03 — tgc articles and SymGC context
+= 2026-08-03
+
+== tgc articles and SymGC context
 :date: 2026-08-03
 
 * Linked https://github.com/symmetryinvestments/symgc[SymGC], DConf ’24 “We Need a New GC” talks, and the forum thread from the xref:blog/thread-local-gc-tgc.adoc[tgc blog] and xref:news/tgc-upstream-pr.adoc[news] pages

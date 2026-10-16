@@ -1,5 +1,6 @@
-= 2026-08-17 — avalonia-d launch posts
+= 2026-08-17
 
+== avalonia-d launch posts
 == Summary
 
 Herald the public `avalonia-d` repository with a news item on the docs hub

@@ -1,4 +1,5 @@
-= 2026-03-14 — GraphRAG indexer in documentation playbooks
+= 2026-03-14
 
+== GraphRAG indexer in documentation playbooks
 * Added the newly created `graphrag-indexer` documentation site module to both local (`antora-playbook-local.yml`) and remote (`antora-playbook.yml`) Antora playbooks.
 * Initialized central changelog for the `dlang-supplemental` documentation repository to track cross-project docs updates.

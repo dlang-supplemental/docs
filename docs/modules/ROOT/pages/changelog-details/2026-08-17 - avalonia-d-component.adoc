@@ -1,5 +1,6 @@
-= 2026-08-17 — avalonia-d in the hub
+= 2026-08-17
 
+== avalonia-d in the hub
 == Summary
 
 Registered https://github.com/dlang-supplemental/avalonia-d[avalonia-d] as an

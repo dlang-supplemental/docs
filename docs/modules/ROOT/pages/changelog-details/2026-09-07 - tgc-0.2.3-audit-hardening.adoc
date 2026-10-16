@@ -1,5 +1,6 @@
-= 2026-09-07 — tgc 0.2.3 audit hardening
+= 2026-09-07
 
+== tgc 0.2.3 audit hardening
 * Made `free`, `realloc`, `sizeOf`, and block-attribute operations reject interior pointers as required by the GC interface.
 * Detached remote-free buffers before draining, coalesced duplicate requests, and kept heap registry ownership stable while queueing.
 * Added allocation-size overflow checks and corrected accounting after in-place shrink.
