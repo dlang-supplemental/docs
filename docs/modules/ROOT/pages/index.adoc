@@ -18,6 +18,10 @@ This site aggregates documentation for projects in the dlang-supplemental organi
 * xref:proposals/index.adoc[Proposals] — language and runtime design write-ups tagged `proposal`.
 * Latest: xref:blog/thread-local-gc-tgc.adoc[Thread-local garbage collection (`tgc`) for D].
 
+== Learning
+
+* xref:learning-about-d.adoc[Learning about D] — curated podcasts, talks, and other media (maintainer list, not an open wiki).
+
 == Guides
 
 * xref:publishing-packages-from-the-cli.adoc[Publishing D packages from the CLI] — `dub-publish`, registry registration without the browser, and the upstream `dub publish` proposal.

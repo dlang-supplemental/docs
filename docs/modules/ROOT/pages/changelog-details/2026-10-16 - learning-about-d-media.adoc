@@ -1,0 +1,4 @@
+= 2026-10-16 – Learning about D media page
+
+* New portal page xref:learning-about-d.adoc[Learning about D] with maintainer-curated external media (issue/PR to suggest additions, not open wiki editing).
+* First entry: Wookash Podcast interview https://youtu.be/teWQbYvPBTg[Why D Programming Language? | Lewis Nicolle] (responsive YouTube embed + direct link).

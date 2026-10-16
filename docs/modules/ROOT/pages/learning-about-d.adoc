@@ -1,0 +1,29 @@
+= Learning about D
+:description: Curated talks, podcasts, and other media for getting oriented to the D programming language.
+:navtitle: Learning about D
+
+This page lists **maintainer-curated** media about D — podcasts, interviews, conference talks, and similar introductions.
+It is not a community wiki: new entries land here through a pull request or issue on the https://github.com/dlang-supplemental/docs[docs hub repo], so the list stays small and vetted.
+
+If you know a strong resource, open an issue with the link and a sentence on why it belongs; maintainers decide whether to add it.
+
+== Podcasts and interviews
+
+=== Why D Programming Language? (Wookash Podcast)
+
+*Guest:* Lewis Nicolle · *Show:* Wookash Podcast
+
+Overview-style conversation on why D is worth a look — language goals, ecosystem, and practical appeal for systems programmers.
+
+.Why D Programming Language? | Lewis Nicolle
+video::teWQbYvPBTg[youtube, opts="responsive"]
+
+Also: https://youtu.be/teWQbYvPBTg[YouTube — Why D Programming Language? | Lewis Nicolle] · https://www.youtube.com/@WookashPodcast[Wookash Podcast channel]
+
+== Official and community hubs
+
+These sites are broader than this short list; use them when you want docs, packages, and forum threads rather than a single video.
+
+* https://dlang.org/[dlang.org] — language reference, downloads, and news
+* https://forum.dlang.org/[D forum]
+* https://code.dlang.org/[DUB registry]
