@@ -1,3 +1,4 @@
+:page-nav-hidden:
 = 2026-09-01
 
 == tgc 0.1.x prototype and canonical design

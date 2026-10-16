@@ -1,3 +1,4 @@
+:page-nav-hidden:
 = 2026-10-16
 
 == Learning about D media page

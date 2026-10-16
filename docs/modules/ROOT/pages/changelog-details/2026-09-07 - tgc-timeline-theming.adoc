@@ -1,3 +1,4 @@
+:page-nav-hidden:
 = 2026-09-07
 
 == tgc timeline theming

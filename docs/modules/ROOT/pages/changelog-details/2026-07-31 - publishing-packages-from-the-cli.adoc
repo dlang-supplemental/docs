@@ -1,3 +1,4 @@
+:page-nav-hidden:
 = 2026-07-31
 
 == Publishing D packages from the CLI

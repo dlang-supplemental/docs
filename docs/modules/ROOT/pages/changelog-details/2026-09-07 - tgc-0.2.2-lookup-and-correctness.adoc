@@ -1,3 +1,4 @@
+:page-nav-hidden:
 = 2026-09-07
 
 == tgc 0.2.2 lookup and correctness

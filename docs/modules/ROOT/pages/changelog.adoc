@@ -11,6 +11,7 @@ Portal hub updates.
 === Changelog heading format
 
 * Index and detail pages use `== YYYY-MM-DD` (date only) and `===` topic lines with short descriptions; `:toclevels: 3` lists topics in the page TOC.
+* Changelog detail pages declare `:page-nav-hidden:` so `nav-drift --require-in-nav` treats them as intentional xref-only pages.
 +
 See xref:changelog-details/2026-10-16 - changelog-em-dash-headings.adoc[Detailed changelog].
 

@@ -1,3 +1,4 @@
+:page-nav-hidden:
 = 2026-09-10
 
 == Dark-mode diagram box fills

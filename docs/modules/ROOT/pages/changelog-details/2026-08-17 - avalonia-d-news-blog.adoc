@@ -1,3 +1,4 @@
+:page-nav-hidden:
 = 2026-08-17
 
 == avalonia-d launch posts
