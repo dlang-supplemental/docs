@@ -1,6 +1,12 @@
 = Changelog
 :navtitle: Changelog
 
+== 2026-10-16 -- Link-inator hover bar and chrome exclusions
+
+* Patched `@antora-supplemental/linkinator` so Wayback controls appear in a hover bar on article links only (not header, footer, or page-context metadata).
++
+See xref:changelog-details/2026-10-16 - linkinator-hover-chrome.adoc[Detailed changelog].
+
 == 2026-10-16 -- Learning about D media page
 
 * Curated xref:learning-about-d.adoc[Learning about D] hub page (maintainer list via PR/issue); includes Wookash Podcast interview with Lewis Nicolle on why D.
