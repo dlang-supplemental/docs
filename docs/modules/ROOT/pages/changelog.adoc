@@ -29,6 +29,10 @@ See xref:changelog-details/2026-10-16 - learning-about-d-media.adoc[Detailed cha
 +
 See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed changelog].
 
+=== SoftNav TOC and in-page hash jumps
+
+* Fixed [`soft-nav.js`](supplemental-ui/js/soft-nav.js) treating sidebar TOC hash links as cross-page soft loads when folder URLs used a trailing slash (`/changelog/#section` vs `/changelog/`). Same-page `#` clicks now scroll the article; soft fetch applies `#` after swaps when needed.
+
 == 2026-10-06 — Diagrams rebuilt with Mermaid CLI 12
 
 * Regenerated all six `tgc` Mermaid diagrams with `@mermaid-js/mermaid-cli` **12.0.0** (Mermaid 12, Puppeteer 25). The diagram config pins Mermaid 12 to the previous dagre layout, classic look, and 200px label wrapping, so the diagrams keep their existing appearance; the middle dot in the shared-heap comparison now renders correctly.
