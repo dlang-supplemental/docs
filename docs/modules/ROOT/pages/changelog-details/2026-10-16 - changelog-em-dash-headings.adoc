@@ -1,4 +1,4 @@
-:hide-from-navtree:
+:hide-page:
 :navtree-parent: changelog.adoc
 = 2026-10-16
 
@@ -8,4 +8,4 @@
 * Optional one-line day blurbs under a date (plain text, not headings) when several same-day items share a theme — keep them short (roughly eight words or fewer), like “Portal hub updates.”
 * xref:changelog.adoc#_changelog_details[changelog-details] pages use `= YYYY-MM-DD` and `==` matching the index `===` title; filenames stay `YYYY-MM-DD - slug.adoc`.
 * House skill `owned-changelog` documents the layout and requires conforming older entries whenever a changelog is edited.
-* Detail pages use `:hide-from-navtree:` and `:navtree-parent: changelog.adoc` so nav-drift, breadcrumbs, and SoftNav show Changelog → detail without listing every entry in `nav.adoc`.
+* Detail pages use `:hide-page:` and `:navtree-parent: changelog.adoc` so nav-drift, breadcrumbs, and SoftNav show Changelog → detail without listing every entry in `nav.adoc`.

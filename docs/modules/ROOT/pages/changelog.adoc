@@ -11,7 +11,7 @@ Portal hub updates.
 === Changelog heading format
 
 * Index and detail pages use `== YYYY-MM-DD` (date only) and `===` topic lines with short descriptions; `:toclevels: 3` lists topics in the page TOC.
-* Changelog detail pages declare `:hide-from-navtree:` and `:navtree-parent: changelog.adoc` for nav-drift audits, breadcrumb trails, and SoftNav nav-tree injection.
+* Changelog detail pages declare `:hide-page:` and `:navtree-parent: changelog.adoc` for nav-drift audits, breadcrumb trails, and SoftNav nav-tree injection.
 +
 See xref:changelog-details/2026-10-16 - changelog-em-dash-headings.adoc[Detailed changelog].
 
@@ -44,11 +44,11 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 === SoftNav scroll, TOC, and nav-hidden children
 
-* Hub `soft-nav.js` keeps the left nav tree stable on soft loads (`swapNav` off), scrolls to top on cross-page navigation, rebuilds the right-rail TOC, soft-navigates same-component nav links, patches breadcrumbs for `:hide-from-navtree:` pages, and injects them under their `:navtree-parent:` (Changelog → detail) on hard and soft loads.
+* Hub `soft-nav.js` keeps the left nav tree stable on soft loads (`swapNav` off), scrolls to top on cross-page navigation, rebuilds the right-rail TOC, soft-navigates same-component nav links, patches breadcrumbs for `:hide-page:` entries, and injects them under their `:navtree-parent:` (Changelog → detail) on hard and soft loads.
 
 === Nav tree parent registry
 
-* `navtree-registry.json` and a `;; navtree-parent-association:` line in `nav.adoc` declare parent links for `:hide-from-navtree:` pages when path heuristics are not enough (for example xref:proposals/tgc-design-0.1.0.adoc[tgc design 0.1.0] under xref:proposals/index.adoc[Proposals]). Author directives stay explicit: `:hide-from-navtree:` and `:navtree-parent:` — not short names like `:omit-nav:`.
+* `navtree-registry.json` and a `;; navtree-parent-association:` line in `nav.adoc` declare parent links for `:hide-page:` entries when path heuristics are not enough (for example xref:proposals/tgc-design-0.1.0.adoc[tgc design 0.1.0] under xref:proposals/index.adoc[Proposals]).
 
 == 2026-10-06
 

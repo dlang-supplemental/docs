@@ -1,4 +1,4 @@
-:hide-from-navtree:
+:hide-page:
 :navtree-parent: changelog.adoc
 = 2026-08-02
 
