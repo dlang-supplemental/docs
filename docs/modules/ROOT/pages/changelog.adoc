@@ -1,26 +1,29 @@
 = Changelog
 :navtitle: Changelog
+:toclevels: 3
 
-== 2026-10-16 — Changelog em-dash timeline headings
+== 2026-10-16 — Portal hub updates
+
+=== Changelog em-dash timeline headings
 
 * Standardized index and detail headings to `YYYY-MM-DD — description` (Unicode em dash); conformed all prior portal changelog dates.
 +
 See xref:changelog-details/2026-10-16 - changelog-em-dash-headings.adoc[Detailed changelog].
 
-== 2026-10-16 — Linkinator hover bar and chrome exclusions
+=== Linkinator hover bar and chrome exclusions
 
 * `@antora-supplemental/linkinator` **v0.1.2+** shows Wayback controls in a hover bar on article links only (not header, footer, or page-context metadata).
 * Extension display name is **Linkinator** (`v0.1.3` registry metadata; npm package id unchanged).
 +
 See xref:changelog-details/2026-10-16 - linkinator-hover-chrome.adoc[Detailed changelog].
 
-== 2026-10-16 — Learning about D media page
+=== Learning about D media page
 
 * Curated xref:learning-about-d.adoc[Learning about D] hub page (maintainer list via PR/issue); includes Wookash Podcast interview with Lewis Nicolle on why D.
 +
 See xref:changelog-details/2026-10-16 - learning-about-d-media.adoc[Detailed changelog].
 
-== 2026-10-16 — Facto stack and site search
+=== Facto stack and site search
 
 * Playbook now uses the facto-stack extension bundle: Lunr keyword search, `@antora-supplemental/antora-search-chat` omnibox, Kroki, page-context, nav typology, and link/orphan tooling; Valentus UI bundle moves to `v2`.
 +
@@ -62,14 +65,17 @@ See xref:changelog-details/2026-09-07 - tgc-0.2.2-lookup-and-correctness.adoc[De
 +
 See xref:changelog-details/2026-09-07 - tgc-timeline-theming.adoc[Detailed changelog].
 
-== 2026-09-01 — tgc 0.1.x design through 0.2.0 demo
+== 2026-09-01 — tgc demo and 0.2.0 design notes
+
+* Shipped xref:demos/tgc/index.adoc[tgc demo] with test/benchmark instructions; xref:proposals/tgc-design-0.1.0.adoc[design notes] updated for **0.2.0**.
++
+See xref:changelog-details/2026-09-01 - tgc-0.2.0-tests-bench-demo.adoc[Detailed changelog].
+
+== 2026-09-01 — tgc 0.1.x prototype and canonical design
 
 * Reframed xref:blog/thread-local-gc-tgc.adoc[`tgc`] as a **0.1.x prototype**; added xref:proposals/tgc-design-0.1.0.adoc[canonical design notes] with SemVer plan (0.1.0 private heaps, 0.1.1 region scaffold, 0.2.0 working regions).
 +
-See xref:changelog-details/2026-09-01 - tgc-0.1.0-design-reframe.adoc[Detailed changelog — 0.1.x reframe].
-* Shipped xref:demos/tgc/index.adoc[tgc demo] with test/benchmark instructions; xref:proposals/tgc-design-0.1.0.adoc[design notes] updated for **0.2.0** (same day, after the reframe).
-+
-See xref:changelog-details/2026-09-01 - tgc-0.2.0-tests-bench-demo.adoc[Detailed changelog — 0.2.0 demo].
+See xref:changelog-details/2026-09-01 - tgc-0.1.0-design-reframe.adoc[Detailed changelog].
 
 == 2026-08-17 — avalonia-d in the hub and launch posts
 
