@@ -1,0 +1,8 @@
+{
+  "parentByPrefix": {
+    "changelog-details/": "changelog.adoc"
+  },
+  "pages": {
+    "proposals/tgc-design-0.1.0.adoc": "proposals/index.adoc"
+  }
+}

@@ -15,3 +15,4 @@
 * xref:publishing-packages-from-the-cli.adoc[CLI package publishing]
 * xref:flutter-skia-impeller-rendering.adoc[Flutter: Skia & Impeller]
 * xref:changelog.adoc[Changelog]
+;; navtree-parent-association: changelog-details/ -> changelog.adoc

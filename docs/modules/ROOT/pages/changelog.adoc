@@ -46,6 +46,10 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 * Hub `soft-nav.js` keeps the left nav tree stable on soft loads (`swapNav` off), scrolls to top on cross-page navigation, rebuilds the right-rail TOC, soft-navigates same-component nav links, patches breadcrumbs for `:hide-from-navtree:` pages, and injects them under their `:navtree-parent:` (Changelog → detail) on hard and soft loads.
 
+=== Nav tree parent registry
+
+* `navtree-registry.json` and a `;; navtree-parent-association:` line in `nav.adoc` declare parent links for `:hide-from-navtree:` pages when path heuristics are not enough (for example xref:proposals/tgc-design-0.1.0.adoc[tgc design 0.1.0] under xref:proposals/index.adoc[Proposals]). Author directives stay explicit: `:hide-from-navtree:` and `:navtree-parent:` — not short names like `:omit-nav:`.
+
 == 2026-10-06
 
 === Diagrams rebuilt with Mermaid CLI 12
