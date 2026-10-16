@@ -14,7 +14,7 @@
     "@antora-supplemental/build-stack": "git+https://github.com/antora-supplemental/build-stack.git#main",
     "@antora-supplemental/extension-lister": "git+https://github.com/antora-supplemental/extension-lister.git#v0.1.0",
     "@antora-supplemental/link-validator": "git+https://github.com/antora-supplemental/link-validator.git#v0.2.1",
-    "@antora-supplemental/linkinator": "git+https://github.com/antora-supplemental/linkinator.git#v0.1.2",
+    "@antora-supplemental/linkinator": "git+https://github.com/antora-supplemental/linkinator.git#v0.1.3",
     "@antora-supplemental/nav-typology": "git+https://github.com/antora-supplemental/nav-typology.git#main",
     "@antora-supplemental/nav-typology-diataxis": "git+https://github.com/antora-supplemental/nav-typology-diataxis.git#main",
     "@antora-supplemental/orphan-finder": "git+https://github.com/antora-supplemental/orphan-finder.git#v0.1.1",

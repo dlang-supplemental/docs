@@ -1,5 +1,5 @@
-= 2026-10-16 – Link-inator hover bar and chrome exclusions
+= 2026-10-16 – Linkinator hover bar and chrome exclusions
 
-* Hub pins `@antora-supplemental/linkinator` **v0.1.2**: wrap outbound links only inside `article.doc`, skipping `aside.page-context`.
+* Hub pins `@antora-supplemental/linkinator` **v0.1.2** (display name **Linkinator** from **v0.1.3**): wrap outbound links only inside `article.doc`, skipping `aside.page-context`.
 * Wayback control moves from an inline button to a compact hover/focus bar above the link (smaller, centered icon).
-* Header, footer, and build-stack extension links no longer receive Link-inator chrome.
+* Header, footer, and build-stack extension links no longer receive Linkinator chrome.

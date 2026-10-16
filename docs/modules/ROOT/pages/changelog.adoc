@@ -1,9 +1,10 @@
 = Changelog
 :navtitle: Changelog
 
-== 2026-10-16 -- Link-inator hover bar and chrome exclusions
+== 2026-10-16 -- Linkinator hover bar and chrome exclusions
 
-* Patched `@antora-supplemental/linkinator` so Wayback controls appear in a hover bar on article links only (not header, footer, or page-context metadata).
+* `@antora-supplemental/linkinator` **v0.1.2+** shows Wayback controls in a hover bar on article links only (not header, footer, or page-context metadata).
+* Extension display name is **Linkinator** (`v0.1.3` registry metadata; npm package id unchanged).
 +
 See xref:changelog-details/2026-10-16 - linkinator-hover-chrome.adoc[Detailed changelog].
 
