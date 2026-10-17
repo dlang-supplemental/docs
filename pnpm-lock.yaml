@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@antora-supplemental/link-validator': github:antora-supplemental/link-validator#v0.2.2
-
 importers:
 
   .:
