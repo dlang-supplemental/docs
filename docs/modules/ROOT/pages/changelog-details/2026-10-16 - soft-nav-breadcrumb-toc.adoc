@@ -1,0 +1,10 @@
+:hide-page:
+:navtree-parent: changelog.adoc
+= 2026-10-16
+
+== SoftNav breadcrumbs and page TOC
+
+* Clicking a changelog detail page appends the detail title after **Changelog** (`… / Changelog / Detail title`). The previous soft navigation replaced the Changelog crumb with the detail title.
+* The right-rail page TOC rebuilds after a soft navigation. `rebuildPageToc()` was called, then `querySelectorAll` threw on a `>>` selector, so the rail stayed on the previous page and the breadcrumb patch never ran.
+* `@antora-supplemental/facto-stack` **v0.2.4** depends on `@antora-supplemental/soft-nav-page-toc` **v0.1.6**. The **v0.2.3** tag still pulled **v0.1.0**, which wrote `<script src="…/_/">` instead of `soft-nav-page-toc.js` and did not inject `:hide-page:` meta or the parent breadcrumb for a hard load.
+* `injectScript: false` does not block meta or breadcrumb injection. This hub leaves the script on; `soft-nav.js` and `soft-nav-page-toc.js` both rebuild the rail.

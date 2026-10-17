@@ -8,6 +8,19 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 Portal hub updates.
 
+=== Portal as site and component home
+
+* `site.start_page` is `docs::index.adoc` (was `asciidoctor-d:ROOT:index.adoc`), so the published site root, header title link, breadcrumb home chip, and unversioned `/docs/` entry point land on xref:index.adoc[Portal] instead of a product component.
+* Hub `docs/antora.yml` keeps `start_page: ROOT:index.adoc`; keyword index pages register explicitly on the `docs` component (`@antora-supplemental/page-context/antora`) so listings live under `/docs/keywords/` and match `page-context-keyword-base`.
+
+=== SoftNav breadcrumbs and page TOC
+
+* Detail links append **Changelog** in the breadcrumb (`… / Changelog / Detail title`) instead of replacing that crumb with the detail title.
+* Right-rail page TOC rebuilds after a soft navigation. The previous heading selector threw, so the rail stayed on the page you left.
+* `@antora-supplemental/facto-stack` **v0.2.4** pulls `@antora-supplemental/soft-nav-page-toc` **v0.1.6** (script URL, `:hide-page:` meta, and the parent crumb on a hard load).
++
+See xref:changelog-details/2026-10-16 - soft-nav-breadcrumb-toc.adoc[Detailed changelog].
+
 === Changelog heading format
 
 * Index and detail pages use `== YYYY-MM-DD` (date only) and `===` topic lines with short descriptions; `:toclevels: 3` lists topics in the page TOC.
