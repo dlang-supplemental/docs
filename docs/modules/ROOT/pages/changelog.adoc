@@ -10,7 +10,7 @@ Portal hub updates.
 
 === Hub index nav label Overview
 
-* Hub xref:index.adoc[index] uses `:navtitle: Overview` and the first nav entry **Overview**; the page H1 is **D Lang Supplemental Portal** (Dev-Centr-style split: component **Home**, portal name in content, overview label in the sidebar).
+* Hub xref:index.adoc[Overview] uses `:navtitle: Overview` and the first nav entry **Overview**; the page H1 is **D Lang Supplemental Portal** (Dev-Centr-style split: component **Home**, portal name in content, overview label in the sidebar).
 
 === Hub component `home` (avoid `/docs/docs/`)
 
@@ -21,7 +21,7 @@ Portal hub updates.
 
 === Portal as site and component home
 
-* `site.start_page` points at xref:index.adoc[Portal] (was `asciidoctor-d:ROOT:index.adoc`), so the site root redirect, header title link, and breadcrumb home chip land on the hub instead of a product component.
+* `site.start_page` points at xref:index.adoc[Overview] (was `asciidoctor-d:ROOT:index.adoc`), so the site root redirect, header title link, and breadcrumb home chip land on the hub instead of a product component.
 
 === SoftNav breadcrumbs and page TOC
 
