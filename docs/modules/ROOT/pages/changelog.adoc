@@ -8,10 +8,15 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 Portal hub updates.
 
+=== Hub component `home` (avoid `/docs/docs/`)
+
+* Hub Antora component `name` is `home` (was `docs`), matching Dev-Centr and antora-supplemental hub conventions. Meta-docs stay in this repo's `docs/` content tree; the published URL segment is `/home/` under the GitHub Pages site base (`…/docs/home/`), not `…/docs/docs/`.
+* `site.start_page` is `home::index.adoc`; hub `docs/antora.yml` keeps `start_page: ROOT:index.adoc`.
+* Keyword listings still use `lib/page-context-keywords-host.js` on the `home` component at `/docs/keywords/` (`page-context-keyword-base` unchanged).
+
 === Portal as site and component home
 
-* `site.start_page` is `docs::index.adoc` (was `asciidoctor-d:ROOT:index.adoc`), so the published site root, header title link, breadcrumb home chip, and unversioned `/docs/` entry point land on xref:index.adoc[Portal] instead of a product component.
-* Hub `docs/antora.yml` keeps `start_page: ROOT:index.adoc`; keyword listings use `lib/page-context-keywords-host.js` so generated pages land on the `docs` component at `/docs/keywords/` (matching `page-context-keyword-base`).
+* `site.start_page` points at xref:index.adoc[Portal] (was `asciidoctor-d:ROOT:index.adoc`), so the site root redirect, header title link, and breadcrumb home chip land on the hub instead of a product component.
 
 === SoftNav breadcrumbs and page TOC
 

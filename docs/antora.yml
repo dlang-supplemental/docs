@@ -1,5 +1,5 @@
-name: docs
-title: D Lang Supplemental Docs
+name: home
+title: Home
 version: ~
 start_page: ROOT:index.adoc
 nav:

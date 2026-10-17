@@ -8,7 +8,7 @@ site:
     User-agent: *
     Allow: /
     Sitemap: https://dlang-supplemental.github.io/docs/sitemap.xml
-  start_page: docs::index.adoc
+  start_page: home::index.adoc
   keys:
     header_logo: logo.svg
     site_home_url: https://github.com/dlang-supplemental
@@ -79,7 +79,7 @@ antora:
         source-highlighter: highlight.js
         icons: font
     - require: ./lib/page-context-keywords-host.js
-      component: docs
+      component: home
       path: keywords
     - require: ./lib/page-catalog-extension.js
 
