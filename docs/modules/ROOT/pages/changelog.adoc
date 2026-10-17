@@ -63,9 +63,9 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 * `navtree-registry.json` and a `;; navtree-parent-association:` line in `nav.adoc` declare parent links for `:hide-page:` entries when path heuristics are not enough (for example xref:proposals/tgc-design-0.1.0.adoc[tgc design 0.1.0] under xref:proposals/index.adoc[Proposals]).
 
-=== Left nav tree filter
+=== Left nav text filter (site-nav-tree)
 
-* Sticky search field above the left nav list filters visible `.nav-item` nodes by label text (case-insensitive, debounced). Matching branches stay expanded; clearing the field restores the tree. Works with SoftNav when the nav panel is not swapped (`swapNav` off).
+* Removed hub-only filter assets (supplemental `nav-menu`, `nav-tree-filter` CSS/JS). A sticky label filter belongs on `@antora-supplemental/site-nav-tree` with `filter: true` when that extension is registered (this hub still uses facto-stack single-component sidebar per page).
 
 == 2026-10-06
 
