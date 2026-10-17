@@ -6,6 +6,12 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-10-17
 
+Hub GitHub topics (direct deps only).
+
+=== Repository topics
+
+* Retag playbook repo: `valentus-theme` and `facto-stack` only (removed transitive pack-member topics). Policy: link:https://antora-supplemental.org/docs/home/hub-github-topics.html[Hub GitHub topics^].
+
 Facto-stack pack pins (linkinator, page-edit).
 
 === Facto-stack v0.2.18 (linkinator v0.1.7)

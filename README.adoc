@@ -14,7 +14,7 @@ ifdef::env-github[]
 <br />
 <h3 align="center">D Lang Supplemental Docs</h3>
 <p align="center">
-Documentation hub for the dlang-supplemental organization, built with Antora, https://github.com/antora-supplemental/facto-stack[facto-stack] (Valentus + Lunr search), and valentus-theme.<br />
+Documentation hub for the dlang-supplemental organization, built with Antora, https://github.com/antora-supplemental/facto-stack[facto-stack] (Valentus + Lunr search), and valentus-theme. GitHub topics: `valentus-theme` and `facto-stack` only (direct deps — see link:https://antora-supplemental.org/docs/home/hub-github-topics.html[Hub GitHub topics^]).<br />
 <a href="https://dlang-supplemental.github.io/docs/"><strong>Explore the docs</strong></a><br /><br /><a href="https://github.com/dlang-supplemental/docs/issues">Report Bug</a>
 &middot;
 <a href="https://github.com/dlang-supplemental/docs/issues">Request Feature</a>
@@ -31,7 +31,7 @@ image:https://img.shields.io/github/issues/dlang-supplemental/docs.svg?style=for
 
 = D Lang Supplemental Docs
 
-Documentation hub for the dlang-supplemental organization, built with Antora, the https://github.com/antora-supplemental/facto-stack[facto-stack] compose pack (Lunr + search-chat omnibox), and https://github.com/antora-supplemental/valentus-theme[valentus-theme].
+Documentation hub for the dlang-supplemental organization, built with Antora, the https://github.com/antora-supplemental/facto-stack[facto-stack] compose pack (Lunr + search-chat omnibox), and https://github.com/antora-supplemental/valentus-theme[valentus-theme]. GitHub topics: `valentus-theme` and `facto-stack` only (direct deps — link:https://antora-supplemental.org/docs/home/hub-github-topics.html[Hub GitHub topics^]).
 
 link:https://dlang-supplemental.github.io/docs/[Explore the docs] ·
 link:https://github.com/dlang-supplemental/docs/issues[Report Bug] ·
