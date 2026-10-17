@@ -8,7 +8,7 @@ site:
     User-agent: *
     Allow: /
     Sitemap: https://dlang-supplemental.github.io/docs/sitemap.xml
-  start_page: asciidoctor-d:ROOT:index.adoc
+  start_page: docs::index.adoc
   keys:
     header_logo: logo.svg
     site_home_url: https://github.com/dlang-supplemental
@@ -63,6 +63,8 @@ output:
 antora:
   extensions:
     - require: "@antora-supplemental/facto-stack"
+      omit:
+        - '@antora-supplemental/page-context/antora'
       lunr:
         index_latest_only: true
         index_by_heading: true
@@ -72,13 +74,13 @@ antora:
       orphanFinder:
         reportEmail: dlang@devcentr.org
         failOnUnresolved: false
-      pageContextAntora:
-        component: docs
-        path: keywords
       asciidocAttributes:
         page-context-keyword-base: "/docs/keywords"
         source-highlighter: highlight.js
         icons: font
+    - require: ./lib/page-context-keywords-host.js
+      component: docs
+      path: keywords
     - require: ./lib/page-catalog-extension.js
 
 asciidoc:

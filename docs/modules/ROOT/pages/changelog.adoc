@@ -11,7 +11,7 @@ Portal hub updates.
 === Portal as site and component home
 
 * `site.start_page` is `docs::index.adoc` (was `asciidoctor-d:ROOT:index.adoc`), so the published site root, header title link, breadcrumb home chip, and unversioned `/docs/` entry point land on xref:index.adoc[Portal] instead of a product component.
-* Hub `docs/antora.yml` keeps `start_page: ROOT:index.adoc`; keyword index pages register explicitly on the `docs` component (`@antora-supplemental/page-context/antora`) so listings live under `/docs/keywords/` and match `page-context-keyword-base`.
+* Hub `docs/antora.yml` keeps `start_page: ROOT:index.adoc`; keyword listings use `lib/page-context-keywords-host.js` so generated pages land on the `docs` component at `/docs/keywords/` (matching `page-context-keyword-base`).
 
 === SoftNav breadcrumbs and page TOC
 
