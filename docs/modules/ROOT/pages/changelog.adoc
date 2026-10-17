@@ -6,6 +6,13 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-10-17
 
+Hub link-cache invalidation and link-validator v0.2.2 override.
+
+=== Hub link-cache invalidation
+
+* Deploy listens for `repository_dispatch` type `link-cache-invalidate`; maps payload `sources` / `urls` / `ref` to link-validator env and checkout. How-to: xref:notify-docs-hub-link-changes.adoc[Notify the docs hub of link changes]. Reusable dispatch: `dlang-supplemental/.github`; exemplar caller `dlang-supplemental/asciidoctor-d`.
+* pnpm override pins `@antora-supplemental/link-validator#v0.2.2` through Facto stack (surgical invalidation env).
+
 Facto-stack compose pack pin.
 
 === Hub optional diagram members (facto-stack v0.2.8)

@@ -20,6 +20,9 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "puppeteer"
-    ]
+    ],
+    "overrides": {
+      "@antora-supplemental/link-validator": "github:antora-supplemental/link-validator#v0.2.2"
+    }
   }
 }

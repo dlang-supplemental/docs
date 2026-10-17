@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@antora-supplemental/link-validator': github:antora-supplemental/link-validator#v0.2.2
+
 importers:
 
   .:
@@ -42,9 +45,9 @@ packages:
     peerDependencies:
       '@antora/lunr-extension': '>=1.0.0-alpha.12'
 
-  '@antora-supplemental/asciidoc-link-validator@https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/2595ec4f2a3c9a136ccfb94a15919e69798f9247':
-    resolution: {tarball: https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/2595ec4f2a3c9a136ccfb94a15919e69798f9247}
-    version: 0.2.1
+  '@antora-supplemental/asciidoc-link-validator@https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/41555a7b11d5c4eb12c730ab61192352ccf547fd':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/41555a7b11d5c4eb12c730ab61192352ccf547fd}
+    version: 0.2.2
     engines: {node: '>=18'}
     hasBin: true
 
@@ -97,9 +100,9 @@ packages:
     resolution: {tarball: https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/43fcfe3de94cf6e26cf2818d33078cc50dd3a940}
     version: 0.2.8
 
-  '@antora-supplemental/link-validator@https://codeload.github.com/antora-supplemental/link-validator/tar.gz/fe35aaca8cdb4e2a5761189d592ea0492b4bd302':
-    resolution: {tarball: https://codeload.github.com/antora-supplemental/link-validator/tar.gz/fe35aaca8cdb4e2a5761189d592ea0492b4bd302}
-    version: 0.2.1
+  '@antora-supplemental/link-validator@https://codeload.github.com/antora-supplemental/link-validator/tar.gz/f8892aaf9d9d3d2572591fe60280c55375ada160':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/link-validator/tar.gz/f8892aaf9d9d3d2572591fe60280c55375ada160}
+    version: 0.2.2
     engines: {node: '>=18'}
     peerDependencies:
       '@antora/site-generator': '>=3.1.0'
@@ -1745,7 +1748,7 @@ snapshots:
     dependencies:
       '@antora/lunr-extension': 1.0.0-alpha.13
 
-  '@antora-supplemental/asciidoc-link-validator@https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/2595ec4f2a3c9a136ccfb94a15919e69798f9247':
+  '@antora-supplemental/asciidoc-link-validator@https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/41555a7b11d5c4eb12c730ab61192352ccf547fd':
     dependencies:
       js-yaml: 4.3.2
 
@@ -1783,7 +1786,7 @@ snapshots:
       '@antora-supplemental/diagram-lightbox': https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9#path:packages/diagram-lightbox(@antora/site-generator@3.1.14)
       '@antora-supplemental/extension-lister': https://codeload.github.com/antora-supplemental/extension-lister/tar.gz/19149b332ead9cf681a118aa0e730f8cda325900(@antora/site-generator@3.1.14)
       '@antora-supplemental/facto-stack': 'link:'
-      '@antora-supplemental/link-validator': https://codeload.github.com/antora-supplemental/link-validator/tar.gz/fe35aaca8cdb4e2a5761189d592ea0492b4bd302(@antora/site-generator@3.1.14)
+      '@antora-supplemental/link-validator': https://codeload.github.com/antora-supplemental/link-validator/tar.gz/f8892aaf9d9d3d2572591fe60280c55375ada160(@antora/site-generator@3.1.14)
       '@antora-supplemental/linkinator': https://codeload.github.com/antora-supplemental/linkinator/tar.gz/40b8aeef2908718e0b094238b50a769a8548cf3d(@antora/site-generator@3.1.14)
       '@antora-supplemental/mermaid-client': https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9#path:packages/mermaid-client(@antora/site-generator@3.1.14)
       '@antora-supplemental/nav-drift': https://codeload.github.com/antora-supplemental/nav-drift/tar.gz/2e32b6fc7a859d9e124dec100816fa6304c1f5b6
@@ -1809,9 +1812,9 @@ snapshots:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora-supplemental/link-validator@https://codeload.github.com/antora-supplemental/link-validator/tar.gz/fe35aaca8cdb4e2a5761189d592ea0492b4bd302(@antora/site-generator@3.1.14)':
+  '@antora-supplemental/link-validator@https://codeload.github.com/antora-supplemental/link-validator/tar.gz/f8892aaf9d9d3d2572591fe60280c55375ada160(@antora/site-generator@3.1.14)':
     dependencies:
-      '@antora-supplemental/asciidoc-link-validator': https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/2595ec4f2a3c9a136ccfb94a15919e69798f9247
+      '@antora-supplemental/asciidoc-link-validator': https://codeload.github.com/antora-supplemental/asciidoc-link-validator/tar.gz/41555a7b11d5c4eb12c730ab61192352ccf547fd
     optionalDependencies:
       '@antora/site-generator': 3.1.14
 
