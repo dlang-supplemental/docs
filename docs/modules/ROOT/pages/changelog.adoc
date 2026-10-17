@@ -6,9 +6,14 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-10-17
 
-Linkinator link-row hover (facto-stack v0.2.16).
+Facto-stack pack pins (linkinator, page-edit).
 
-=== Facto-stack v0.2.16 (linkinator v0.1.5)
+=== Facto-stack v0.2.18 (linkinator v0.1.7)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.18** — `@antora-supplemental/linkinator` **v0.1.7**: idle Wayback overlay uses zero layout footprint so link rows stay aligned.
+* Pack includes `@antora-supplemental/page-edit` **v0.2.5** (View | Edit when tag-pinned sources supply forge blob URLs in `src.editUrl`).
+
+=== Facto-stack v0.2.16 (linkinator v0.1.6)
 
 * Bump `@antora-supplemental/facto-stack` to **v0.2.16** — `@antora-supplemental/linkinator` **v0.1.6**: link-only hover tint, floating **⧉** Wayback control above the anchor (not inline in prose or whole list items).
 
