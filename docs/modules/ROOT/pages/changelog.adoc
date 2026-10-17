@@ -6,6 +6,12 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-10-17
 
+Linkinator styled hover chrome (facto-stack v0.2.11).
+
+=== Facto-stack v0.2.11 (linkinator v0.1.4)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.11** — `@antora-supplemental/linkinator` **v0.1.4** adds block hover tint (Valentus `--adt-*`), an **Archive** Wayback pill beside outbound links in `article.doc`, and injects `/_/css/linkinator.css` + `/_/js/linkinator.js` on composed pages (no hub supplemental-ui duplicate required).
+
 Hub link-cache invalidation and link-validator v0.2.2 override.
 
 === Hub link-cache invalidation
