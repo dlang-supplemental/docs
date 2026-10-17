@@ -4,6 +4,14 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-10-17
+
+Facto-stack compose pack pin.
+
+=== Hub optional diagram members (facto-stack v0.2.8)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.8** — hub profile registers `mermaid-client/antora` and `diagram-lightbox` as disabled pack members (enable via `mermaidClient` / `diagramLightbox` pack config when supplemental-ui ships the partials).
+
 == 2026-10-16
 
 Portal hub updates.
