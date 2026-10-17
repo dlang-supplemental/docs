@@ -8,6 +8,10 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 Portal hub updates.
 
+=== Hub index nav label Overview
+
+* Hub xref:index.adoc[index] uses `:navtitle: Overview` and the first nav entry **Overview**; the page H1 is **D Lang Supplemental Portal** (Dev-Centr-style split: component **Home**, portal name in content, overview label in the sidebar).
+
 === Hub component `home` (avoid `/docs/docs/`)
 
 * Hub Antora component `name` is `home` (was `docs`), matching Dev-Centr and antora-supplemental hub conventions. Meta-docs stay in this repo's `docs/` content tree; the published URL segment is `/home/` under the GitHub Pages site base (`…/docs/home/`), not `…/docs/docs/`.

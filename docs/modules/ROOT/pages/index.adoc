@@ -1,5 +1,5 @@
-= D Lang Supplemental Documentation
-:navtitle: Portal
+= D Lang Supplemental Portal
+:navtitle: Overview
 
 This site aggregates documentation for projects in the dlang-supplemental organization.
 
