@@ -4,6 +4,10 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+=== Provider dedupe
+
+* Drop the `overrides` entry for `link-validator`; facto-stack **v0.2.21+** pins link-validator **v0.2.2** itself. `package.json` declares `facto-stack` (plus tooling), nothing else from the pack.
+
 === Facto-stack v0.2.22 (linkinator v0.1.10)
 
 * Bump `@antora-supplemental/facto-stack` to **v0.2.22** — Wayback chip stays opaque on hover/focus (no transparent `--adt-accent-soft` on the floating control).
@@ -14,7 +18,7 @@ Hub GitHub topics (direct deps only).
 
 === Repository topics
 
-* Retag playbook repo: `valentus-theme` and `facto-stack` only (removed transitive pack-member topics). Policy: link:https://docs.antora-supplemental.org/docs/hub-github-topics/[Hub GitHub topics^].
+* Retag playbook repo: `facto-stack` only (provider rule; removed `valentus-theme` and transitive pack-member topics). Policy: link:https://docs.antora-supplemental.org/docs/hub-github-topics/[Hub GitHub topics^].
 
 Facto-stack pack pins (linkinator, page-edit).
 
