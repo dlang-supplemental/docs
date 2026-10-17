@@ -2,8 +2,8 @@
   "name": "@dlang-supplemental/docs",
   "private": true,
   "scripts": {
-    "build": "antora antora-playbook.yml",
-    "build:local": "antora antora-playbook-local.yml",
+    "build": "antora antora-playbook.yml && node scripts/legacy-docs-component-redirects.mjs",
+    "build:local": "antora antora-playbook-local.yml && node scripts/legacy-docs-component-redirects.mjs",
     "diagrams": "node scripts/build-diagrams.mjs",
     "diagrams:check": "node scripts/build-diagrams.mjs --check"
   },
