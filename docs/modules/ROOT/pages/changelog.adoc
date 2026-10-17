@@ -10,7 +10,7 @@ Hub GitHub topics (direct deps only).
 
 === Repository topics
 
-* Retag playbook repo: `valentus-theme` and `facto-stack` only (removed transitive pack-member topics). Policy: link:https://antora-supplemental.org/docs/home/hub-github-topics.html[Hub GitHub topics^].
+* Retag playbook repo: `valentus-theme` and `facto-stack` only (removed transitive pack-member topics). Policy: link:https://docs.antora-supplemental.org/docs/hub-github-topics/[Hub GitHub topics^].
 
 Facto-stack pack pins (linkinator, page-edit).
 
