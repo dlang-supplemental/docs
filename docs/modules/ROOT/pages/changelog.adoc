@@ -4,6 +4,10 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+=== Facto-stack v0.2.22 (linkinator v0.1.10)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.22** — Wayback chip stays opaque on hover/focus (no transparent `--adt-accent-soft` on the floating control).
+
 == 2026-10-17
 
 Hub GitHub topics (direct deps only).
