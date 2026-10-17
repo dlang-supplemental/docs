@@ -63,6 +63,10 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 * `navtree-registry.json` and a `;; navtree-parent-association:` line in `nav.adoc` declare parent links for `:hide-page:` entries when path heuristics are not enough (for example xref:proposals/tgc-design-0.1.0.adoc[tgc design 0.1.0] under xref:proposals/index.adoc[Proposals]).
 
+=== Left nav tree filter
+
+* Sticky search field above the left nav list filters visible `.nav-item` nodes by label text (case-insensitive, debounced). Matching branches stay expanded; clearing the field restores the tree. Works with SoftNav when the nav panel is not swapped (`swapNav` off).
+
 == 2026-10-06
 
 === Diagrams rebuilt with Mermaid CLI 12
