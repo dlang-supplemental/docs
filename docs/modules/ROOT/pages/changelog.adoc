@@ -79,6 +79,10 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 * Removed hub-only filter assets (supplemental `nav-menu`, `nav-tree-filter` CSS/JS). A sticky label filter belongs on `@antora-supplemental/site-nav-tree` with `filter: true` when that extension is registered (this hub still uses facto-stack single-component sidebar per page).
 * `@antora-supplemental/facto-stack` **v0.2.5** ships site-nav-tree with `filter: true` by default when you enable pack `siteNavTree` (unchanged for this single-component hub until site-nav-tree is opted in).
 
+=== Facto stack pin v0.2.6
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.6** (continues to pin `@antora-supplemental/soft-nav-page-toc` **v0.1.6** for aside TOC rebuild and nav-hidden compose).
+
 == 2026-10-06
 
 === Diagrams rebuilt with Mermaid CLI 12
