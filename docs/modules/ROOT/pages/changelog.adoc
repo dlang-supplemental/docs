@@ -19,6 +19,10 @@ Facto-stack compose pack pin.
 
 * Bump `@antora-supplemental/facto-stack` to **v0.2.8** — hub profile registers `mermaid-client/antora` and `diagram-lightbox` as disabled pack members (enable via `mermaidClient` / `diagramLightbox` pack config when supplemental-ui ships the partials).
 
+=== Facto-stack v0.2.9 (site-nav-tree v0.6.1)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.9** — pack pins `@antora-supplemental/site-nav-tree` **v0.6.1** for hubs that enable `siteNavTree` (unchanged for this hub until site-nav-tree is opted in).
+
 == 2026-10-16
 
 Portal hub updates.
