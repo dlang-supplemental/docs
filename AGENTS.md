@@ -1,5 +1,7 @@
 ﻿# Agent notes
 
+Hub docs aggregator follows the Dev-Centr pattern: component `home`, playbook `start_page: home::index.adoc`, sidebar **Overview**, portal H1 on `docs/docs/modules/ROOT/pages/index.adoc`. See link:https://docs.devcentr.org/home/publishing/hub-home-component.html[Hub home component^].
+
 ## Editorial titles
 
 When writing or editing **news** or **blog** titles, follow **STYLE.adoc**.

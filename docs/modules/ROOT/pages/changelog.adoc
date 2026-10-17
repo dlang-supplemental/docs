@@ -14,6 +14,7 @@ Portal hub updates.
 
 === Hub component `home` (avoid `/docs/docs/`)
 
+* `AGENTS.md` links the canonical Dev-Centr write-up link:https://docs.devcentr.org/home/publishing/hub-home-component.html[Hub home component^] and skill `hub-home-overview`.
 * Hub Antora component `name` is `home` (was `docs`), matching Dev-Centr and antora-supplemental hub conventions. Meta-docs stay in this repo's `docs/` content tree; the published URL segment is `/home/` under the GitHub Pages site base (`…/docs/home/`), not `…/docs/docs/`.
 * Post-build step mirrors hub HTML under `…/docs/docs/` with client redirects to the matching `…/docs/home/` page so old bookmarks keep working.
 * `site.start_page` is `home::index.adoc`; hub `docs/antora.yml` keeps `start_page: ROOT:index.adoc`.
