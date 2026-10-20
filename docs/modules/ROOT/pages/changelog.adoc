@@ -4,6 +4,10 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+=== Facto-stack v0.2.40 (search dock layout)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.40** (search bar stays on screen above the footer).
+
 === Lockfile check before pnpm antora
 
 * `pnpm antora` installs when the lockfile is newer than node_modules (git tag bumps). It does not move the facto-stack pin by itself; pull the repo first.
