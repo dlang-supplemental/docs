@@ -4,6 +4,10 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+=== Facto-stack v0.2.39 (desktop disk-search dialog)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.39** (Windows disk search uses a dialog instead of the Y/n banner).
+
 === Facto-stack v0.2.38 (banner wrap)
 
 * Bump `@antora-supplemental/facto-stack` to **v0.2.38** (disk-search banner wraps inside the frame).
