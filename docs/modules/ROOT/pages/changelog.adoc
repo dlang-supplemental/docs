@@ -4,6 +4,10 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+=== Facto-stack v0.2.36 (opaque search chrome)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.36**.
+
 === Local content via facto-stack
 
 * Removed `antora-playbook-local.yml` and `build:local`. Pin `@antora-supplemental/facto-stack` **v0.2.34** (registers `antora-local-content-sources`). Hub repo adds `.antora-source-id`; content repos should add markers for hive clone discovery.
