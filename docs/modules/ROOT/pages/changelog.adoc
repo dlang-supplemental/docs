@@ -6,7 +6,7 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 === Local content via facto-stack
 
-* Removed `antora-playbook-local.yml` and `build:local`. Pin `@antora-supplemental/facto-stack` **v0.2.33** (registers `antora-local-content-sources`). Hub repo adds `.antora-source-id`; content repos should add markers for hive clone discovery.
+* Removed `antora-playbook-local.yml` and `build:local`. Pin `@antora-supplemental/facto-stack` **v0.2.34** (registers `antora-local-content-sources`). Hub repo adds `.antora-source-id`; content repos should add markers for hive clone discovery.
 
 === Provider dedupe
 
