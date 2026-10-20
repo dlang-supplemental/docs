@@ -1,0 +1,4 @@
+# Copy to .antora-local-sources.yml (gitignored) when multiple clones share the same marker id.
+sources:
+  https://github.com/dlang-supplemental/docs:
+    path: C:/code/github.com/dlang-supplemental/docs

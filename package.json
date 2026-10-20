@@ -3,13 +3,12 @@
   "private": true,
   "scripts": {
     "build": "antora antora-playbook.yml && node scripts/legacy-docs-component-redirects.mjs",
-    "build:local": "antora antora-playbook-local.yml && node scripts/legacy-docs-component-redirects.mjs",
     "diagrams": "node scripts/build-diagrams.mjs",
     "diagrams:check": "node scripts/build-diagrams.mjs --check"
   },
   "packageManager": "pnpm@10.28.1",
   "devDependencies": {
-    "@antora-supplemental/facto-stack": "git+https://github.com/antora-supplemental/facto-stack.git#v0.2.22",
+    "@antora-supplemental/facto-stack": "git+https://github.com/antora-supplemental/facto-stack.git#v0.2.33",
     "@dev-centr/mermaid-svg-css-vars": "0.1.3",
     "@dev-centr/themed-svg": "0.2.3",
     "@mermaid-js/mermaid-cli": "12.0.0",

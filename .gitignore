@@ -1,3 +1,6 @@
 node_modules/
 build/
 .cursor/
+.antora-local-sources.yml
+.antora-local-sources.yaml
+.link-check-cache.json

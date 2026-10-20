@@ -51,7 +51,7 @@ Docs are pulled from component repositories (asciidoctor-dlang, densor, fluidsyn
 == Getting Started
 
 * Production (fetch from GitHub): `pnpm build` (uses `antora-playbook.yml`)
-* Local (sibling repos): `pnpm run build:local` (uses `antora-playbook-local.yml`)
+* Local clones: same `pnpm build`; `@antora-supplemental/facto-stack` registers `antora-local-content-sources` when `.antora-source-id` markers exist on content repos (auto off in CI).
 
 ++++
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

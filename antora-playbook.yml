@@ -1,5 +1,5 @@
-# D Lang Supplemental documentation site (online)
-# Fetches content from GitHub; use for CI and production build
+# D Lang Supplemental documentation site
+# CI and local: same playbook (GitHub content URLs). facto-stack registers antora-local-content-sources (auto off in CI).
 
 site:
   title: D Lang Supplemental
