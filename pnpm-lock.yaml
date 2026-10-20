@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@antora-supplemental/facto-stack':
-        specifier: git+https://github.com/antora-supplemental/facto-stack.git#v0.2.42
-        version: https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/26e5e22b7dde7863392c4b9a7a585a93bedf72c5(@antora/site-generator@3.1.14)(@asciidoctor/core@2.2.9)
+        specifier: git+https://github.com/antora-supplemental/facto-stack.git#v0.2.43
+        version: https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/171dc9c675e841dd478c99db667cdfa6dda5d405(@antora/site-generator@3.1.14)(@asciidoctor/core@2.2.9)
       '@dev-centr/mermaid-svg-css-vars':
         specifier: 0.1.3
         version: 0.1.3
@@ -35,9 +35,9 @@ packages:
   '@antfu/install-pkg@2.0.1':
     resolution: {integrity: sha512-iCKVQcIC0e3oDxEfs3SHQGW+ovhBMZmS1TE+bTk50rVyMCBmCfClv7Qi3HQKlumYwvjb/iIMeWCW2i67q6kFfQ==}
 
-  '@antora-supplemental/antora-local-content-sources@git+https://github.com/antora-supplemental/antora-local-content-sources.git#a5955fee4ae676f338fedef8bc33f852094bbfc8':
-    resolution: {commit: a5955fee4ae676f338fedef8bc33f852094bbfc8, repo: https://github.com/antora-supplemental/antora-local-content-sources.git, type: git}
-    version: 0.2.9
+  '@antora-supplemental/antora-local-content-sources@https://codeload.github.com/antora-supplemental/antora-local-content-sources/tar.gz/e586864264e0bdc5da02db54b3c243d34952d653':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/antora-local-content-sources/tar.gz/e586864264e0bdc5da02db54b3c243d34952d653}
+    version: 0.2.11
     engines: {node: '>=18'}
 
   '@antora-supplemental/antora-search-chat@https://codeload.github.com/antora-supplemental/antora-search-chat/tar.gz/86bc83829b22e4a761b885d89900cadf9a10d7e9':
@@ -88,8 +88,8 @@ packages:
       '@antora/site-generator':
         optional: true
 
-  '@antora-supplemental/extension-lister@git+https://github.com/antora-supplemental/extension-lister.git#19149b332ead9cf681a118aa0e730f8cda325900':
-    resolution: {commit: 19149b332ead9cf681a118aa0e730f8cda325900, repo: https://github.com/antora-supplemental/extension-lister.git, type: git}
+  '@antora-supplemental/extension-lister@https://codeload.github.com/antora-supplemental/extension-lister/tar.gz/19149b332ead9cf681a118aa0e730f8cda325900':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/extension-lister/tar.gz/19149b332ead9cf681a118aa0e730f8cda325900}
     version: 0.1.0
     engines: {node: '>=18'}
     peerDependencies:
@@ -98,9 +98,9 @@ packages:
       '@antora/site-generator':
         optional: true
 
-  '@antora-supplemental/facto-stack@https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/26e5e22b7dde7863392c4b9a7a585a93bedf72c5':
-    resolution: {tarball: https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/26e5e22b7dde7863392c4b9a7a585a93bedf72c5}
-    version: 0.2.42
+  '@antora-supplemental/facto-stack@https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/171dc9c675e841dd478c99db667cdfa6dda5d405':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/171dc9c675e841dd478c99db667cdfa6dda5d405}
+    version: 0.2.43
     hasBin: true
 
   '@antora-supplemental/link-validator@https://codeload.github.com/antora-supplemental/link-validator/tar.gz/f8892aaf9d9d3d2572591fe60280c55375ada160':
@@ -123,8 +123,8 @@ packages:
       '@antora/site-generator':
         optional: true
 
-  '@antora-supplemental/mermaid-client@git+https://github.com/antora-supplemental/antora-diagram-engines.git#5fcae8cfd7a555e1021e2b081f50e3d78df44ca9&path:packages/mermaid-client':
-    resolution: {commit: 5fcae8cfd7a555e1021e2b081f50e3d78df44ca9, path: packages/mermaid-client, repo: https://github.com/antora-supplemental/antora-diagram-engines.git, type: git}
+  '@antora-supplemental/mermaid-client@https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9#path:packages/mermaid-client':
+    resolution: {path: packages/mermaid-client, tarball: https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9}
     version: 0.1.0
     engines: {node: '>=18'}
     peerDependencies:
@@ -133,22 +133,22 @@ packages:
       '@antora/site-generator':
         optional: true
 
-  '@antora-supplemental/nav-drift@git+https://github.com/antora-supplemental/nav-drift.git#2e32b6fc7a859d9e124dec100816fa6304c1f5b6':
-    resolution: {commit: 2e32b6fc7a859d9e124dec100816fa6304c1f5b6, repo: https://github.com/antora-supplemental/nav-drift.git, type: git}
+  '@antora-supplemental/nav-drift@https://codeload.github.com/antora-supplemental/nav-drift/tar.gz/2e32b6fc7a859d9e124dec100816fa6304c1f5b6':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/nav-drift/tar.gz/2e32b6fc7a859d9e124dec100816fa6304c1f5b6}
     version: 0.1.2
     engines: {node: '>=18'}
     hasBin: true
 
-  '@antora-supplemental/nav-typology-diataxis@git+https://github.com/antora-supplemental/nav-typology-diataxis.git#5abd17261e76108c0f246d2bd90f1a3acdb10b20':
-    resolution: {commit: 5abd17261e76108c0f246d2bd90f1a3acdb10b20, repo: https://github.com/antora-supplemental/nav-typology-diataxis.git, type: git}
+  '@antora-supplemental/nav-typology-diataxis@https://codeload.github.com/antora-supplemental/nav-typology-diataxis/tar.gz/5abd17261e76108c0f246d2bd90f1a3acdb10b20':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/nav-typology-diataxis/tar.gz/5abd17261e76108c0f246d2bd90f1a3acdb10b20}
     version: 0.1.0
     engines: {node: '>=18'}
     peerDependencies:
       '@antora-supplemental/nav-typology': '>=0.1.0'
       '@antora/site-generator': '>=3.1.0'
 
-  '@antora-supplemental/nav-typology@git+https://github.com/antora-supplemental/nav-typology.git#406e196b829bb2fabd8cf415c64a919f5039658f':
-    resolution: {commit: 406e196b829bb2fabd8cf415c64a919f5039658f, repo: https://github.com/antora-supplemental/nav-typology.git, type: git}
+  '@antora-supplemental/nav-typology@https://codeload.github.com/antora-supplemental/nav-typology/tar.gz/406e196b829bb2fabd8cf415c64a919f5039658f':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/nav-typology/tar.gz/406e196b829bb2fabd8cf415c64a919f5039658f}
     version: 0.1.11
     engines: {node: '>=18'}
     peerDependencies:
@@ -175,15 +175,15 @@ packages:
       '@antora/site-generator':
         optional: true
 
-  '@antora-supplemental/page-edit@git+https://github.com/antora-supplemental/page-edit.git#345c2c2a2d7a8eb23826c3f36031d3f8595d808f':
-    resolution: {commit: 345c2c2a2d7a8eb23826c3f36031d3f8595d808f, repo: https://github.com/antora-supplemental/page-edit.git, type: git}
+  '@antora-supplemental/page-edit@https://codeload.github.com/antora-supplemental/page-edit/tar.gz/345c2c2a2d7a8eb23826c3f36031d3f8595d808f':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/page-edit/tar.gz/345c2c2a2d7a8eb23826c3f36031d3f8595d808f}
     version: 0.2.5
     engines: {node: '>=18'}
     peerDependencies:
       '@antora/site-generator': '>=3.1.0'
 
-  '@antora-supplemental/playbook-pin-auditor@git+https://github.com/antora-supplemental/playbook-pin-auditor.git#b92d67faf6de20180a3fd77c1b821420d3f7ecfa':
-    resolution: {commit: b92d67faf6de20180a3fd77c1b821420d3f7ecfa, repo: https://github.com/antora-supplemental/playbook-pin-auditor.git, type: git}
+  '@antora-supplemental/playbook-pin-auditor@https://codeload.github.com/antora-supplemental/playbook-pin-auditor/tar.gz/b92d67faf6de20180a3fd77c1b821420d3f7ecfa':
+    resolution: {tarball: https://codeload.github.com/antora-supplemental/playbook-pin-auditor/tar.gz/b92d67faf6de20180a3fd77c1b821420d3f7ecfa}
     version: 0.1.1
     engines: {node: '>=18'}
     hasBin: true
@@ -1752,7 +1752,7 @@ snapshots:
       package-manager-detector: 1.8.0
       tinyexec: 1.3.1
 
-  '@antora-supplemental/antora-local-content-sources@git+https://github.com/antora-supplemental/antora-local-content-sources.git#a5955fee4ae676f338fedef8bc33f852094bbfc8':
+  '@antora-supplemental/antora-local-content-sources@https://codeload.github.com/antora-supplemental/antora-local-content-sources/tar.gz/e586864264e0bdc5da02db54b3c243d34952d653':
     dependencies:
       yaml: 2.9.1
 
@@ -1785,30 +1785,30 @@ snapshots:
     optionalDependencies:
       '@antora/site-generator': 3.1.14
 
-  '@antora-supplemental/extension-lister@git+https://github.com/antora-supplemental/extension-lister.git#19149b332ead9cf681a118aa0e730f8cda325900(@antora/site-generator@3.1.14)':
+  '@antora-supplemental/extension-lister@https://codeload.github.com/antora-supplemental/extension-lister/tar.gz/19149b332ead9cf681a118aa0e730f8cda325900(@antora/site-generator@3.1.14)':
     optionalDependencies:
       '@antora/site-generator': 3.1.14
 
-  '@antora-supplemental/facto-stack@https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/26e5e22b7dde7863392c4b9a7a585a93bedf72c5(@antora/site-generator@3.1.14)(@asciidoctor/core@2.2.9)':
+  '@antora-supplemental/facto-stack@https://codeload.github.com/antora-supplemental/facto-stack/tar.gz/171dc9c675e841dd478c99db667cdfa6dda5d405(@antora/site-generator@3.1.14)(@asciidoctor/core@2.2.9)':
     dependencies:
-      '@antora-supplemental/antora-local-content-sources': git+https://github.com/antora-supplemental/antora-local-content-sources.git#a5955fee4ae676f338fedef8bc33f852094bbfc8
+      '@antora-supplemental/antora-local-content-sources': https://codeload.github.com/antora-supplemental/antora-local-content-sources/tar.gz/e586864264e0bdc5da02db54b3c243d34952d653
       '@antora-supplemental/antora-search-chat': https://codeload.github.com/antora-supplemental/antora-search-chat/tar.gz/86bc83829b22e4a761b885d89900cadf9a10d7e9(@antora/lunr-extension@1.0.0-alpha.13)
       '@antora-supplemental/asciidoctor-emoji-literals': https://codeload.github.com/antora-supplemental/asciidoctor-emoji-literals/tar.gz/353b32fba85bcced2c635fa96b59348f45d43315(@asciidoctor/core@2.2.9)(asciidoctor-emoji@0.5.0(@asciidoctor/core@2.2.9))
       '@antora-supplemental/build-stack': https://codeload.github.com/antora-supplemental/build-stack/tar.gz/5ae83ffe23fdcb1a90a07280d300fcb72ce44cf5(@antora/site-generator@3.1.14)
       '@antora-supplemental/deep-link-contracts': https://codeload.github.com/antora-supplemental/deep-link-contracts/tar.gz/1e44a79d2d17c9106dab9660da181039ae701ae6
       '@antora-supplemental/diagram-lightbox': https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9#path:packages/diagram-lightbox(@antora/site-generator@3.1.14)
-      '@antora-supplemental/extension-lister': git+https://github.com/antora-supplemental/extension-lister.git#19149b332ead9cf681a118aa0e730f8cda325900(@antora/site-generator@3.1.14)
+      '@antora-supplemental/extension-lister': https://codeload.github.com/antora-supplemental/extension-lister/tar.gz/19149b332ead9cf681a118aa0e730f8cda325900(@antora/site-generator@3.1.14)
       '@antora-supplemental/facto-stack': 'link:'
       '@antora-supplemental/link-validator': https://codeload.github.com/antora-supplemental/link-validator/tar.gz/f8892aaf9d9d3d2572591fe60280c55375ada160(@antora/site-generator@3.1.14)
       '@antora-supplemental/linkinator': https://codeload.github.com/antora-supplemental/linkinator/tar.gz/b5a024a56b1ce537e19dffe58b4882f4db60948f(@antora/site-generator@3.1.14)
-      '@antora-supplemental/mermaid-client': git+https://github.com/antora-supplemental/antora-diagram-engines.git#5fcae8cfd7a555e1021e2b081f50e3d78df44ca9&path:packages/mermaid-client(@antora/site-generator@3.1.14)
-      '@antora-supplemental/nav-drift': git+https://github.com/antora-supplemental/nav-drift.git#2e32b6fc7a859d9e124dec100816fa6304c1f5b6
-      '@antora-supplemental/nav-typology': git+https://github.com/antora-supplemental/nav-typology.git#406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14)
-      '@antora-supplemental/nav-typology-diataxis': git+https://github.com/antora-supplemental/nav-typology-diataxis.git#5abd17261e76108c0f246d2bd90f1a3acdb10b20(@antora-supplemental/nav-typology@git+https://github.com/antora-supplemental/nav-typology.git#406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14))(@antora/site-generator@3.1.14)
+      '@antora-supplemental/mermaid-client': https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9#path:packages/mermaid-client(@antora/site-generator@3.1.14)
+      '@antora-supplemental/nav-drift': https://codeload.github.com/antora-supplemental/nav-drift/tar.gz/2e32b6fc7a859d9e124dec100816fa6304c1f5b6
+      '@antora-supplemental/nav-typology': https://codeload.github.com/antora-supplemental/nav-typology/tar.gz/406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14)
+      '@antora-supplemental/nav-typology-diataxis': https://codeload.github.com/antora-supplemental/nav-typology-diataxis/tar.gz/5abd17261e76108c0f246d2bd90f1a3acdb10b20(@antora-supplemental/nav-typology@https://codeload.github.com/antora-supplemental/nav-typology/tar.gz/406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14))(@antora/site-generator@3.1.14)
       '@antora-supplemental/orphan-finder': https://codeload.github.com/antora-supplemental/orphan-finder/tar.gz/c75c5fd23f44724a59cc008b45e38e169be21f42(@antora/site-generator@3.1.14)
       '@antora-supplemental/page-context': https://codeload.github.com/antora-supplemental/page-context/tar.gz/ee6fb4d68f5daf10e3b51f4a817e2ebfd5d09d6d(@antora/site-generator@3.1.14)
-      '@antora-supplemental/page-edit': git+https://github.com/antora-supplemental/page-edit.git#345c2c2a2d7a8eb23826c3f36031d3f8595d808f(@antora/site-generator@3.1.14)
-      '@antora-supplemental/playbook-pin-auditor': git+https://github.com/antora-supplemental/playbook-pin-auditor.git#b92d67faf6de20180a3fd77c1b821420d3f7ecfa
+      '@antora-supplemental/page-edit': https://codeload.github.com/antora-supplemental/page-edit/tar.gz/345c2c2a2d7a8eb23826c3f36031d3f8595d808f(@antora/site-generator@3.1.14)
+      '@antora-supplemental/playbook-pin-auditor': https://codeload.github.com/antora-supplemental/playbook-pin-auditor/tar.gz/b92d67faf6de20180a3fd77c1b821420d3f7ecfa
       '@antora-supplemental/site-nav-tree': https://codeload.github.com/antora-supplemental/site-nav-tree/tar.gz/894e31e1f2eac2e60f71312f23a044a214dbfd38(@antora/site-generator@3.1.14)
       '@antora-supplemental/soft-nav-page-toc': https://codeload.github.com/antora-supplemental/soft-nav-page-toc/tar.gz/e14807953757708297d2ac4f1ffac1a2810b3ccb(@antora/site-generator@3.1.14)
       '@antora-supplemental/stale-page': https://codeload.github.com/antora-supplemental/stale-page/tar.gz/5c24c9bf8d5755487dd8c9156e8c8c96c23d841a
@@ -1835,22 +1835,22 @@ snapshots:
     optionalDependencies:
       '@antora/site-generator': 3.1.14
 
-  '@antora-supplemental/mermaid-client@git+https://github.com/antora-supplemental/antora-diagram-engines.git#5fcae8cfd7a555e1021e2b081f50e3d78df44ca9&path:packages/mermaid-client(@antora/site-generator@3.1.14)':
+  '@antora-supplemental/mermaid-client@https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9#path:packages/mermaid-client(@antora/site-generator@3.1.14)':
     dependencies:
       '@antora-supplemental/diagram-engines-shared': https://codeload.github.com/antora-supplemental/antora-diagram-engines/tar.gz/5fcae8cfd7a555e1021e2b081f50e3d78df44ca9#path:packages/shared
     optionalDependencies:
       '@antora/site-generator': 3.1.14
 
-  '@antora-supplemental/nav-drift@git+https://github.com/antora-supplemental/nav-drift.git#2e32b6fc7a859d9e124dec100816fa6304c1f5b6':
+  '@antora-supplemental/nav-drift@https://codeload.github.com/antora-supplemental/nav-drift/tar.gz/2e32b6fc7a859d9e124dec100816fa6304c1f5b6':
     dependencies:
       '@antora-supplemental/triage-ux-kit': https://codeload.github.com/antora-supplemental/triage-ux-kit/tar.gz/4b7888d2f18048e68e1176c9aca4abf7aa4bac40
 
-  '@antora-supplemental/nav-typology-diataxis@git+https://github.com/antora-supplemental/nav-typology-diataxis.git#5abd17261e76108c0f246d2bd90f1a3acdb10b20(@antora-supplemental/nav-typology@git+https://github.com/antora-supplemental/nav-typology.git#406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14))(@antora/site-generator@3.1.14)':
+  '@antora-supplemental/nav-typology-diataxis@https://codeload.github.com/antora-supplemental/nav-typology-diataxis/tar.gz/5abd17261e76108c0f246d2bd90f1a3acdb10b20(@antora-supplemental/nav-typology@https://codeload.github.com/antora-supplemental/nav-typology/tar.gz/406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14))(@antora/site-generator@3.1.14)':
     dependencies:
-      '@antora-supplemental/nav-typology': git+https://github.com/antora-supplemental/nav-typology.git#406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14)
+      '@antora-supplemental/nav-typology': https://codeload.github.com/antora-supplemental/nav-typology/tar.gz/406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14)
       '@antora/site-generator': 3.1.14
 
-  '@antora-supplemental/nav-typology@git+https://github.com/antora-supplemental/nav-typology.git#406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14)':
+  '@antora-supplemental/nav-typology@https://codeload.github.com/antora-supplemental/nav-typology/tar.gz/406e196b829bb2fabd8cf415c64a919f5039658f(@antora/site-generator@3.1.14)':
     dependencies:
       '@antora/site-generator': 3.1.14
 
@@ -1864,11 +1864,11 @@ snapshots:
     optionalDependencies:
       '@antora/site-generator': 3.1.14
 
-  '@antora-supplemental/page-edit@git+https://github.com/antora-supplemental/page-edit.git#345c2c2a2d7a8eb23826c3f36031d3f8595d808f(@antora/site-generator@3.1.14)':
+  '@antora-supplemental/page-edit@https://codeload.github.com/antora-supplemental/page-edit/tar.gz/345c2c2a2d7a8eb23826c3f36031d3f8595d808f(@antora/site-generator@3.1.14)':
     dependencies:
       '@antora/site-generator': 3.1.14
 
-  '@antora-supplemental/playbook-pin-auditor@git+https://github.com/antora-supplemental/playbook-pin-auditor.git#b92d67faf6de20180a3fd77c1b821420d3f7ecfa':
+  '@antora-supplemental/playbook-pin-auditor@https://codeload.github.com/antora-supplemental/playbook-pin-auditor/tar.gz/b92d67faf6de20180a3fd77c1b821420d3f7ecfa':
     dependencies:
       js-yaml: 4.3.2
 
