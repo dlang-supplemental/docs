@@ -9,7 +9,7 @@
 
 Live site: https://dlang-supplemental.github.io/docs[+].
 
-Multi-repo hubs rebuild when a content repo *pokes* the playbook repo — same star pattern as `extension-updated` (see link:https://docs.antora-supplemental.org/antora-deployment/#auto-rebuild-when-content-sources-or-extensions-update[Antora deployment: auto-rebuild^]).
+Multi-repo hubs rebuild when a content repo *pokes* the playbook repo — same star pattern as `extension-updated` (see link:https://docs.antora-supplemental.org/home/antora-deployment/#_auto_rebuild_when_content_sources_or_extensions_update[Antora deployment: auto-rebuild^]).
 
 **Link-cache invalidation** adds optional *surgical* recheck hints for `@antora-supplemental/link-validator` (env `LINK_VALIDATOR_INVALIDATE_*`, v0.2.2+ via Facto stack) while the hub still runs a full Antora generate and GitHub Pages deploy.
 
@@ -67,6 +67,6 @@ Exemplar thin caller: `dlang-supplemental/asciidoctor-d/.github/workflows/notify
 
 == Related
 
-* https://docs.devcentr.org/docs-site/notify-docs-hub-link-changes.html[Dev-Centr hub contract]
-* https://docs.antora-supplemental.org/notify-docs-hub-link-changes.html[Antora Supplemental hub contract]
+* https://docs.devcentr.org/general-knowledge/how-to/notify-docs-hub-link-changes/[Dev-Centr hub contract]
+* https://docs.antora-supplemental.org/home/notify-docs-hub-link-changes/[Antora Supplemental hub contract]
 * https://github.com/antora-supplemental/asciidoc-link-validator#environment[asciidoc-link-validator env vars]

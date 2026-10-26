@@ -4,11 +4,15 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-10-26
+
 === Facto-stack v0.3 and Valentus 4
 
 * Bump `@antora-supplemental/facto-stack` from `#v0.2` (v0.2.68) to `#v0.3` (v0.3.0), and the UI bundle from valentus-theme `v2` to `v4` (4.2.2). This fixes the build error about the missing `adt-search-chat` partial.
 * Rename the `adt-*` hooks to `valentus-*` in the hub's supplemental UI, and add the light-dark footer slot.
 See xref:changelog-details/history/2026-10-26 - facto-stack-v0.3-valentus-4.adoc[Detailed changelog].
+
+== 2026-10-20
 
 === Facto-stack v0.2.40 (search dock layout)
 
@@ -21,6 +25,8 @@ See xref:changelog-details/history/2026-10-26 - facto-stack-v0.3-valentus-4.adoc
 === Facto-stack v0.2.39 (desktop disk-search dialog)
 
 * Bump `@antora-supplemental/facto-stack` to **v0.2.39** (Windows disk search uses a dialog instead of the Y/n banner).
+
+== 2026-10-19
 
 === Facto-stack v0.2.38 (banner wrap)
 
@@ -38,14 +44,6 @@ See xref:changelog-details/history/2026-10-26 - facto-stack-v0.3-valentus-4.adoc
 
 * Removed `antora-playbook-local.yml` and `build:local`. Pin `@antora-supplemental/facto-stack` **v0.2.34** (registers `antora-local-content-sources`). Hub repo adds `.antora-source-id`; content repos should add markers for hive clone discovery.
 
-=== Provider dedupe
-
-* Drop the `overrides` entry for `link-validator`; facto-stack **v0.2.21+** pins link-validator **v0.2.2** itself. `package.json` declares `facto-stack` (plus tooling), nothing else from the pack.
-
-=== Facto-stack v0.2.22 (linkinator v0.1.10)
-
-* Bump `@antora-supplemental/facto-stack` to **v0.2.22** — Wayback chip stays opaque on hover/focus (no transparent `--adt-accent-soft` on the floating control).
-
 == 2026-10-17
 
 Hub GitHub topics (direct deps only).
@@ -55,6 +53,14 @@ Hub GitHub topics (direct deps only).
 * Retag playbook repo: `facto-stack` only (provider rule; removed `valentus-theme` and transitive pack-member topics). Policy: link:https://docs.antora-supplemental.org/docs/hub-github-topics/[Hub GitHub topics^].
 
 Facto-stack pack pins (linkinator, page-edit).
+
+=== Provider dedupe
+
+* Drop the `overrides` entry for `link-validator`; facto-stack **v0.2.21+** pins link-validator **v0.2.2** itself. `package.json` declares `facto-stack` (plus tooling), nothing else from the pack.
+
+=== Facto-stack v0.2.22 (linkinator v0.1.10)
+
+* Bump `@antora-supplemental/facto-stack` to **v0.2.22** — Wayback chip stays opaque on hover/focus (no transparent `--adt-accent-soft` on the floating control).
 
 === Facto-stack v0.2.18 (linkinator v0.1.7)
 
@@ -92,7 +98,7 @@ Portal hub updates.
 
 === Hub component `home` (avoid `/docs/docs/`)
 
-* `AGENTS.md` links the canonical Dev-Centr write-up link:https://docs.devcentr.org/home/publishing/hub-home-component.html[Hub home component^] and skill `hub-home-overview`.
+* `AGENTS.md` links the canonical Dev-Centr write-up link:https://docs.devcentr.org/general-knowledge/explanation/documentation/hub-home-component/[Hub home component^] and skill `hub-home-overview`.
 * Hub Antora component `name` is `home` (was `docs`), matching Dev-Centr and antora-supplemental hub conventions. Meta-docs stay in this repo's `docs/` content tree; the published URL segment is `/home/` under the GitHub Pages site base (`…/docs/home/`), not `…/docs/docs/`.
 * Post-build step mirrors hub HTML under `…/docs/docs/` with client redirects to the matching `…/docs/home/` page so old bookmarks keep working.
 * `site.start_page` is `home::index.adoc`; hub `docs/antora.yml` keeps `start_page: ROOT:index.adoc`.
@@ -142,7 +148,7 @@ See xref:changelog-details/2026-10-16 - facto-stack-lunr-search.adoc[Detailed ch
 
 === SoftNav page TOC after detail links
 
-* `@antora-supplemental/facto-stack` **v0.2.3** registers `@antora-supplemental/soft-nav-page-toc` so the right-rail page TOC rebuilds when SoftNav swaps to xref:changelog-details/[changelog-details] and other in-component pages. Upstream proposal: link:https://docs.antora-supplemental.org/docs/ROOT/proposals/soft-nav-page-toc.html[SoftNav page TOC and nav-hidden pages^].
+* `@antora-supplemental/facto-stack` **v0.2.3** registers `@antora-supplemental/soft-nav-page-toc` so the right-rail page TOC rebuilds when SoftNav swaps to xref:changelog-details/[changelog-details] and other in-component pages. Upstream proposal: link:https://docs.antora-supplemental.org/home/proposals/soft-nav-page-toc/[SoftNav page TOC and nav-hidden pages^].
 
 === SoftNav scroll, TOC, and nav-hidden children
 

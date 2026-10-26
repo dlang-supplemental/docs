@@ -23,4 +23,4 @@ Options under consideration:
 
 == Reference
 
-See also: link:https://simple.wikipedia.org/wiki/Aspect-oriented_programming[Aspect-Oriented Programming on Simple Wikipedia].
+See also: link:https://en.wikipedia.org/wiki/Aspect-oriented_programming[Aspect-Oriented Programming on Wikipedia].
