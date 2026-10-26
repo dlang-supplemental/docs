@@ -4,6 +4,12 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+=== Facto-stack v0.3 and Valentus 4
+
+* Bump `@antora-supplemental/facto-stack` from `#v0.2` (v0.2.68) to `#v0.3` (v0.3.0), and the UI bundle from valentus-theme `v2` to `v4` (4.2.2). This fixes the build error about the missing `adt-search-chat` partial.
+* Rename the `adt-*` hooks to `valentus-*` in the hub's supplemental UI, and add the light-dark footer slot.
+See xref:changelog-details/history/2026-10-26 - facto-stack-v0.3-valentus-4.adoc[Detailed changelog].
+
 === Facto-stack v0.2.40 (search dock layout)
 
 * Bump `@antora-supplemental/facto-stack` to **v0.2.40** (search bar stays on screen above the footer).

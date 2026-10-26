@@ -1,0 +1,17 @@
+:hide-page:
+:navtree-parent: changelog.adoc
+= 2026-10-26 - Facto stack v0.3 and Valentus 4
+
+== What changed
+* `@antora-supplemental/facto-stack` pin moves from the rolling `#v0.2` line (v0.2.68) to `#v0.3` (resolves to v0.3.0). Facto v0.3 pairs with Valentus 4 and registers `@antora-supplemental/light-dark-mode` itself, so the hub adds no separate require.
+* UI bundle moves from https://github.com/antora-supplemental/valentus-theme/releases/tag/v2[valentus-theme `v2`] to the rolling `v4` release (4.2.2 today).
+* Valentus 3.0.0 renamed the layout namespace from `adt-*` to `valentus-*`. Hub overrides follow: `supplemental-ui/css/nav-typology.css`, `js/soft-nav.js` (breadcrumb and dropdown hooks), and `js/site-math.js` (`data-valentus-katex`).
+* Valentus 4.0.0 moved the light/dark toggle into chassis partials. The hub `footer-content.hbs` override now calls `{{> light-dark-footer-slot}}` like the upstream footer.
+
+== Why
+The `v2` bundle still asked for the `adt-search-chat` partial, which current `antora-search-chat` no longer provides, so the hub build failed with `The partial adt-search-chat could not be found`.
+
+== Verification
+A full `antora antora-playbook.yml --fetch` build with remote sources finished with exit 0 and wrote 80 HTML pages. The pages have no `adt-` hooks left, and the light-dark-mode runtime is injected. The link-validator reports the same 6 invalid links as before; they are not related to this change.
+
+The site keeps its own `img/logo.svg` through `supplemental-ui`, so the Valentus 4.1 placeholder-logo change does not affect the header.
