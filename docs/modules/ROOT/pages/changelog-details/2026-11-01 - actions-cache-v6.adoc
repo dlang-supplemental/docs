@@ -1,0 +1,9 @@
+:hide-page:
+:navtree-parent: changelog.adoc
+= 2026-11-01
+
+== GitHub Actions cache v6 (link-validator results)
+
+* Bump `actions/cache` from **v4** to **v6** on the **Restore link check cache** step in `.github/workflows/deploy.yml`.
+* Cache path remains `.link-check-cache.json` (gitignored); key still combines runner OS and `pnpm-lock.yaml` hash so lockfile bumps invalidate stale link-check results.
+* v6 is an ESM migration release from GitHub; hub behavior is unchanged — full Antora generate and Pages deploy still run on every trigger documented in xref:notify-docs-hub-link-changes.adoc[Hub link-cache invalidation].

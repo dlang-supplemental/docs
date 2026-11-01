@@ -4,6 +4,13 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-11-01
+
+=== GitHub Actions cache v6 (link-validator results)
+
+* Bump `actions/cache` to **v6** for the persisted link-validator cache (`.link-check-cache.json`) in the deploy workflow.
+See xref:changelog-details/2026-11-01 - actions-cache-v6.adoc[Detailed changelog].
+
 == 2026-10-26
 
 === Facto-stack v0.3 and Valentus 4
