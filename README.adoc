@@ -1,5 +1,6 @@
 ifndef::env-github[:icons: font]
-:toc: preamble
+:toc: macro
+:toc-title:
 :toclevels: 2
 :sectanchors:
 
@@ -37,6 +38,15 @@ link:https://dlang-supplemental.github.io/docs/[Explore the docs] ·
 link:https://github.com/dlang-supplemental/docs/issues[Report Bug] ·
 link:https://github.com/dlang-supplemental/docs/issues[Request Feature]
 endif::[]
+
+++++
+<details>
+<summary>Table of Contents</summary>
+++++
+toc::[]
+++++
+</details>
+++++
 
 == About The Project
 
