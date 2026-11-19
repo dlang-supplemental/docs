@@ -1,0 +1,6 @@
+= Bend and Unison links on Learning about D
+:navtitle: Bend and Unison links on Learning about D
+
+== Summary
+
+xref:learning-about-d.adoc[Learning about D] now points at the DevCentr general-knowledge pages for Bend, Unison, and Unison versus D, next to the existing Bend-versus-D blog essay.

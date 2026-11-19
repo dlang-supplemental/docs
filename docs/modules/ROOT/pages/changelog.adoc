@@ -6,6 +6,11 @@ This changelog records notable changes to the D Lang Supplemental documentation 
 
 == 2026-11-19
 
+=== Bend and Unison links on Learning about D
+
+* xref:learning-about-d.adoc[Learning about D] also links to the DevCentr general-knowledge pages for Bend, Unison, and Unison versus D.
+* Detail: xref:changelog-details/2026-11-19 - bend-and-unison-links.adoc[Bend and Unison links on Learning about D].
+
 === Bend versus D blog on Learning about D
 
 * xref:learning-about-d.adoc[Learning about D] links to the DevCentr essay on Bend's parallelism story versus D ecosystem priorities.
