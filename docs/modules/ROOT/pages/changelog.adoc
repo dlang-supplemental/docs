@@ -4,6 +4,13 @@
 
 This changelog records notable changes to the D Lang Supplemental documentation portal itself, including playbook additions, configuration changes, and global reorganizations.
 
+== 2026-11-19
+
+=== Bend versus D blog on Learning about D
+
+* xref:learning-about-d.adoc[Learning about D] links to the DevCentr essay on Bend's parallelism story versus D ecosystem priorities.
+* Detail: xref:changelog-details/2026-11-19 - bend-vs-d-blog-link.adoc[Bend versus D blog on Learning about D].
+
 == 2026-11-15
 
 === README contents list

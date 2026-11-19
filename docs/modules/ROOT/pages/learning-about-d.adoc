@@ -27,3 +27,7 @@ These sites are broader than this short list; use them when you want docs, packa
 * https://dlang.org/[dlang.org] — language reference, downloads, and news
 * https://forum.dlang.org/[D forum]
 * https://code.dlang.org/[DUB registry]
+
+== Essays and longer orientation
+
+* link:https://devcentr.org/blog/2026-11-19-bends-parallel-bet-and-what-d-should-steal-instead[Bend's Parallel Bet—and What D Should Steal Instead] (DevCentr blog) — how Bend's automatic-parallelism story compares to D's systems strengths, what incremental improvements are realistic, and where ecosystem momentum matters more than new syntax.

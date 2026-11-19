@@ -1,0 +1,6 @@
+= Bend versus D blog on Learning about D
+:navtitle: Bend versus D blog on Learning about D
+
+== Summary
+
+Added an «Essays and longer orientation» section on xref:learning-about-d.adoc[Learning about D] with a link to the DevCentr blog essay link:https://devcentr.org/blog/2026-11-19-bends-parallel-bet-and-what-d-should-steal-instead[Bend's Parallel Bet—and What D Should Steal Instead].
